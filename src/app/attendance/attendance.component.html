@@ -2091,6 +2091,20 @@
                 </div>
               
             </div>
+
+            <div class ="row m-5 d-flex justify-content-end align-items-end" >
+
+                <div *ngIf="isP"  class="col">
+                    <label style="color: white;">Attendance</label>
+                    <select class="form-control" id="#" [(ngModel)]="stu.user_id_student" (change)="getSAttendence()">
+                        <option selected value="0">Choose children</option>
+                        <option *ngFor="let child of students " [value]="child.user_id_student">{{child.fName}}</option>
+                    </select>
+                </div>
+
+            </div>
+
+
             <div *ngIf="isOther" class="row m-5" >
                <div class="col">
                 <table class="table">

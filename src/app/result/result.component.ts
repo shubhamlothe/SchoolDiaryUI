@@ -10,11 +10,13 @@ import { faculty, HttpClientServiceService, result, student } from '../http-clie
 })
 export class ResultComponent implements OnInit {
 
+  isP = false;
   examDate: string;
   examSubject: string;
   maxMarks: number;
   isStu = false;
   Student: student[];
+  stu: student = new student;
   Result: result[];
   updateResult: result[];
   role_id: number;
@@ -29,13 +31,26 @@ export class ResultComponent implements OnInit {
         this.isDisplay = true;
         this.getStudentToUpdateResult();
       }
-      else {
+      else if (this.role_id == 2) {
         this.isStu = true;
         this.isDisplay = false;
         this.getres();
+      } else if (this.role_id == 3) {
+        this.isStu = true;
+        this.isDisplay = false;
+        this.isP = true;
       }
     })
 
+    this.GetChildByUid();
+
+  }
+
+  GetChildByUid() {
+    this.Http.GetChildByUid(sessionStorage.getItem('id')).subscribe(res => {
+      this.Student = res;
+
+    })
   }
 
 
@@ -83,6 +98,16 @@ export class ResultComponent implements OnInit {
     })
 
   }
+
+
+  getSMarksheet() {
+    this.Http.getResult(this.stu.user_id_student).subscribe(res => {
+      this.Result = res;
+
+    })
+  }
+
+
 
 }
 

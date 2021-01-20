@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { attendance, HttpClientServiceService } from '../http-client-service.service';
+import { attendance, HttpClientServiceService, student } from '../http-client-service.service';
 
 @Component({
   selector: 'app-attendance',
@@ -11,11 +11,13 @@ export class AttendanceComponent implements OnInit {
   attDate: string;
   attStatus: number;
   cls: number;
+  isP = false;
   isDisplay = false;
   isOther = false;
   role_id: number;
   att: attendance[];
-
+  students: student[];
+  stu: student = new student;
   constructor(private Http: HttpClientServiceService, private router: Router) { }
 
   ngOnInit(): void {
@@ -48,7 +50,20 @@ export class AttendanceComponent implements OnInit {
           this.showdata();
         })
       }
+
+      if (this.role_id == 3) {
+
+        this.isOther = true;
+        this.isP = true;
+        this.GetChildByUid();
+
+      }
+
     })
+
+
+
+
 
   }
 
@@ -138,6 +153,20 @@ export class AttendanceComponent implements OnInit {
     })
 
 
+  }
+
+  GetChildByUid() {
+    this.Http.GetChildByUid(sessionStorage.getItem('id')).subscribe(res => {
+      this.students = res;
+
+    })
+  }
+
+
+  getSAttendence() {
+    this.Http.getAttendance(this.stu.user_id_student).subscribe(res => {
+      this.att = res;
+    })
   }
 
 }

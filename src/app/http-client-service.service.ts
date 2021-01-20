@@ -34,6 +34,17 @@ export class User {
   ) { }
 }
 
+export class contactMail {
+  constructor(
+    public id?: number,
+    public name?: string,
+    public contactPersonEmail?: string,
+    public subject?: string,
+    public message?: string
+  ) { }
+}
+
+
 export class attendance {
   constructor(
     public compid?: string,
@@ -105,6 +116,32 @@ export class result {
 
   ) { }
 }
+
+
+var requestBody: any = {
+  headers: {
+    'Content-type': 'application/json',
+    'X-CSCAPI-KEY': 'OFI5cHlMUFExZm5mbW9vWFl0T0lyRnZNZkNIUWZkc1RUSmlzYVlFNQ==',
+    'Access-Control-Allow-Origin': '*'
+  }
+};
+
+export class Countries {
+
+  constructor(
+    public id: number,
+    public name: string,
+    public iso2: string
+
+  ) { }
+
+}
+export class City {
+  constructor(
+    public id: number
+  ) { }
+}
+
 
 
 
@@ -182,4 +219,24 @@ export class HttpClientServiceService {
   submitAttendance(att: attendance[]) {
     return this.httpClient.post<attendance>("http://localhost:8080/submit_Attendance", att);
   }
+
+  sendQuery(cm: contactMail) {
+    return this.httpClient.post<contactMail>("http://localhost:8080/insertQuery", cm);
+  }
+
+  getCountries() {
+    return this.httpClient.get<Countries[]>("https://api.countrystatecity.in/v1/countries", requestBody);
+  }
+  getState(code: string) {
+    return this.httpClient.get<Countries[]>("https://api.countrystatecity.in/v1/countries/" + code + "/states", requestBody);
+  }
+
+  getCity(codec: string, code: string) {
+    return this.httpClient.get<Countries[]>("https://api.countrystatecity.in/v1/countries/" + codec + "/states/" + code + "/cities", requestBody);
+  }
+
+  GetChildByUid(uid: string) {
+    return this.httpClient.get<student[]>("http://localhost:8080/getStudent/" + uid);
+  }
+
 }

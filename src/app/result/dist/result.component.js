@@ -13,7 +13,9 @@ var ResultComponent = /** @class */ (function () {
     function ResultComponent(Http, router) {
         this.Http = Http;
         this.router = router;
+        this.isP = false;
         this.isStu = false;
+        this.stu = new http_client_service_service_1.student;
         this.Faculty = new http_client_service_service_1.faculty(null, null, null, null, null);
         this.isDisplay = false;
     }
@@ -25,11 +27,23 @@ var ResultComponent = /** @class */ (function () {
                 _this.isDisplay = true;
                 _this.getStudentToUpdateResult();
             }
-            else {
+            else if (_this.role_id == 2) {
                 _this.isStu = true;
                 _this.isDisplay = false;
                 _this.getres();
             }
+            else if (_this.role_id == 3) {
+                _this.isStu = true;
+                _this.isDisplay = false;
+                _this.isP = true;
+            }
+        });
+        this.GetChildByUid();
+    };
+    ResultComponent.prototype.GetChildByUid = function () {
+        var _this = this;
+        this.Http.GetChildByUid(sessionStorage.getItem('id')).subscribe(function (res) {
+            _this.Student = res;
         });
     };
     ResultComponent.prototype.getres = function () {
@@ -63,6 +77,12 @@ var ResultComponent = /** @class */ (function () {
             this.updateResult[i].max_marks = this.maxMarks;
         }
         this.Http.updateResult(this.updateResult).subscribe(function (res) {
+        });
+    };
+    ResultComponent.prototype.getSMarksheet = function () {
+        var _this = this;
+        this.Http.getResult(this.stu.user_id_student).subscribe(function (res) {
+            _this.Result = res;
         });
     };
     ResultComponent = __decorate([

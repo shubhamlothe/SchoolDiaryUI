@@ -1636,19 +1636,33 @@
 
         <div class="row  m-3">
 
+           
             <div class="col">
-                <label for="inputAddress">Country</label>
-                <input type="text" [(ngModel)]="user.country" class="form-control">
+                <label  id="CustomID" for="inputState">Country</label>
+                <select class="form-control" id="Role" [(ngModel)]="user.country" (change)="getState()">
+                    <option selected value="0">Choose...</option>
+                    <option  *ngFor="let con of countries"  [value]="con.iso2">{{con.name}}</option>
+                   
+                </select>
             </div>
             <div class="col">
-                <label for="inputState">State</label>
-                <input type="text" [(ngModel)]="user.state" class="form-control">
+                <label  id="CustomID" for="inputState">State</label>
+                <select class="form-control" id="Role" [(ngModel)]="user.state" (change)="getCity()">
+                    <option selected value="0">Choose...</option>
+                    <option  *ngFor="let con of state"  [value]="con.iso2">{{con.name}}</option>
+                   
+                </select>
             </div>
 
-            <div class="col-3">
-                <label for="inputCity">City</label>
-                <input type="text" [(ngModel)]="user.city" class="form-control">
+            <div class="col">
+                <label  id="CustomID" for="inputState">City</label>
+                <select class="form-control" id="Role" [(ngModel)]="user.city">
+                    <option selected value="0">Choose...</option>
+                    <option  *ngFor="let con of city"  [value]="con.name">{{con.name}}</option>
+                   
+                </select>
             </div>
+
         </div>
         <div class="row m-3 justify-content-start">
             <div class="col-4">

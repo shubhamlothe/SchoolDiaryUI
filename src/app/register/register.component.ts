@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClientServiceService, User } from '../http-client-service.service';
+import { Countries, HttpClientServiceService, User } from '../http-client-service.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  countries: Countries[];
+  state: Countries[];
+  city: Countries[];
 
 
   /* isDisplay = false;
@@ -55,7 +58,7 @@ export class RegisterComponent implements OnInit {
 
 
   onSecurityOptionsSelected_f(value: string) {
-    alert("sF")
+
     if (value == "1") {
       this.user.securityQuestionId_F = "1";
     }
@@ -67,7 +70,7 @@ export class RegisterComponent implements OnInit {
       this.user.securityQuestionId_F = "4";
     } else if (value == "5") {
       this.user.securityQuestionId_F = "5";
-      alert(this.user.securityQuestionId_F);
+
     }
 
   }
@@ -85,12 +88,14 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['userHome']);
     }
 
+    this.getCountries();
+
 
   }
 
   Register() {
     this.httpClientService.Register(this.user).subscribe(res => {
-      alert("Hieee");
+      alert("Successfully Registered");
       this.user.fName = "";
       this.user.lName = "";
       this.user.email_id = "";
@@ -111,6 +116,30 @@ export class RegisterComponent implements OnInit {
       console.log(this.user.fName, this.user.lName, this.user.email_id, this.user.mobile_no, this.user.address, this.user.state);
     })
   }
+  getCountries() {
+    this.httpClientService.getCountries().subscribe(res => {
+      this.countries = <Countries[]><unknown>res;
+      console.log(res);
+    });
+  }
 
+  getState() {
+    this.httpClientService.getState(this.user.country).subscribe(res => {
+      this.state = <Countries[]><unknown>res;
+      console.log(res);
+    });
+  }
+
+  getCity() {
+    this.httpClientService.getCity(this.user.country, this.user.state).subscribe(res => {
+
+
+      this.city = <Countries[]><unknown>res;
+
+      console.log(res);
+
+    });
+
+  }
 
 }

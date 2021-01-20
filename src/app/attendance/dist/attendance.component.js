@@ -8,12 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.AttendanceComponent = void 0;
 var core_1 = require("@angular/core");
+var http_client_service_service_1 = require("../http-client-service.service");
 var AttendanceComponent = /** @class */ (function () {
     function AttendanceComponent(Http, router) {
         this.Http = Http;
         this.router = router;
+        this.isP = false;
         this.isDisplay = false;
         this.isOther = false;
+        this.stu = new http_client_service_service_1.student;
     }
     AttendanceComponent.prototype.ngOnInit = function () {
         this.getdetails();
@@ -41,6 +44,11 @@ var AttendanceComponent = /** @class */ (function () {
                     _this.cls = res.student_class;
                     _this.showdata();
                 });
+            }
+            if (_this.role_id == 3) {
+                _this.isOther = true;
+                _this.isP = true;
+                _this.GetChildByUid();
             }
         });
     };
@@ -106,6 +114,18 @@ var AttendanceComponent = /** @class */ (function () {
         }
         this.Http.submitAttendance(this.att).subscribe(function (res) {
             alert("submited");
+        });
+    };
+    AttendanceComponent.prototype.GetChildByUid = function () {
+        var _this = this;
+        this.Http.GetChildByUid(sessionStorage.getItem('id')).subscribe(function (res) {
+            _this.students = res;
+        });
+    };
+    AttendanceComponent.prototype.getSAttendence = function () {
+        var _this = this;
+        this.Http.getAttendance(this.stu.user_id_student).subscribe(function (res) {
+            _this.att = res;
         });
     };
     AttendanceComponent = __decorate([

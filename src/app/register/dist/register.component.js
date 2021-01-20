@@ -58,7 +58,6 @@ var RegisterComponent = /** @class */ (function () {
         }
     };
     RegisterComponent.prototype.onSecurityOptionsSelected_f = function (value) {
-        alert("sF");
         if (value == "1") {
             this.user.securityQuestionId_F = "1";
         }
@@ -73,18 +72,18 @@ var RegisterComponent = /** @class */ (function () {
         }
         else if (value == "5") {
             this.user.securityQuestionId_F = "5";
-            alert(this.user.securityQuestionId_F);
         }
     };
     RegisterComponent.prototype.ngOnInit = function () {
         if (sessionStorage.getItem('id')) {
             this.router.navigate(['userHome']);
         }
+        this.getCountries();
     };
     RegisterComponent.prototype.Register = function () {
         var _this = this;
         this.httpClientService.Register(this.user).subscribe(function (res) {
-            alert("Hieee");
+            alert("Successfully Registered");
             _this.user.fName = "";
             _this.user.lName = "";
             _this.user.email_id = "";
@@ -103,6 +102,27 @@ var RegisterComponent = /** @class */ (function () {
             _this.user.joining_date = "";
             _this.user.password = "";
             console.log(_this.user.fName, _this.user.lName, _this.user.email_id, _this.user.mobile_no, _this.user.address, _this.user.state);
+        });
+    };
+    RegisterComponent.prototype.getCountries = function () {
+        var _this = this;
+        this.httpClientService.getCountries().subscribe(function (res) {
+            _this.countries = res;
+            console.log(res);
+        });
+    };
+    RegisterComponent.prototype.getState = function () {
+        var _this = this;
+        this.httpClientService.getState(this.user.country).subscribe(function (res) {
+            _this.state = res;
+            console.log(res);
+        });
+    };
+    RegisterComponent.prototype.getCity = function () {
+        var _this = this;
+        this.httpClientService.getCity(this.user.country, this.user.state).subscribe(function (res) {
+            _this.city = res;
+            console.log(res);
         });
     };
     RegisterComponent = __decorate([
