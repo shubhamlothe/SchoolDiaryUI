@@ -1,0 +1,11 @@
+.present {
+  background-color: rgb(155, 255, 6)
+}
+
+.leave {
+  background-color: orange;
+}
+
+.absent {
+  background-color: red;
+}
