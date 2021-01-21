@@ -7,12 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 exports.AttendanceComponent = void 0;
+var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
 var http_client_service_service_1 = require("../http-client-service.service");
 var AttendanceComponent = /** @class */ (function () {
-    function AttendanceComponent(Http, router) {
+    function AttendanceComponent(Http, router, datePipe) {
         this.Http = Http;
         this.router = router;
+        this.datePipe = datePipe;
         this.isP = false;
         this.isDisplay = false;
         this.isOther = false;
@@ -97,6 +99,7 @@ var AttendanceComponent = /** @class */ (function () {
         }
     };
     AttendanceComponent.prototype.submitResult = function () {
+        this.attDate = this.datePipe.transform(this.attDate, 'ddMMyyyy');
         for (var i = 0; i < this.att.length; i++) {
             this.att[i].att_date = this.attDate;
             if (this.att[i].status === 'red') {
@@ -113,7 +116,7 @@ var AttendanceComponent = /** @class */ (function () {
             }
         }
         this.Http.submitAttendance(this.att).subscribe(function (res) {
-            alert("submited");
+            // alert("submited");
         });
     };
     AttendanceComponent.prototype.GetChildByUid = function () {
@@ -132,7 +135,8 @@ var AttendanceComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'app-attendance',
             templateUrl: './attendance.component.html',
-            styleUrls: ['./attendance.component.css']
+            styleUrls: ['./attendance.component.css'],
+            providers: [common_1.DatePipe]
         })
     ], AttendanceComponent);
     return AttendanceComponent;

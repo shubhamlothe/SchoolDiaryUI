@@ -20,7 +20,7 @@ var HomepageComponent = /** @class */ (function () {
     HomepageComponent.prototype.submit = function () {
         this.http.sendQuery(this.cm).subscribe(function (res) {
             if (res != null) {
-                alert("You Will be hearing soon from us");
+                // alert("You Will be hearing soon from us");
             }
         });
     };

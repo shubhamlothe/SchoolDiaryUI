@@ -20,7 +20,7 @@ export class HomepageComponent implements OnInit {
   submit() {
     this.http.sendQuery(this.cm).subscribe(res => {
       if (res != null) {
-        alert("You Will be hearing soon from us");
+        // alert("You Will be hearing soon from us");
       }
     })
 

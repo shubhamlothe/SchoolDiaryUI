@@ -1,4 +1,5 @@
 
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faculty, HttpClientServiceService, result, student } from '../http-client-service.service';
@@ -6,7 +7,8 @@ import { faculty, HttpClientServiceService, result, student } from '../http-clie
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css']
+  styleUrls: ['./result.component.css'],
+  providers: [DatePipe]
 })
 export class ResultComponent implements OnInit {
 
@@ -22,7 +24,7 @@ export class ResultComponent implements OnInit {
   role_id: number;
   Faculty: faculty = new faculty(null, null, null, null, null);
   isDisplay = false;
-  constructor(private Http: HttpClientServiceService, private router: Router) { }
+  constructor(private Http: HttpClientServiceService, private router: Router, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.Http.getUser(sessionStorage.getItem('id')).subscribe(res => {
@@ -86,6 +88,7 @@ export class ResultComponent implements OnInit {
   }
 
   classResUpdate() {
+    this.examDate = this.datePipe.transform(this.examDate, 'ddMMyyyy');
     for (var i = 0; i < this.updateResult.length; i++) {
       this.updateResult[i].exam_date = this.examDate;
       this.updateResult[i].subject = this.examSubject;

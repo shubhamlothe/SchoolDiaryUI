@@ -7,10 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 exports.RegisterComponent = void 0;
+var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
 var http_client_service_service_1 = require("../http-client-service.service");
 var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent(httpClientService, router) {
+    function RegisterComponent(datePipe, httpClientService, router) {
+        this.datePipe = datePipe;
         this.httpClientService = httpClientService;
         this.router = router;
         /* isDisplay = false;
@@ -57,6 +59,12 @@ var RegisterComponent = /** @class */ (function () {
             this.user.securityQuestionId_S = "5";
         }
     };
+    RegisterComponent.prototype.onClassSelected = function (cls) {
+        this.user.student_class = cls;
+    };
+    RegisterComponent.prototype.onClassSelectedFaculty = function (cls) {
+        this.user.faculty_class = cls;
+    };
     RegisterComponent.prototype.onSecurityOptionsSelected_f = function (value) {
         if (value == "1") {
             this.user.securityQuestionId_F = "1";
@@ -82,8 +90,10 @@ var RegisterComponent = /** @class */ (function () {
     };
     RegisterComponent.prototype.Register = function () {
         var _this = this;
+        this.user.dob = this.datePipe.transform(this.user.dob, 'ddMMyyyy');
+        // alert(this.user.dob);
         this.httpClientService.Register(this.user).subscribe(function (res) {
-            alert("Successfully Registered");
+            //  alert("Successfully Registered");
             _this.user.fName = "";
             _this.user.lName = "";
             _this.user.email_id = "";
@@ -129,7 +139,8 @@ var RegisterComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'app-register',
             templateUrl: './register.component.html',
-            styleUrls: ['./register.component.css']
+            styleUrls: ['./register.component.css'],
+            providers: [common_1.DatePipe]
         })
     ], RegisterComponent);
     return RegisterComponent;

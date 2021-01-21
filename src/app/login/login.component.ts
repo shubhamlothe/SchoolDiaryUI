@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
 
         if (res.role_id == 0 && res.isApproved == 0) {
-          alert("Waiting for approval");
+          // alert("Waiting for approval");
           this.router.navigate(['homepage']);
 
         } else if (res.role_id == 0 && res.isApproved == 1) {
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         }
 
         if (res.role_id == 1 && res.isApproved == 0) {
-          alert("Waiting for approval");
+          // alert("Waiting for approval");
           this.router.navigate(['homepage']);
         } else if (res.role_id == 1 && res.isApproved == 1) {
           sessionStorage.setItem("id", res.userId);
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         }
 
         if (res.role_id == 2 && res.isApproved == 0) {
-          alert("Waiting for approval");
+          // alert("Waiting for approval");
           this.router.navigate(['homepage']);
 
         } else if (res.role_id == 2 && res.isApproved == 1) {
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
 
 
         if (res.role_id == 3 && res.isApproved == 0) {
-          alert("Waiting for approval");
+          //alert("Waiting for approval");
           this.router.navigate(['homepage']);
 
         } else if (res.role_id == 3 && res.isApproved == 1) {
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
 
 
       } else {
-        alert("Wrong Credentials");
+        //alert("Wrong Credentials");
       }
     })
   }

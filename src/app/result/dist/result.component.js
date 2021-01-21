@@ -7,12 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 exports.ResultComponent = void 0;
+var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
 var http_client_service_service_1 = require("../http-client-service.service");
 var ResultComponent = /** @class */ (function () {
-    function ResultComponent(Http, router) {
+    function ResultComponent(Http, router, datePipe) {
         this.Http = Http;
         this.router = router;
+        this.datePipe = datePipe;
         this.isP = false;
         this.isStu = false;
         this.stu = new http_client_service_service_1.student;
@@ -71,6 +73,7 @@ var ResultComponent = /** @class */ (function () {
         });
     };
     ResultComponent.prototype.classResUpdate = function () {
+        this.examDate = this.datePipe.transform(this.examDate, 'ddMMyyyy');
         for (var i = 0; i < this.updateResult.length; i++) {
             this.updateResult[i].exam_date = this.examDate;
             this.updateResult[i].subject = this.examSubject;
@@ -89,7 +92,8 @@ var ResultComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'app-result',
             templateUrl: './result.component.html',
-            styleUrls: ['./result.component.css']
+            styleUrls: ['./result.component.css'],
+            providers: [common_1.DatePipe]
         })
     ], ResultComponent);
     return ResultComponent;

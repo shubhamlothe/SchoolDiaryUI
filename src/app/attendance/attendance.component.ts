@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { attendance, HttpClientServiceService, student } from '../http-client-service.service';
@@ -5,7 +6,8 @@ import { attendance, HttpClientServiceService, student } from '../http-client-se
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
-  styleUrls: ['./attendance.component.css']
+  styleUrls: ['./attendance.component.css'],
+  providers: [DatePipe]
 })
 export class AttendanceComponent implements OnInit {
   attDate: string;
@@ -18,7 +20,7 @@ export class AttendanceComponent implements OnInit {
   att: attendance[];
   students: student[];
   stu: student = new student;
-  constructor(private Http: HttpClientServiceService, private router: Router) { }
+  constructor(private Http: HttpClientServiceService, private router: Router, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
 
@@ -128,6 +130,7 @@ export class AttendanceComponent implements OnInit {
 
 
   submitResult() {
+    this.attDate = this.datePipe.transform(this.attDate, 'ddMMyyyy');
     for (var i = 0; i < this.att.length; i++) {
 
       this.att[i].att_date = this.attDate;
@@ -147,9 +150,8 @@ export class AttendanceComponent implements OnInit {
 
 
     }
-
     this.Http.submitAttendance(this.att).subscribe(res => {
-      alert("submited");
+      // alert("submited");
     })
 
 

@@ -1,16 +1,18 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Countries, HttpClientServiceService, User } from '../http-client-service.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [DatePipe]
 })
 export class RegisterComponent implements OnInit {
   countries: Countries[];
   state: Countries[];
   city: Countries[];
-
+  futureDateError: boolean;
 
   /* isDisplay = false;
   Display()
@@ -21,6 +23,7 @@ export class RegisterComponent implements OnInit {
  */
   isDisplay = false;
   isFaculty = false;
+
 
   onOptionsSelected(value: string) {
     if (value == "Student") {
@@ -55,7 +58,12 @@ export class RegisterComponent implements OnInit {
 
   }
 
-
+  onClassSelected(cls: number) {
+    this.user.student_class = cls;
+  }
+  onClassSelectedFaculty(cls: number) {
+    this.user.faculty_class = cls;
+  }
 
   onSecurityOptionsSelected_f(value: string) {
 
@@ -76,26 +84,22 @@ export class RegisterComponent implements OnInit {
   }
 
   rePassword: string;
-
   user: User = new User(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-
-  constructor(private httpClientService: HttpClientServiceService, private router: Router) { }
+  constructor(private datePipe: DatePipe, private httpClientService: HttpClientServiceService, private router: Router) { }
 
   ngOnInit() {
-
-
     if (sessionStorage.getItem('id')) {
       this.router.navigate(['userHome']);
     }
-
     this.getCountries();
-
-
   }
 
   Register() {
+    this.user.dob = this.datePipe.transform(this.user.dob, 'ddMMyyyy');
+
+    // alert(this.user.dob);
     this.httpClientService.Register(this.user).subscribe(res => {
-      alert("Successfully Registered");
+      //  alert("Successfully Registered");
       this.user.fName = "";
       this.user.lName = "";
       this.user.email_id = "";
@@ -141,5 +145,9 @@ export class RegisterComponent implements OnInit {
     });
 
   }
+
+
+
+
 
 }
