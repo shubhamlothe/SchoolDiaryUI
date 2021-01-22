@@ -1527,7 +1527,13 @@
         #footer .credits a {
             color: #9eccf4;
         }
+        label[id*='CustomID']::after
+    {content: "*";
+     color:red;
+     }
     </style>
+
+
 </head>
 
 <body>
@@ -1577,43 +1583,81 @@
         <h3 style="color: #103453;"><b>User  Registeration  Form</b></h3>
     </div>
     <div class="container-fluid">
+      <form class="form" #registerForm="ngForm" novalidate>
 
         <div class="row m-3 mt-5">
             <div class="col-md-6">
-                <label>First Name</label>
-                <input type="text" class="form-control" [(ngModel)]="user.fName" placeholder="Enter Your Firstname...">
-            </div>
+                <label id="CustomID"
+                class="text-black" for="firstname">First Name</label>
+                <input type="text" id="firstname" class="form-control" [(ngModel)]="user.fName" placeholder="Enter Your Firstname..." pattern="[A-Za-z]+" name="firstname" #firstname="ngModel" required>
+                <span class="text-danger" *ngIf="firstname.errors && (firstname.touched || registerForm.submitted)">
+
+                  <div *ngIf="firstname.errors.required">
+                  First Name is required
+                  </div>
+                  <div *ngIf="firstname.errors.pattern">
+                  Enter Valid Name
+                  </div>
+              </span>
+              </div>
             <div class="col-md-6">
-                <label>Last Name</label>
-                <input type="text" class="form-control" [(ngModel)]="user.lName" placeholder="Enter Your Lastname...">
-            </div>
+                <label id="CustomID"
+                class="text-black" for="lastname">Last Name</label>
+                <input type="text" id="lastname" class="form-control" [(ngModel)]="user.lName" placeholder="Enter Your Lastname..." pattern="[A-Za-z]+" name="lastname" #lastname="ngModel" required>
+                <span class="text-danger" *ngIf="lastname.errors && (lastname.touched || registerForm.submitted)">
+                  <div *ngIf="lastname.errors.required">
+                  Last Name is required
+                  </div>
+                  <div *ngIf="lastname.errors.pattern">
+                  Enter Valid Name
+                  </div>
+              </span>
+              </div>
         </div>
         <div class="row  m-3">
             <div class="col">
-                <label for="inputEmail4">Email Id</label>
-                <input type="email" class="form-control" [(ngModel)]="user.email_id" placeholder="Email address">
-            </div>
+                <label id="CustomID"
+                class="text-black" for="inputEmail4">Email Id</label>
+                <input type="email" id="inputEmail4" class="form-control" [(ngModel)]="user.email_id" name="inputEmail4" #inputEmail4="ngModel" placeholder="Email address" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required>
+                <span class="text-danger" *ngIf="(inputEmail4.touched || registerForm.submitted) && inputEmail4.errors">
+                  <div *ngIf="inputEmail4.errors.required">
+                      Email is required
+                  </div>
+                  <div *ngIf="inputEmail4.errors.pattern">
+                      Please use this format
+                      abc@email.com
+                  </div>
+              </span>
+              </div>
             <div class="col-3">
-                <label>Date Of Birth</label>
-                <input  type="date" class="form-control"  [(ngModel)]="user.dob" placeholder="dd/mm/yyyy">
+                <label id="CustomID"
+                class="text-black" for="dob">Date Of Birth</label>
+                <input type="text" id="dob" class="form-control" [(ngModel)]="user.dob" name="dob" #dob="ngModel" placeholder="dd/mm/yyyy" required>
+                <span class="text-danger" *ngIf="(dob.touched || registerForm.submitted) && dob.errors?.required">
+                  <div *ngIf="dob.errors.required">
+                      *Required
+                  </div>
+                  </span>
+
             </div>
         </div>
         <div class="row  m-3">
             <div class="col-3">
                 <fieldset class="form-group">
                     <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                        <legend id="CustomID"
+                        class="col-form-label col-sm-2 pt-0" for="subject">Gender</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                    value="Male" [(ngModel)]="user.gender">
+                                    value="option1" [(ngModel)]="user.gender">
                                 <label class="form-check-label" for="gridRadios1">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
-                                    value="Female" [(ngModel)]="user.gender">
+                                    value="option2" [(ngModel)]="user.gender">
                                 <label class="form-check-label" for="gridRadios2">
                                     Female
                                 </label>
@@ -1624,61 +1668,120 @@
                 </fieldset>
             </div>
             <div class="col-3">
-                <label for="inputEmail4">Mobile Number</label>
-                <input type="text" class="form-control" [(ngModel)]="user.mobile_no" placeholder="Contact number...">
-            </div>
+                <label id="CustomID"
+                class="text-black" for="inputEmail4">Mobile Number</label>
+                <input type="text" id="inputEmail4" class="form-control" [(ngModel)]="user.mobile_no" placeholder="Contact number..." pattern="^[6789]\d{9}$" name="mobilenumber1" #mobilenumber1="ngModel" maxlength="10" minlength="10" required>
+                <span class="text-danger" *ngIf="(mobilenumber1.touched || registerForm.submitted) && mobilenumber1.errors">
+                  <div *ngIf="mobilenumber1.errors.required">
+                      Mobile Number is required
+                  </div>
+                  <div *ngIf="mobilenumber1.errors.pattern">
+                      Enter Valid Mobile Number
+                  </div>
+
+                  <div *ngIf="mobilenumber1.errors.minlength">
+                      Mobile Number must be 10 digit
+                  </div>
+
+              </span>
+              </div>
             <div class="col-6">
-                <label for="inputAddress">Permanent Address</label>
-                <input type="text" class="form-control" [(ngModel)]="user.address" placeholder="Plot No. Street Name ">
-            </div>
+                <label id="CustomID"
+                class="text-black" for="inputAddress">Permanent Address</label>
+                <input type="text" id="inputAddress" class="form-control" [(ngModel)]="user.address" name="inputAddress" #inputAddress="ngModel" placeholder="Plot No. Street Name " required>
+                <span class="text-danger" *ngIf="(inputAddress.touched || registerForm.submitted) && inputAddress.errors?.required">
+                  Address is required
+              </span>
+              </div>
         </div>
 
 
         <div class="row  m-3">
 
-           
             <div class="col">
-                <label  id="CustomID" for="inputState">Country</label>
-                <select class="form-control" id="Role" [(ngModel)]="user.country" (change)="getState()">
-                    <option selected value="0">Choose...</option>
-                    <option  *ngFor="let con of countries"  [value]="con.iso2">{{con.name}}</option>
-                   
-                </select>
-            </div>
+                <label id="CustomID"
+                class="text-black" for="inputAddress">Country</label>
+               <!--- <input type="text" id="country" [(ngModel)]="user.country" class="form-control" name="country" #country="ngModel" required>-->
+                <select class="form-control" id="Role" [(ngModel)]="user.country" (change)="getState()" name="country" #country="ngModel" required>
+                  <option selected value="0">Choose...</option>
+                  <option  *ngFor="let con of countries"  [value]="con.iso2">{{con.name}}</option>
+              </select>
+                <span class="text-danger" *ngIf="(country.touched || registerForm.submitted) && country.errors?.required">
+                  Country is required
+              </span>
+              </div>
             <div class="col">
-                <label  id="CustomID" for="inputState">State</label>
-                <select class="form-control" id="Role" [(ngModel)]="user.state" (change)="getCity()">
-                    <option selected value="0">Choose...</option>
-                    <option  *ngFor="let con of state"  [value]="con.iso2">{{con.name}}</option>
-                   
-                </select>
-            </div>
+                <label id="CustomID"
+                class="text-black" for="inputState">State</label>
+               <!-- <input type="text" id="state" [(ngModel)]="user.state" class="form-control" name="state" #state="ngModel" required>-->
+               <select class="form-control" id="Role" [(ngModel)]="user.state" (change)="getCity()" name="state" #selectedState="ngModel" required>
+                <option selected value="0">Choose...</option>
+                <option  *ngFor="let con of state"  [value]="con.iso2">{{con.name}}</option>
+            </select>
 
-            <div class="col">
-                <label  id="CustomID" for="inputState">City</label>
-                <select class="form-control" id="Role" [(ngModel)]="user.city">
-                    <option selected value="0">Choose...</option>
-                    <option  *ngFor="let con of city"  [value]="con.name">{{con.name}}</option>
-                   
-                </select>
-            </div>
+               <span class="text-danger">
+                  State is required
+              </span>
+              </div>
 
+            <div class="col-3">
+                <label id="CustomID"
+                class="text-black" for="inputCity">City</label>
+              <!--  <input type="text" id="city" [(ngModel)]="user.city" class="form-control" name="city" #city="ngModel" required>-->
+              <select class="form-control" id="Role" [(ngModel)]="user.city" name="city" #selectedCity="ngModel" required>
+                <option selected value="0">Choose...</option>
+                <option  *ngFor="let con of city"  [value]="con.name">{{con.name}}</option>
+            </select>
+              <span class="text-danger" *ngIf="(selectedCity.touched || registerForm.submitted) && selectedCity.errors?.required">
+                  City is required
+              </span>
+              </div>
         </div>
         <div class="row m-3 justify-content-start">
             <div class="col-4">
-                <label for="inputAddress">Password</label>
-                <input type="password" class="form-control" [(ngModel)]="user.password" placeholder="Enter password..">
-            </div>
+                <label id="CustomID"
+                class="text-black" for="inputAddress">Password</label>
+                <input type="password" id="password" class="form-control" [(ngModel)]="user.password" minlength="8" maxlength="15" pattern="^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$" name="pass" #pass="ngModel" placeholder="Enter password.." required>
+                <span class="text-danger" *ngIf="(pass.touched || registerForm.submitted) && pass.errors">
+                  <div *ngIf="pass.errors.required">
+                     Password is required
+                  </div>
+                  <div *ngIf="pass.errors.pattern">
+                      Password should have minimum 8 characters, at least 1 uppercase letter, 1
+                      lowercase
+                      letter and 1 number
+                  </div>
+                  <div *ngIf="pass.errors.minlength">
+                      Password must be 8 character
+                  </div>
+
+              </span>
+              </div>
             <div class="col-4">
-                <label for="inputAddress">Confirm Password</label>
-                <input type="password" class="form-control" [(ngModel)]="rePassword" placeholder="Enter Confirm Password..">
-            </div>
+                <label id="CustomID"
+                class="text-black" for="inputAddress">Confirm Password</label>
+                <input type="password" id="password" [(ngModel)]="rePassword" minlength="8" maxlength="15" pattern="{{user.password}}" name="cpass" #cpass="ngModel" class="form-control" required placeholder="Enter Confirm Password..">
+                <span class="text-danger" *ngIf="(cpass.touched || registerForm.submitted) && cpass.errors">
+                  <div *ngIf="cpass.errors.required">
+                     Password is required
+                  </div>
+                  <div *ngIf="cpass.errors.pattern">
+                      Password and Confirm Password Does Not Match
+                  </div>
+
+                  <div *ngIf="cpass.errors.minlength">
+                      Password must be 8 character
+                  </div>
+
+              </span>
+              </div>
 
 
         </div>
         <div class="row  m-3">
             <div class="col-4">
-                <label for="securityQuestion">Security Question?</label>
+                <label id="CustomID"
+                for="securityQuestion">Security Question?</label>
                 <select class="form-control" id="Role" #mySelectt (change)="onSecurityOptionsSelected_s(mySelectt.value)">
                     <option selected value="0">Choose...</option>
                     <option value="1">Where was your mother born?</option>
@@ -1692,83 +1795,135 @@
                 </select>
             </div>
             <div class="col-4">
-                <label for="secQuestAnswer">Type your security answer here</label>
-                <input type="text" class="form-control" [(ngModel)]="user.sQanswer_S" id="security_question_s" placeholder="Answer here">
-                </div>
+               <!--- <label id="CustomID"
+                class="text-black" for="secQuestAnswer">Type your security answer here</label>
+                <input type="text" class="form-control" id="security_question_s" [(ngModel)]="user.sQanswer_S" name="security_question_s"  #security_question_s="ngModel" placeholder="Answer here" required>
+                <span class="text-danger" *ngIf="(security_question_s.touched || registerForm.submitted) && security_question_s?.required">
+                 <div *ngIf="security_question_s.errors.required">
+                   *Required
+                 </div>
+
+              </span>-->
+              <label id="CustomID"
+                class="text-black" for="secQuestAnswer">Type your security answer here</label>
+                <input type="text" class="form-control" [(ngModel)]="user.sQanswer_F" id="security_question_F" name="security_question_F" #security_question_F="ngModel" placeholder="Answer here" required>
+                <span class="text-danger" *ngIf="(security_question_F.touched || registerForm.submitted) && security_question_F.errors?.required">
+                  *Required
+              </span>
+              </div>
             <div class="col-3">
-                <label>Role</label>
+                <label id="CustomID"
+                >Role</label>
                 <select class="form-control" id="Role" #mySelecttk (change)="onOptionsSelected(mySelecttk.value)">
                     <option selected>Choose...</option>
                     <option value="Student"> Student</option>
                     <option value="Faculty">Faculty</option>
                 </select>
             </div>
-          
-            </div> 
-            <div *ngIf=isDisplay class="row  m-3">
-            <div  class="col-4"> <label>Class</label>
-                <select class="form-control" id="class" #myclass (change)="onClassSelected(myclass.value)">
-                    <option value = 1 >1</option>
-                    <option value = 2 >2</option>
-                    <option value = 3 >3</option>
-                    <option value = 4 >4</option>
-                    <option value = 5 >5</option>
-                    <option value = 6 >6</option>
-                    <option value = 7 >7</option>
-                    <option value = 8 >8</option>
-                    <option value = 9 >9</option>
-                    <option value = 10 >10</option>
-                    <option value = 11 >11</option>
-                    <option value = 12 >12</option>
-                </select>
+
+
             </div>
-            <div *ngIf=isDisplay class="col"><label for="inputEmail4">Father's Mobile No:</label>
-                <input type="text" class="form-control" [(ngModel)]="user.mobile_no_f " placeholder="Contact number..">
-            </div> 
-            </div>     
-            <div class="row  m-3">  
+            <div class="row  m-3">
+            <div *ngIf=isDisplay class="col-4"> <label id="CustomID"
+              class="text-black" for="class">Class</label>
+                <input type="text" class="form-control" id="class" [(ngModel)]="user.student_class" name="class" #class="ngModel" maxlength="2" minlength="1" required >
+                <span class="text-danger" *ngIf="(class.touched || registerForm.submitted) && class.errors">
+                  <div *ngIf="class.errors.required">
+                      Class is required
+                  </div>
+
+                  <div *ngIf="class.errors.minlength">
+                      Fill appropriate class
+                  </div>
+
+              </span>
+              </div>
+            <div *ngIf=isDisplay class="col"><label id="CustomID"
+              class="text-black" for="inputEmail4">Father's Mobile No:</label>
+                <input type="text" class="form-control" id="mobile_no" pattern="^[6789]\d{9}$" name="mobile_no" #mobile_no="ngModel" [(ngModel)]="user.mobile_no_f " placeholder="Contact number.." required>
+                <span class="text-danger" *ngIf="(mobile_no.touched || registerForm.submitted) && mobile_no.errors">
+                  <div *ngIf="mobile_no.errors.required">
+                      Mobile Number is required
+                  </div>
+                  <div *ngIf="mobile_no.errors.pattern">
+                      Enter Valid Mobile Number
+                  </div>
+
+                  <div *ngIf="mobile_no.errors.minlength">
+                      Mobile Number must be 10 digit
+                  </div>
+
+              </span>
+              </div>
+            </div>
+            <div class="row  m-3">
                <div *ngIf=isFaculty class="col-2">
-                <label>Teaching Class</label>
-                <select class="form-control" id="class" #myFacultyclass (change)="onClassSelectedFaculty(myFacultyclass.value)">
-                    <option value = 1 >1</option>
-                    <option value = 2 >2</option>
-                    <option value = 3 >3</option>
-                    <option value = 4 >4</option>
-                    <option value = 5 >5</option>
-                    <option value = 6 >6</option>
-                    <option value = 7 >7</option>
-                    <option value = 8 >8</option>
-                    <option value = 9 >9</option>
-                    <option value = 10 >10</option>
-                    <option value = 11 >11</option>
-                    <option value = 12 >12</option>
-                </select>
-               </div>
+                <label id="CustomID"
+                class="text-black" for="Tclass">Teaching Class</label>
+                <input type="text" id="Tclass" class="form-control" name="Tclass" #Tclass="ngModel" [(ngModel)]="user.faculty_class" required>
+                <span class="text-danger" *ngIf="(Tclass.touched || registerForm.submitted) && Tclass.errors?.required">
+                  *Required
+              </span>
+              </div>
             <div *ngIf=isFaculty class="col-3">
-                <label>Joining Date</label>
-                <input type="date" [(ngModel)]="user.joining_date" class="form-control" placeholder="dd/mm/yyyy">
+                <label id="CustomID"
+                class="text-black" for="joining">Joining Date</label>
+                <input type="text" id="join" [(ngModel)]="user.joining_date" name="join" #join="ngModel" class="form-control" placeholder="dd/mm/yyyy" required>
+                <span class="text-danger" *ngIf="(join.touched || registerForm.submitted) && join.errors?.required">
+                  *Required
+              </span>
+              </div>
             </div>
-            </div>
-        
+
 
         <div *ngIf=isDisplay class="row m-3">
-            <div class="col-4"> <label>Father's First Name</label>
-                <input type="text" class="form-control" [(ngModel)]="user.fName_f"
-                    placeholder="Enter Your Firstname...">
+            <div class="col-4"> <label id="CustomID"
+              class="text-black" for="fathername">Father's First Name</label>
+                <input type="text" id="firstFname"class="form-control" [(ngModel)]="user.fName_f" pattern="[A-Za-z]+" name="firstFname" #firstFname="ngModel"
+                    placeholder="Enter Your Firstname..." required>
+                    <span class="text-danger" *ngIf="firstFname.errors && (firstFname.touched || registerForm.submitted)">
+                      <div *ngIf="firstFname.errors.required">
+                      Father's First Name is required
+                      </div>
+                      <div *ngIf="firstFname.errors.pattern">
+                      Enter Valid Name
+                      </div>
+                  </span>
             </div>
-            <div class="col-4"><label>Father's Last Name</label>
-                <input type="text" class="form-control" [(ngModel)]="user.lName_f" placeholder="Enter Your Lastname...">
-            </div>
-            <div class="col-4"><label for="inputEmail4">Father's Email</label>
-                <input type="email" class="form-control" [(ngModel)]="user.email_id_f" placeholder="Email">
-            </div>
+            <div class="col-4"><label id="CustomID"
+              class="text-black" for="fathername">Father's Last Name</label>
+                <input type="text" id="fathername" class="form-control" [(ngModel)]="user.lName_f" pattern="[A-Za-z]+" name="fathername" #fathername="ngModel" required placeholder="Enter Your Lastname...">
+                <span class="text-danger" *ngIf="fathername.errors && (fathername.touched || registerForm.submitted)">
+                  <div *ngIf="fathername.errors.required">
+                  Father's Last Name is required
+                  </div>
+                  <div *ngIf="fathername.errors.pattern">
+                  Enter Valid Name
+                  </div>
+              </span>
+              </div>
+            <div class="col-4"><label id="CustomID"
+              class="text-black" for="inputEmail4">Father's Email</label>
+              <input type="email" id="inputEmail4" class="form-control" [(ngModel)]="user.email_id_f" name="inputEmail4" #inputEmail4="ngModel" placeholder="Email address" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required>
+              <span class="text-danger" *ngIf="(inputEmail4.touched || registerForm.submitted) && inputEmail4.errors">
+                <div *ngIf="inputEmail4.errors.required">
+                    Email is required
+                </div>
+                <div *ngIf="inputEmail4.errors.pattern">
+                    Please use this format
+                    abc@email.com
+                </div>
+            </span>
+
+              </div>
         </div>
-       
+
 
 
         <div *ngIf=isDisplay class="row m-3 justify-content-start">
             <div class="col-4">
-                <label for="securityQuestion">Security Question?</label>
+                <label id="CustomID"
+                for="securityQuestion">Security Question?</label>
                 <select class="form-control" id="Role" #mySelectf (change)="onSecurityOptionsSelected_f(mySelectf.value)">
                     <option selected value="0">Choose...</option>
                     <option value="1">Where was your mother born?</option>
@@ -1782,17 +1937,21 @@
                 </select>
             </div>
             <div class="col-4">
-                <label for="secQuestAnswer">Type your security question here</label>
-                <input type="text" class="form-control" [(ngModel)]="user.sQanswer_F" id="security_question_F" placeholder="Answer here">
-                </div>
+                <label id="CustomID"
+                class="text-black" for="secQuestAnswer">Type your security answer here</label>
+                <input type="text" class="form-control" [(ngModel)]="user.sQanswer_F" id="security_question_F" name="security_question_F" #security_question_F="ngModel" placeholder="Answer here" required>
+                <span class="text-danger" *ngIf="(security_question_F.touched || registerForm.submitted) && security_question_F.errors?.required">
+                  *Required
+              </span>
+              </div>
         </div>
         <div class="row m-3">
             <div class="col">
                 <button type="submit"  (click)="Register()" style="background-color: #103453;color: white;" class="btn">Register</button>
             </div>
         </div>
-        
 
+</form>
     </div>
 
 
@@ -1865,29 +2024,6 @@
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -1902,5 +2038,3 @@
 </body>
 
 </html>
-
-<router-outlet></router-outlet>

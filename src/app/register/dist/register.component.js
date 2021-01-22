@@ -15,6 +15,9 @@ var RegisterComponent = /** @class */ (function () {
         this.datePipe = datePipe;
         this.httpClientService = httpClientService;
         this.router = router;
+        this.countries = [];
+        this.state = [];
+        this.city = [];
         /* isDisplay = false;
         Display()
          {

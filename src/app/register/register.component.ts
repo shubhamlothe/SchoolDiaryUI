@@ -9,9 +9,9 @@ import { Countries, HttpClientServiceService, User } from '../http-client-servic
   providers: [DatePipe]
 })
 export class RegisterComponent implements OnInit {
-  countries: Countries[];
-  state: Countries[];
-  city: Countries[];
+  countries: Countries[] = [];
+  state: Countries[] = [];
+  city: Countries[] = [];
   futureDateError: boolean;
 
   /* isDisplay = false;
