@@ -168,6 +168,22 @@ export class AttendanceComponent implements OnInit {
   getSAttendence() {
     this.Http.getAttendance(this.stu.user_id_student).subscribe(res => {
       this.att = res;
+      for (var i = 0; i < res.length; i++) {
+        res[i].att_date = res[i].att_date.slice(0, 2) + "/" + res[i].att_date.slice(2, 4) + "/" + res[i].att_date.slice(4, 8);
+
+        //notice.date_to = notice.date_to.slice(0, 2) + "/" + notice.date_to.slice(2, 4) + "/" + notice.date_to.slice(4, 8);
+        if (res[i].present == 0 && res[i].studentleave == 0) {
+          this.att[i].attendance_colour = 'red';
+        }
+        if (res[i].present == 0 && res[i].studentleave == 1) {
+          this.att[i].attendance_colour = 'orange';
+        }
+        if (res[i].present == 1 && res[i].studentleave == 0) {
+          this.att[i].attendance_colour = 'green';
+        }
+
+      }
+
     })
   }
 

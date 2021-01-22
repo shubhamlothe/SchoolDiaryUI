@@ -19,6 +19,8 @@ var notice_update_component_1 = require("./notice-update/notice-update.component
 var attendance_update_component_1 = require("./attendance-update/attendance-update.component");
 var attendance_component_1 = require("./attendance/attendance.component");
 var result_component_1 = require("./result/result.component");
+var approve_user_component_1 = require("./approve-user/approve-user.component");
+var raise_request_component_1 = require("./raise-request/raise-request.component");
 var routes = [
     { path: '', component: homepage_component_1.HomepageComponent },
     { path: 'homepage', component: homepage_component_1.HomepageComponent },
@@ -30,7 +32,9 @@ var routes = [
     { path: 'noticeUpdate', component: notice_update_component_1.NoticeUpdateComponent },
     { path: 'applyAttendance', component: attendance_update_component_1.AttendanceUpdateComponent },
     { path: 'attendance', component: attendance_component_1.AttendanceComponent },
-    { path: 'result', component: result_component_1.ResultComponent }
+    { path: 'result', component: result_component_1.ResultComponent },
+    { path: 'approveUser', component: approve_user_component_1.ApproveUserComponent },
+    { path: 'raiseRequest', component: raise_request_component_1.RaiseRequestComponent }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

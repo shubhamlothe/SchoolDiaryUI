@@ -35,10 +35,14 @@ var UserHomePageComponent = /** @class */ (function () {
         var _this = this;
         this.Http.getStudentClas(sessionStorage.getItem('id')).subscribe(function (res) {
             _this.n.student_class = res.student_class;
+            alert(_this.n.student_class);
             var latest_date = _this.datePipe.transform(_this.myDate, 'ddMMyyyy');
             _this.n.date_to = latest_date;
             _this.getNotice();
         });
+    };
+    UserHomePageComponent.prototype.approveUser = function () {
+        this.router.navigate(['approveUser']);
     };
     UserHomePageComponent.prototype.getclsNoticeForFaculty = function () {
         var _this = this;
@@ -132,6 +136,9 @@ var UserHomePageComponent = /** @class */ (function () {
     };
     UserHomePageComponent.prototype.attendance = function () {
         this.router.navigate(['attendance']);
+    };
+    UserHomePageComponent.prototype.raiseRequest = function () {
+        this.router.navigate(['raiseRequest']);
     };
     UserHomePageComponent = __decorate([
         core_1.Component({

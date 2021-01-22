@@ -13,7 +13,7 @@ var HomepageComponent = /** @class */ (function () {
     function HomepageComponent(router, http) {
         this.router = router;
         this.http = http;
-        this.cm = new http_client_service_service_1.contactMail();
+        this.cm = new http_client_service_service_1.UserQuery();
     }
     HomepageComponent.prototype.ngOnInit = function () {
     };

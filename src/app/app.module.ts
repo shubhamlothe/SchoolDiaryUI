@@ -17,6 +17,8 @@ import { NoticeUpdateComponent } from './notice-update/notice-update.component';
 import { AttendanceUpdateComponent } from './attendance-update/attendance-update.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { ResultComponent } from './result/result.component';
+import { ApproveUserComponent } from './approve-user/approve-user.component';
+import { RaiseRequestComponent } from './raise-request/raise-request.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ResultComponent } from './result/result.component';
     NoticeUpdateComponent,
     AttendanceUpdateComponent,
     AttendanceComponent,
-    ResultComponent
+    ResultComponent,
+    ApproveUserComponent,
+    RaiseRequestComponent
   ],
   imports: [
     BrowserModule,

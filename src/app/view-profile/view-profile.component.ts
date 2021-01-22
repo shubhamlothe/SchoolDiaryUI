@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClientServiceService, User } from '../http-client-service.service';
+import { Countries, HttpClientServiceService, User } from '../http-client-service.service';
 
 @Component({
   selector: 'app-view-profile',
@@ -13,7 +13,9 @@ export class ViewProfileComponent implements OnInit {
 
   isStudent = false;
   isFaculty = false;
-
+  countries: Countries[];
+  state: Countries[];
+  city: Countries[];
   constructor(private HttpClientService: HttpClientServiceService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class ViewProfileComponent implements OnInit {
       this.user.dob = this.user.dob.slice(0, 2) + "-" + this.user.dob.slice(2, 4) + "-" + this.user.dob.slice(4, 8);
 
     })
+    this.getCountries();
   }
 
   //   if(this.user.role_id == 1)
@@ -46,10 +49,37 @@ export class ViewProfileComponent implements OnInit {
   back() {
     this.router.navigate(['userHome']);
   }
+  getCountries() {
+    this.HttpClientService.getCountries().subscribe(res => {
+      this.countries = <Countries[]><unknown>res;
+      console.log(res);
+    });
+  }
 
+  getState() {
+    this.HttpClientService.getState(this.user.country).subscribe(res => {
+      this.state = <Countries[]><unknown>res;
+      console.log(res);
+    });
+  }
+
+  getCity() {
+    this.HttpClientService.getCity(this.user.country, this.user.state).subscribe(res => {
+
+
+      this.city = <Countries[]><unknown>res;
+
+      console.log(res);
+
+    });
+
+  }
 
   save() {
 
+    this.HttpClientService.updateUserProfile(this.user).subscribe(res => {
+      alert("done");
+    })
 
   }
 

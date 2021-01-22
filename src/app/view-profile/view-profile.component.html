@@ -2067,7 +2067,7 @@
                         <div class="row  m-3">
                             <div class="col">
                                 <label for="inputEmail4">Email Id</label>
-                                <input type="email" [(ngModel)]="user.email_id" class="form-control"placeholder="Email address">
+                                <input type="email" disabled [(ngModel)]="user.email_id" class="form-control"placeholder="Email address">
                             </div>
                             <div class="col-3">
                                 <label>Date Of Birth</label>
@@ -2111,20 +2111,34 @@
                 
                 
                         <div class="row  m-3">
+
+           
+                            <div class="col">
+                                <label  id="CustomID" for="inputState">Country</label>
+                                <select class="form-control" id="Role" [(ngModel)]="user.country" (change)="getState()">
+                                    <option selected value="0">Choose...</option>
+                                    <option  *ngFor="let con of countries"  [value]="con.iso2">{{con.name}}</option>
+                                   
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label  id="CustomID" for="inputState">State</label>
+                                <select class="form-control" id="Role" [(ngModel)]="user.state" (change)="getCity()">
+                                    <option selected value="0">Choose...</option>
+                                    <option  *ngFor="let con of state"  [value]="con.iso2">{{con.name}}</option>
+                                   
+                                </select>
+                            </div>
                 
                             <div class="col">
-                                <label for="inputAddress">Country</label>
-                                <input type="text" [(ngModel)]="user.country"  class="form-control">
-                            </div>
-                            <div class="col">
-                                <label for="inputState">State</label>
-                                <input type="text" [(ngModel)]="user.state" class="form-control">
+                                <label  id="CustomID" for="inputState">City</label>
+                                <select class="form-control" id="Role" [(ngModel)]="user.city">
+                                    <option selected value="0">Choose...</option>
+                                    <option  *ngFor="let con of city"  [value]="con.name">{{con.name}}</option>
+                                   
+                                </select>
                             </div>
                 
-                            <div class="col-3">
-                                <label for="inputCity">City</label>
-                                <input type="text" [(ngModel)]="user.city" class="form-control">
-                            </div>
                         </div>
                         <div class="row  m-3">  
                             <div *ngIf=isFaculty class="col-2">

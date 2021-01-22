@@ -11,6 +11,8 @@ import { AttendanceUpdateComponent } from './attendance-update/attendance-update
 import { attendance } from './http-client-service.service';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { ResultComponent } from './result/result.component';
+import { ApproveUserComponent } from './approve-user/approve-user.component';
+import { RaiseRequestComponent } from './raise-request/raise-request.component';
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'homepage', component: HomepageComponent },
@@ -22,7 +24,9 @@ const routes: Routes = [
   { path: 'noticeUpdate', component: NoticeUpdateComponent },
   { path: 'applyAttendance', component: AttendanceUpdateComponent },
   { path: 'attendance', component: AttendanceComponent },
-  { path: 'result', component: ResultComponent }
+  { path: 'result', component: ResultComponent },
+  { path: 'approveUser', component: ApproveUserComponent },
+  { path: 'raiseRequest', component: RaiseRequestComponent }
 
 
 ];

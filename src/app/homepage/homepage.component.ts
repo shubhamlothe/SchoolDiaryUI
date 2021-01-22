@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { contactMail, HttpClientServiceService } from '../http-client-service.service';
+import { UserQuery, HttpClientServiceService } from '../http-client-service.service';
 
 @Component({
   selector: 'app-homepage',
@@ -9,7 +9,7 @@ import { contactMail, HttpClientServiceService } from '../http-client-service.se
 })
 export class HomepageComponent implements OnInit {
 
-  cm: contactMail = new contactMail();
+  cm: UserQuery = new UserQuery();
 
   constructor(private router: Router, private http: HttpClientServiceService) { }
 

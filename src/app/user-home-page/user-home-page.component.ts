@@ -39,12 +39,16 @@ export class UserHomePageComponent implements OnInit {
   getclsNoticeForStudent() {
     this.Http.getStudentClas(sessionStorage.getItem('id')).subscribe(res => {
       this.n.student_class = res.student_class;
+      alert(this.n.student_class);
       let latest_date = this.datePipe.transform(this.myDate, 'ddMMyyyy');
       this.n.date_to = latest_date;
       this.getNotice();
     })
   }
 
+  approveUser() {
+    this.router.navigate(['approveUser']);
+  }
 
   getclsNoticeForFaculty() {
     this.Http.getFacultyClass(sessionStorage.getItem('id')).subscribe(res => {
@@ -147,27 +151,13 @@ export class UserHomePageComponent implements OnInit {
   addNotice() {
     this.router.navigate(['noticeUpdate']);
   }
-
   addResult() {
-
     this.router.navigate(['result']);
-
-
   }
-
   attendance() {
-
-
     this.router.navigate(['attendance']);
   }
-
-
-
-
-
-
-
-
-
-
+  raiseRequest() {
+    this.router.navigate(['raiseRequest']);
+  }
 }

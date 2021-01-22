@@ -34,15 +34,17 @@ export class User {
   ) { }
 }
 
-export class contactMail {
+export class UserQuery {
   constructor(
     public id?: number,
     public name?: string,
     public contactPersonEmail?: string,
     public subject?: string,
-    public message?: string
-  ) { }
+    public userid?: string,
+    public message?: string,
+    public roleid?: number) { }
 }
+
 
 
 export class attendance {
@@ -89,11 +91,11 @@ export class student {
 
 export class notice {
   constructor(
-    public notice_id: number,
-    public msg: string,
-    public date_from: string,
-    public date_to: string,
-    public student_class: number
+    public notice_id?: number,
+    public msg?: string,
+    public date_from?: string,
+    public date_to?: string,
+    public student_class?: number
 
   ) { }
 }
@@ -220,8 +222,8 @@ export class HttpClientServiceService {
     return this.httpClient.post<attendance>("http://localhost:8080/submit_Attendance", att);
   }
 
-  sendQuery(cm: contactMail) {
-    return this.httpClient.post<contactMail>("http://localhost:8080/insertQuery", cm);
+  sendQuery(cm: UserQuery) {
+    return this.httpClient.post<UserQuery>("http://localhost:8080/insertQuery", cm);
   }
 
   getCountries() {
@@ -237,6 +239,25 @@ export class HttpClientServiceService {
 
   GetChildByUid(uid: string) {
     return this.httpClient.get<student[]>("http://localhost:8080/getStudent/" + uid);
+  }
+  approval(users: User[]) {
+    return this.httpClient.post("http://localhost:8080/approval/", users);
+  }
+  GetPending() {
+    return this.httpClient.get<User[]>("http://localhost:8080/userList");
+  }
+
+
+  insertQuery(query: UserQuery) {
+    return this.httpClient.post<UserQuery>("http://localhost:8080/insertQuery/", query);
+  }
+
+  updateUserProfile(user: User) {
+    return this.httpClient.post<User>("http://localhost:8080/updateUser/", user);
+  }
+
+  addNotice(Notice: notice) {
+    return this.httpClient.post<notice>("http://localhost:8080/AddNotice/", Notice);
   }
 
 }

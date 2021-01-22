@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+       
+    </div>
+    <br><br><br>
+    <div>
+        <h2>Pending Approvals</h2>
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>userId</th>
+                    <th>fName</th>
+                    <th>lName</th>
+                    <th>address</th>
+                    <th>city</th>
+                    <th>state</th>
+                    <th>country</th>
+                    <th>role_id</th>
+                    <th>email_id</th>
+                    <th>mobile_no</th>
+                    <th>isActive</th>
+                    <th>isApproved</th>
+
+
+                </tr>
+
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let user of users">
+                    <tr *ngIf="user.isApproved ==0" (click)="onApproved(user)"
+                        [ngClass]="{'isApproved':user.isApproved === 1,'isnotApproved':user.isApproved === 0}">
+
+                        <td>{{user.userId}}</td>
+                        <td>{{user.fName}}</td>
+                        <td>{{user.lName}}</td>
+                        <td>{{user.address}}</td>
+                        <td>{{user.city}}</td>
+                        <td>{{user.state}}</td>
+                        <td>{{user.country}}</td>
+                        <td>{{user.role_id}}</td>
+                        <td>{{user.email_id}}</td>
+                        <td>{{user.mobile_no}}</td>
+                        <td>{{user.isActive}}</td>
+                        <td>{{user.isApproved}}</td>
+
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <button class=" btn btn-succes" (click)="Approve()">Submit</button>
+    </div>
+</body>
+
+</html>

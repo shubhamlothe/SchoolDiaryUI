@@ -2054,39 +2054,46 @@
                             </div>
 
                         </div>
+                       
                         <div class="row m-3  d-flex justify-content-center align-items-center">
-                            <div class="col-4">
-                                <label><b>Notice Id</b></label>
-                                <input type="text" class="form-control" disabled>
-                            </div>
-                        </div>
-                        <div class="row m-3  d-flex justify-content-center align-items-center">
-                            <div class="col-4">
-                                <label><b>Class</b></label>
-                                <input type="text" class="form-control">
+                            <div  class="col-4"> <label>Class</label>
+                                <select class="form-control" id="class" #myclass (change)="onClassSelected(myclass.value)">
+                                    <option value = 1 >1</option>
+                                    <option value = 2 >2</option>
+                                    <option value = 3 >3</option>
+                                    <option value = 4 >4</option>
+                                    <option value = 5 >5</option>
+                                    <option value = 6 >6</option>
+                                    <option value = 7 >7</option>
+                                    <option value = 8 >8</option>
+                                    <option value = 9 >9</option>
+                                    <option value = 10 >10</option>
+                                    <option value = 11 >11</option>
+                                    <option value = 12 >12</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row m-3  d-flex justify-content-center align-items-center">
                             <div class="col-4">
                                 <label><b>Message</b></label>
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                <textarea class="form-control" [(ngModel)]="noticeUpdate.msg" aria-label="With textarea"></textarea>
                             </div>
                         </div>
                         <div class="row m-3  d-flex justify-content-center align-items-center">
                             <div class="col-4">
                                 <label><b>Date From :</b></label>
-                                <input type="date" class="form-control" placeholder="dd/mm/yyyy">
+                                <input type="date" [(ngModel)]="noticeUpdate.date_to" class="form-control" placeholder="dd/mm/yyyy">
                             </div>
                         </div>
                         <div class="row m-3  d-flex justify-content-center align-items-center">
                             <div class="col-4">
                                 <label><b>Date To :</b></label>
-                                <input type="date" class="form-control" placeholder="dd/mm/yyyy">
+                                <input type="date" [(ngModel)]="noticeUpdate.date_from" class="form-control" placeholder="dd/mm/yyyy">
                             </div>
                         </div>
                         <div class="row m-3  d-flex justify-content-center align-items-center">
                             <div class="col-4">
-                        <button type="submit"   style="background-color: #103453;color: white; margin: 2px;" class="btn">Update</button>
+                        <button type="submit" (click)="Add()"   style="background-color: #103453;color: white; margin: 2px;" class="btn">Update</button>
                         </div>
                     </div>
                     </div>

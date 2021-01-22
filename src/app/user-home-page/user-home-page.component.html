@@ -2046,7 +2046,19 @@
 
                 </div>
 
-<div class="row mb-3">
+<div class="row mb-3  d-flex justify-content-center align-items-center" >
+    <div class="col-xl-3 col-sm-6 py-2 " *ngIf=isAdmin>
+        <div class="card text-white bg-info h-100">
+            <div class="card-body d-flex justify-content-center align-items-center">
+                <div class="rotate">
+                   <i class="fa fa-user-plus fa-4x" aria-hidden="true"></i>
+                </div>
+               
+              <button (click)="approveUser()" class="btn btn-info"><h6 class="text-uppercase  text-white">Approve User</h6></button>
+            
+            </div>
+        </div>
+    </div>
     <div class="col-xl-3 col-sm-6 py-2" *ngIf=isFaculty>
         <div class="card bg-success text-white h-100">
             <div class="card-body bg-success d-flex justify-content-center align-items-center">
@@ -2089,17 +2101,17 @@
             </div>
             
     
-    <div class="col-xl-3 col-sm-6 py-2" *ngIf=isDisplay>
+    <!-- <div class="col-xl-3 col-sm-6 py-2" *ngIf=isDisplay>
         <div class="card text-white bg-warning h-100">
-            <div class="card-body d-flex justify-content-center align-items-center">
+             <div class="card-body d-flex justify-content-center align-items-center">
                 <div class="rotate">
                    <i class="fa fa-sticky-note-o fa-4x" aria-hidden="true"></i>
                 </div>
             
                 <button (click)="addNotice()" class="btn btn-warning"><h6 class="text-uppercase  text-white">Update Notice</h6></button>
-            </div>
+            </div> 
         </div>
-    </div>
+    </div> -->
     <div class="col-xl-3 col-sm-6 py-2" *ngIf=isAdmin>
         <div class="card text-white bg-warning h-100">
             <div class="card-body d-flex justify-content-center align-items-center">
@@ -2129,22 +2141,11 @@
                         <div class="rotate">
                             <i class="fa fa-envelope-open-o fa-4x" aria-hidden="true"></i>
                         </div>
-                        <button class="btn btn-danger"><h6 class="text-uppercase  text-white">Raise a Request</h6></button>
+                        <button class="btn btn-danger"  (click)="raiseRequest()" ><h6 class="text-uppercase  text-white">Raise a Request</h6></button>
                     </div>
                     </div>
                 </div>
-    <div class="col-xl-3 col-sm-6 py-2 " *ngIf=isAdmin>
-        <div class="card text-white bg-info h-100">
-            <div class="card-body d-flex justify-content-center align-items-center">
-                <div class="rotate">
-                   <i class="fa fa-user-plus fa-4x" aria-hidden="true"></i>
-                </div>
-               
-              <button class="btn btn-info"><h6 class="text-uppercase  text-white">Approve User</h6></button>
-            
-            </div>
-        </div>
-    </div>
+   
 </div>
 <!--/row-->
                     <div class="row">

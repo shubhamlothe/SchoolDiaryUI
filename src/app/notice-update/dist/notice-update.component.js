@@ -7,21 +7,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 exports.NoticeUpdateComponent = void 0;
+var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
+var http_client_service_service_1 = require("../http-client-service.service");
 var NoticeUpdateComponent = /** @class */ (function () {
-    function NoticeUpdateComponent(router) {
+    function NoticeUpdateComponent(router, datePipe, HttpClientService) {
         this.router = router;
+        this.datePipe = datePipe;
+        this.HttpClientService = HttpClientService;
+        this.noticeUpdate = new http_client_service_service_1.notice();
     }
     NoticeUpdateComponent.prototype.ngOnInit = function () {
     };
     NoticeUpdateComponent.prototype.back = function () {
         this.router.navigate(['userHome']);
     };
+    NoticeUpdateComponent.prototype.onClassSelected = function (cls) {
+        this.noticeUpdate.student_class = cls;
+    };
+    NoticeUpdateComponent.prototype.Add = function () {
+        // this.noticeUpdate.notice_id = 1;
+        this.noticeUpdate.date_to = this.datePipe.transform(this.noticeUpdate.date_to, 'ddMMyyyy');
+        this.noticeUpdate.date_from = this.datePipe.transform(this.noticeUpdate.date_from, 'ddMMyyyy');
+        this.HttpClientService.addNotice(this.noticeUpdate).subscribe(function (res) {
+            alert("added");
+        });
+    };
     NoticeUpdateComponent = __decorate([
         core_1.Component({
             selector: 'app-notice-update',
             templateUrl: './notice-update.component.html',
-            styleUrls: ['./notice-update.component.css']
+            styleUrls: ['./notice-update.component.css'],
+            providers: [common_1.DatePipe]
         })
     ], NoticeUpdateComponent);
     return NoticeUpdateComponent;

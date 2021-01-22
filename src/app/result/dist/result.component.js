@@ -86,6 +86,9 @@ var ResultComponent = /** @class */ (function () {
         var _this = this;
         this.Http.getResult(this.stu.user_id_student).subscribe(function (res) {
             _this.Result = res;
+            for (var i = 0; i < res.length; i++) {
+                res[i].exam_date = res[i].exam_date.slice(0, 2) + "/" + res[i].exam_date.slice(2, 4) + "/" + res[i].exam_date.slice(4, 8);
+            }
         });
     };
     ResultComponent = __decorate([

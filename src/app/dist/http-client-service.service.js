@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.HttpClientServiceService = exports.City = exports.Countries = exports.result = exports.notice = exports.student = exports.faculty = exports.attendance = exports.contactMail = exports.User = void 0;
+exports.HttpClientServiceService = exports.City = exports.Countries = exports.result = exports.notice = exports.student = exports.faculty = exports.attendance = exports.UserQuery = exports.User = void 0;
 var core_1 = require("@angular/core");
 var User = /** @class */ (function () {
     function User(userId, fName, lName, email_id, mobile_no, address, country, city, state, role_id, fName_f, lName_f, email_id_f, mobile_no_f, dob, gender, student_class, faculty_class, joining_date, password, isApproved, status, securityQuestionId_S, securityQuestionId_F, sQanswer_S, sQanswer_F, security_q_A, security_q_id) {
@@ -43,17 +43,19 @@ var User = /** @class */ (function () {
     return User;
 }());
 exports.User = User;
-var contactMail = /** @class */ (function () {
-    function contactMail(id, name, contactPersonEmail, subject, message) {
+var UserQuery = /** @class */ (function () {
+    function UserQuery(id, name, contactPersonEmail, subject, userid, message, roleid) {
         this.id = id;
         this.name = name;
         this.contactPersonEmail = contactPersonEmail;
         this.subject = subject;
+        this.userid = userid;
         this.message = message;
+        this.roleid = roleid;
     }
-    return contactMail;
+    return UserQuery;
 }());
-exports.contactMail = contactMail;
+exports.UserQuery = UserQuery;
 var attendance = /** @class */ (function () {
     function attendance(compid, att_date, student_id, student_class, present, studentleave, attendance_colour, user_id_student, dOB, fname, lanme, gender, user_id_parent, status) {
         if (status === void 0) { status = 'red'; }
@@ -216,6 +218,21 @@ var HttpClientServiceService = /** @class */ (function () {
     };
     HttpClientServiceService.prototype.GetChildByUid = function (uid) {
         return this.httpClient.get("http://localhost:8080/getStudent/" + uid);
+    };
+    HttpClientServiceService.prototype.approval = function (users) {
+        return this.httpClient.post("http://localhost:8080/approval/", users);
+    };
+    HttpClientServiceService.prototype.GetPending = function () {
+        return this.httpClient.get("http://localhost:8080/userList");
+    };
+    HttpClientServiceService.prototype.insertQuery = function (query) {
+        return this.httpClient.post("http://localhost:8080/insertQuery/", query);
+    };
+    HttpClientServiceService.prototype.updateUserProfile = function (user) {
+        return this.httpClient.post("http://localhost:8080/updateUser/", user);
+    };
+    HttpClientServiceService.prototype.addNotice = function (Notice) {
+        return this.httpClient.post("http://localhost:8080/AddNotice/", Notice);
     };
     HttpClientServiceService = __decorate([
         core_1.Injectable({
