@@ -9,7 +9,7 @@ exports.__esModule = true;
 exports.HttpClientServiceService = exports.City = exports.Countries = exports.result = exports.notice = exports.student = exports.faculty = exports.attendance = exports.UserQuery = exports.User = void 0;
 var core_1 = require("@angular/core");
 var User = /** @class */ (function () {
-    function User(userId, fName, lName, email_id, mobile_no, address, country, city, state, role_id, fName_f, lName_f, email_id_f, mobile_no_f, dob, gender, student_class, faculty_class, joining_date, password, isApproved, status, securityQuestionId_S, securityQuestionId_F, sQanswer_S, sQanswer_F, security_q_A, security_q_id) {
+    function User(userId, fName, lName, email_id, mobile_no, address, country, city, state, role_id, fName_f, lName_f, email_id_f, mobile_no_f, dob, gender, student_class, faculty_class, joining_date, password, isApproved, status, securityQuestionId_S, securityQuestionId_F, sQanswer_S, sQanswer_F, security_q_A, security_q_id, rePassword) {
         if (status === void 0) { status = "red"; }
         this.userId = userId;
         this.fName = fName;
@@ -39,6 +39,7 @@ var User = /** @class */ (function () {
         this.sQanswer_F = sQanswer_F;
         this.security_q_A = security_q_A;
         this.security_q_id = security_q_id;
+        this.rePassword = rePassword;
     }
     return User;
 }());

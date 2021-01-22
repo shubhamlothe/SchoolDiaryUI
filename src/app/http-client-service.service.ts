@@ -30,7 +30,8 @@ export class User {
     public sQanswer_S?: string,
     public sQanswer_F?: string,
     public security_q_A?: string,
-    public security_q_id?: string
+    public security_q_id?: string,
+    public rePassword?: string
   ) { }
 }
 
