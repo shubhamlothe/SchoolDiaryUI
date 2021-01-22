@@ -2112,7 +2112,18 @@
             </div> 
         </div>
     </div> -->
-    <div class="col-xl-3 col-sm-6 py-2" *ngIf=isAdmin>
+    <div class="col-xl-3 col-sm-6 py-2" *ngIf=isFaculty>
+        <div class="card text-white bg-warning h-100">
+            <div class="card-body d-flex justify-content-center align-items-center">
+                <div class="rotate">
+                   <i class="fa fa-sticky-note-o fa-4x" aria-hidden="true"></i>
+                </div>
+            
+                <button (click)="addNotice()" class="btn btn-warning"><h6 class="text-uppercase  text-white">Add Notice</h6></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 py-2" *ngIf=isAdmin >
         <div class="card text-white bg-warning h-100">
             <div class="card-body d-flex justify-content-center align-items-center">
                 <div class="rotate">
