@@ -1571,7 +1571,14 @@ body {
                   <div *ngIf="pass.errors.required">
                      Password is required
                   </div>
-
+                  <div *ngIf="pass.errors.pattern">
+                    Password should have minimum 8 characters, at least 1 uppercase letter, 1
+                    lowercase
+                    letter and 1 number
+                </div>
+                <div *ngIf="pass.errors.minlength">
+                    Password must be 8 character
+                </div>
               </span>
               </div>
 

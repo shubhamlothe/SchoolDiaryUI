@@ -1718,10 +1718,10 @@
                 <option selected value="0">Choose...</option>
                 <option  *ngFor="let con of state"  [value]="con.iso2">{{con.name}}</option>
             </select>
+            <span class="text-danger"  *ngIf="(selectedState.touched || registerForm.submitted) && country.errors?.required">
+                State is required
+            </span>
 
-               <span class="text-danger">
-                  State is required
-              </span>
               </div>
 
             <div class="col-3">
