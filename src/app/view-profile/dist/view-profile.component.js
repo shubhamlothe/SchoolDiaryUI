@@ -19,6 +19,9 @@ var ViewProfileComponent = /** @class */ (function () {
     }
     ViewProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (!sessionStorage.getItem('id')) {
+            this.router.navigate(['homepage']);
+        }
         var id = sessionStorage.getItem('id');
         this.HttpClientService.getUser(id).subscribe(function (res) {
             _this.user = res;
@@ -43,6 +46,10 @@ var ViewProfileComponent = /** @class */ (function () {
     // }
     ViewProfileComponent.prototype.back = function () {
         this.router.navigate(['userHome']);
+    };
+    ViewProfileComponent.prototype.logout = function () {
+        sessionStorage.removeItem('id');
+        this.router.navigate(['homepage']);
     };
     ViewProfileComponent.prototype.getCountries = function () {
         var _this = this;
@@ -69,6 +76,24 @@ var ViewProfileComponent = /** @class */ (function () {
         this.HttpClientService.updateUserProfile(this.user).subscribe(function (res) {
             alert("done");
         });
+    };
+    ViewProfileComponent.prototype.attendance = function () {
+        this.router.navigate(['attendance']);
+    };
+    ViewProfileComponent.prototype.raiseRequest = function () {
+        this.router.navigate(['raiseRequest']);
+    };
+    ViewProfileComponent.prototype.home = function () {
+        this.router.navigate(['userHome']);
+    };
+    ViewProfileComponent.prototype.vProfile = function () {
+        this.router.navigate(['viewProfile']);
+    };
+    ViewProfileComponent.prototype.result = function () {
+        this.router.navigate(['result']);
+    };
+    ViewProfileComponent.prototype.notices = function () {
+        this.router.navigate(['noticeUpdate']);
     };
     ViewProfileComponent = __decorate([
         core_1.Component({

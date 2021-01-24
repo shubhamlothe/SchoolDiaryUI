@@ -20,6 +20,10 @@ export class ViewProfileComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (!sessionStorage.getItem('id')) {
+      this.router.navigate(['homepage']);
+    }
+
     const id = sessionStorage.getItem('id');
 
     this.HttpClientService.getUser(id).subscribe(res => {
@@ -48,6 +52,12 @@ export class ViewProfileComponent implements OnInit {
 
   back() {
     this.router.navigate(['userHome']);
+  }
+
+
+  logout() {
+    sessionStorage.removeItem('id');
+    this.router.navigate(['homepage']);
   }
   getCountries() {
     this.HttpClientService.getCountries().subscribe(res => {
@@ -82,5 +92,32 @@ export class ViewProfileComponent implements OnInit {
     })
 
   }
+  attendance() {
+    this.router.navigate(['attendance']);
+  }
+  raiseRequest() {
+    this.router.navigate(['raiseRequest']);
+  }
 
+
+
+
+
+
+  home() {
+    this.router.navigate(['userHome']);
+  }
+
+  vProfile() {
+    this.router.navigate(['viewProfile']);
+  }
+
+
+  result() {
+    this.router.navigate(['result']);
+  }
+
+  notices() {
+    this.router.navigate(['noticeUpdate']);
+  }
 }

@@ -58,7 +58,9 @@ var LoginComponent = /** @class */ (function () {
                 }
             }
             else {
-                //alert("Wrong Credentials");
+                alert("Wrong Credentials");
+                _this.user.email_id = null;
+                _this.user.password = null;
             }
         });
     };

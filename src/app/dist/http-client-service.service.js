@@ -160,10 +160,17 @@ var HttpClientServiceService = /** @class */ (function () {
         this.httpClient = httpClient;
     }
     HttpClientServiceService.prototype.Register = function (user) {
-        alert(user.securityQuestionId_F);
+        if (user.securityQuestionId_S == null) {
+            alert("please fill all the details");
+            return;
+        }
         return this.httpClient.post("http://localhost:8080/user_reg", user);
     };
     HttpClientServiceService.prototype.login = function (user) {
+        if (user.email_id == null || user.password == null) {
+            alert("Please fill all the fields");
+            return;
+        }
         return this.httpClient.post("http://localhost:8080/login", user);
     };
     HttpClientServiceService.prototype.StudentList = function (cls) {
@@ -234,6 +241,12 @@ var HttpClientServiceService = /** @class */ (function () {
     };
     HttpClientServiceService.prototype.addNotice = function (Notice) {
         return this.httpClient.post("http://localhost:8080/AddNotice/", Notice);
+    };
+    HttpClientServiceService.prototype.getAllNoticeForAdmin = function (date) {
+        return this.httpClient.get("http://localhost:8080/getClassNoticesForAdmin/" + date);
+    };
+    HttpClientServiceService.prototype.getAlreadyAppliedExams = function (cls) {
+        return this.httpClient.get("http://localhost:8080/getAlreadyAppliedExams/" + cls);
     };
     HttpClientServiceService = __decorate([
         core_1.Injectable({

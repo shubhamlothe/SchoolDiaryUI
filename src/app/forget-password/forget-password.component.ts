@@ -23,6 +23,9 @@ export class ForgetPasswordComponent implements OnInit {
   constructor(private HttpClientService: HttpClientServiceService, private router: Router) { }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('id')) {
+      this.router.navigate(['userHome']);
+    }
   }
 
 

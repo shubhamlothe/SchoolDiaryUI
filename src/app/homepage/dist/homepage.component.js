@@ -16,11 +16,14 @@ var HomepageComponent = /** @class */ (function () {
         this.cm = new http_client_service_service_1.UserQuery();
     }
     HomepageComponent.prototype.ngOnInit = function () {
+        if (sessionStorage.getItem('id')) {
+            this.router.navigate(['userHome']);
+        }
     };
     HomepageComponent.prototype.submit = function () {
         this.http.sendQuery(this.cm).subscribe(function (res) {
             if (res != null) {
-                // alert("You Will be hearing soon from us");
+                alert("You Will be hearing soon from us");
             }
         });
     };

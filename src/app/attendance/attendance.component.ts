@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { attendance, HttpClientServiceService, student } from '../http-client-service.service';
+import { attendance, HttpClientServiceService, student, User } from '../http-client-service.service';
 
 @Component({
   selector: 'app-attendance',
@@ -20,10 +20,19 @@ export class AttendanceComponent implements OnInit {
   att: attendance[];
   students: student[];
   stu: student = new student;
+  user: User = new User(null, null, null, null, null, null, null, null, null, null, null, null, null, null,);
   constructor(private Http: HttpClientServiceService, private router: Router, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
+    if (!sessionStorage.getItem('id')) {
 
+      this.router.navigate(['homepage']);
+
+    } else {
+      this.Http.getUser(sessionStorage.getItem('id')).subscribe(res => {
+        this.user = res;
+      })
+    }
     this.getdetails();
 
 
@@ -163,7 +172,10 @@ export class AttendanceComponent implements OnInit {
 
     })
   }
-
+  logout() {
+    sessionStorage.removeItem('id');
+    this.router.navigate(['homepage']);
+  }
 
   getSAttendence() {
     this.Http.getAttendance(this.stu.user_id_student).subscribe(res => {
@@ -186,5 +198,29 @@ export class AttendanceComponent implements OnInit {
 
     })
   }
+
+
+
+
+
+  home() {
+    this.router.navigate(['userHome']);
+  }
+
+  vProfile() {
+    this.router.navigate(['viewProfile']);
+  }
+
+  attendance() {
+    this.router.navigate(['attendance']);
+  }
+  result() {
+    this.router.navigate(['result']);
+  }
+
+  notices() {
+    this.router.navigate(['noticeUpdate']);
+  }
+
 
 }

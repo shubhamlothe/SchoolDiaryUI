@@ -96,25 +96,30 @@ var RegisterComponent = /** @class */ (function () {
         this.user.dob = this.datePipe.transform(this.user.dob, 'ddMMyyyy');
         // alert(this.user.dob);
         this.httpClientService.Register(this.user).subscribe(function (res) {
-            //  alert("Successfully Registered");
-            _this.user.fName = "";
-            _this.user.lName = "";
-            _this.user.email_id = "";
-            _this.user.mobile_no = "";
-            _this.user.address = "";
-            _this.user.city = "";
-            _this.user.state = "";
-            _this.user.fName_f = "";
-            _this.user.lName_f = "";
-            _this.user.email_id_f = "";
-            _this.user.mobile_no_f = "";
-            _this.user.dob = "";
-            _this.user.gender = "";
-            _this.user.student_class = null;
-            _this.user.faculty_class = null;
-            _this.user.joining_date = "";
-            _this.user.password = "";
-            console.log(_this.user.fName, _this.user.lName, _this.user.email_id, _this.user.mobile_no, _this.user.address, _this.user.state);
+            if (res != null) {
+                //  alert("Successfully Registered");
+                _this.user.fName = "";
+                _this.user.lName = "";
+                _this.user.email_id = "";
+                _this.user.mobile_no = "";
+                _this.user.address = "";
+                _this.user.city = "";
+                _this.user.state = "";
+                _this.user.fName_f = "";
+                _this.user.lName_f = "";
+                _this.user.email_id_f = "";
+                _this.user.mobile_no_f = "";
+                _this.user.dob = "";
+                _this.user.gender = "";
+                _this.user.student_class = null;
+                _this.user.faculty_class = null;
+                _this.user.joining_date = "";
+                _this.user.password = "";
+                _this.router.navigate(['login']);
+            }
+            else {
+                alert("Please fill all the details");
+            }
         });
     };
     RegisterComponent.prototype.getCountries = function () {

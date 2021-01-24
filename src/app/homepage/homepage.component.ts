@@ -14,13 +14,18 @@ export class HomepageComponent implements OnInit {
   constructor(private router: Router, private http: HttpClientServiceService) { }
 
   ngOnInit(): void {
+
+    if (sessionStorage.getItem('id')) {
+      this.router.navigate(['userHome']);
+    }
+
   }
 
 
   submit() {
     this.http.sendQuery(this.cm).subscribe(res => {
       if (res != null) {
-        // alert("You Will be hearing soon from us");
+        alert("You Will be hearing soon from us");
       }
     })
 

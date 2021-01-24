@@ -2,7 +2,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faculty, HttpClientServiceService, result, student } from '../http-client-service.service';
+import { faculty, HttpClientServiceService, result, student, User } from '../http-client-service.service';
 
 @Component({
   selector: 'app-result',
@@ -11,7 +11,7 @@ import { faculty, HttpClientServiceService, result, student } from '../http-clie
   providers: [DatePipe]
 })
 export class ResultComponent implements OnInit {
-
+  user: User = new User();
   isP = false;
   examDate: string;
   examSubject: string;
@@ -21,17 +21,24 @@ export class ResultComponent implements OnInit {
   stu: student = new student;
   Result: result[];
   updateResult: result[];
+  alreadyRes: result[];
   role_id: number;
   Faculty: faculty = new faculty(null, null, null, null, null);
   isDisplay = false;
   constructor(private Http: HttpClientServiceService, private router: Router, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
+    if (!sessionStorage.getItem('id')) {
+      this.router.navigate(['homepage']);
+    }
+
     this.Http.getUser(sessionStorage.getItem('id')).subscribe(res => {
+      this.user = res;
       this.role_id = res.role_id;
       if (this.role_id == 1) {
         this.isDisplay = true;
         this.getStudentToUpdateResult();
+        this.getAlreadyAppliedExams();
       }
       else if (this.role_id == 2) {
         this.isStu = true;
@@ -114,7 +121,49 @@ export class ResultComponent implements OnInit {
   }
 
 
+  getAlreadyAppliedExams() {
+    this.Http.getClass(sessionStorage.getItem('id')).subscribe(res => {
 
+      this.Faculty.teaching_class = res.teaching_class;
+      this.Http.getAlreadyAppliedExams(this.Faculty.teaching_class).subscribe(res => {
+        this.alreadyRes = res;
+        for (var i = 0; i < res.length; i++) {
+          res[i].exam_date = res[i].exam_date.slice(0, 2) + "/" + res[i].exam_date.slice(2, 4) + "/" + res[i].exam_date.slice(4, 8);
+        }
+      })
+    })
+
+
+
+  }
+
+  logout() {
+    sessionStorage.removeItem('id');
+    this.router.navigate(['homepage']);
+  }
+
+
+
+
+
+  home() {
+    this.router.navigate(['userHome']);
+  }
+
+  vProfile() {
+    this.router.navigate(['viewProfile']);
+  }
+
+  attendance() {
+    this.router.navigate(['attendance']);
+  }
+  result() {
+    this.router.navigate(['result']);
+  }
+
+  notices() {
+    this.router.navigate(['noticeUpdate']);
+  }
 }
 
 

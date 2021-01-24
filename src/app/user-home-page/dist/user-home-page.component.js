@@ -21,21 +21,25 @@ var UserHomePageComponent = /** @class */ (function () {
         this.isStudent = false;
         this.n = new http_client_service_service_1.notice(null, null, null, null, null);
         this.myDate = new Date();
+        this.user = new http_client_service_service_1.User();
     }
     UserHomePageComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (!sessionStorage.getItem('id')) {
             this.router.navigate(['homepage']);
         }
+        else {
+            this.Http.getUser(sessionStorage.getItem('id')).subscribe(function (res) {
+                _this.user = res;
+            });
+        }
         this.getdetails();
-        this.getclsNoticeForFaculty();
-        this.getclsNoticeForStudent();
         this.getGlobalNotice();
     };
     UserHomePageComponent.prototype.getclsNoticeForStudent = function () {
         var _this = this;
         this.Http.getStudentClas(sessionStorage.getItem('id')).subscribe(function (res) {
             _this.n.student_class = res.student_class;
-            alert(_this.n.student_class);
             var latest_date = _this.datePipe.transform(_this.myDate, 'ddMMyyyy');
             _this.n.date_to = latest_date;
             _this.getNotice();
@@ -97,18 +101,24 @@ var UserHomePageComponent = /** @class */ (function () {
                 _this.isAdmin = true;
                 _this.isFaculty = false;
                 _this.isStudent = false;
+                var latest_date = _this.datePipe.transform(_this.myDate, 'ddMMyyyy');
+                _this.Http.getAllNoticeForAdmin(latest_date).subscribe(function (res) {
+                    _this.clsNotice = res;
+                });
             }
             else if (_this.role_id == 1) {
                 _this.isDisplay = true;
                 _this.isFaculty = true;
                 _this.isAdmin = false;
                 _this.isStudent = false;
+                _this.getclsNoticeForFaculty();
             }
             else if (_this.role_id == 2 || _this.role_id == 3) {
                 _this.isDisplay = false;
                 _this.isStudent = true;
                 _this.isAdmin = false;
                 _this.isFaculty = false;
+                _this.getclsNoticeForStudent();
             }
             else {
                 _this.isDisplay = false;
@@ -139,6 +149,21 @@ var UserHomePageComponent = /** @class */ (function () {
     };
     UserHomePageComponent.prototype.raiseRequest = function () {
         this.router.navigate(['raiseRequest']);
+    };
+    UserHomePageComponent.prototype.back = function () {
+        this.router.navigate(['userHome']);
+    };
+    UserHomePageComponent.prototype.home = function () {
+        this.router.navigate(['userHome']);
+    };
+    UserHomePageComponent.prototype.vProfile = function () {
+        this.router.navigate(['viewProfile']);
+    };
+    UserHomePageComponent.prototype.result = function () {
+        this.router.navigate(['result']);
+    };
+    UserHomePageComponent.prototype.notices = function () {
+        this.router.navigate(['noticeUpdate']);
     };
     UserHomePageComponent = __decorate([
         core_1.Component({

@@ -10,1495 +10,22 @@
   <script src="https://kit.fontawesome.com/f059dbf7f4.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
   ">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <style>
-body {
-    font-family: "Open Sans", sans-serif;
-    color: #444;
-  }
-  
-  a {
-    color: #1c5c93;;
-  }
-  
-  a:hover {
-    color: #9eccf4;
-    text-decoration: none;
-  }
-  
-  h1, h2, h3, h4, h5, h6, .font-primary {
-    font-family: "Raleway", sans-serif;
-  }
-  
-  /*--------------------------------------------------------------
-  # Back to top button
-  --------------------------------------------------------------*/
-  .back-to-top {
-    position: fixed;
-    display: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 3px;
-    right: 15px;
-    bottom: 15px;
-    background: #1c5c93;;
-    color: #fff;
-    transition: display 0.5s ease-in-out;
-    z-index: 99999;
-  }
-  
-  .back-to-top i {
-    font-size: 24px;
-    position: absolute;
-    top: 8px;
-    left: 8px;
-  }
-  
-  .back-to-top:hover {
-    color: #fff;
-    background: #629fd3;
-    transition: background 0.2s ease-in-out;
-  }
-  
-  /*--------------------------------------------------------------
-  # Top Bar
-  --------------------------------------------------------------*/
-  #topbar {
-    background: #fff;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    font-size: 14px;
-  }
-  
-  #topbar .contact-info a {
-    line-height: 1;
-    color: #444;
-    transition: 0.3s;
-  }
-  
-  #topbar .contact-info a:hover {
-    color: #428bca;
-  }
-  
-  #topbar .contact-info i {
-    color: #428bca;
-    padding: 4px;
-  }
-  
-  #topbar .contact-info .icofont-phone {
-    padding-left: 20px;
-    margin-left: 10px;
-  }
-  
-  #topbar .social-links a {
-    color: #5c768d;
-    padding: 4px 12px;
-    display: inline-block;
-    line-height: 1px;
-    transition: 0.3s;
-  }
-  
-  #topbar .social-links a:hover {
-    color: #428bca;
-  }
-  
-  /*--------------------------------------------------------------
-  # Header
-  --------------------------------------------------------------*/
-  #header {
-    height: 70px;
-    transition: all 0.5s;
-    transition: all 0.5s;
-    padding: 10px 0;
-    background: #fff;
-    z-index: 997;
-  }
-  
-  #header.header-scrolled {
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-  }
-  
-  #header .logo h1 {
-    font-size: 28px;
-    margin: 0;
-    padding: 10px 0;
-    line-height: 1;
-    font-weight: 400;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-  }
-  
-  #header .logo h1 a, #header .logo h1 a:hover {
-    color: #1c5c93;
-    text-decoration: none;
-  }
-  
-  #header .logo img {
-    padding: 0;
-    margin: 0;
-    max-height: 40px;
-  }
-  
-  /*--------------------------------------------------------------
-  # Navigation Menu
-  --------------------------------------------------------------*/
-  /* Desktop Navigation */
-  .nav-menu, .nav-menu * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .nav-menu > ul > li {
-    position: relative;
-    white-space: nowrap;
-    float: left;
-  }
-  
-  .nav-menu a {
-    display: block;
-    position: relative;
-    color: #5c768d;
-    padding: 12px 15px;
-    transition: 0.3s;
-    font-size: 14px;
-    font-family: "Open Sans", sans-serif;
-  }
-  
-  .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
-    color:#103453;
-    text-decoration: none;
-  }
-  
-  .nav-menu .drop-down ul {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    z-index: 99;
-    opacity: 0;
-    visibility: hidden;
-    padding: 10px 0;
-    background: #fff;
-    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-    transition: ease all 0.3s;
-  }
-  
-  .nav-menu .drop-down:hover > ul {
-    opacity: 1;
-    top: 100%;
-    visibility: visible;
-  }
-  
-  .nav-menu .drop-down li {
-    min-width: 180px;
-    position: relative;
-  }
-  
-  .nav-menu .drop-down ul a {
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: none;
-    color: #103453;
-  }
-  
-  .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
-    color: #103453;
-  }
-  
-  .nav-menu .drop-down > a:after {
-    content: "\ea99";
-    font-family: IcoFont;
-    padding-left: 5px;
-  }
-  
-  .nav-menu .drop-down .drop-down ul {
-    top: 0;
-    left: 100%;
-  }
-  
-  .nav-menu .drop-down .drop-down:hover > ul {
-    opacity: 1;
-    top: 0;
-  }
-  
-  .nav-menu .drop-down .drop-down > a {
-    padding-right: 35px;
-  }
-  
-  .nav-menu .drop-down .drop-down > a:after {
-    content: "\eaa0";
-    font-family: IcoFont;
-    position: absolute;
-    right: 15px;
-  }
-  
-  @media (max-width: 1366px) {
-    .nav-menu .drop-down .drop-down ul {
-      left: -90%;
-    }
-    .nav-menu .drop-down .drop-down:hover > ul {
-      left: -100%;
-    }
-    .nav-menu .drop-down .drop-down > a:after {
-      content: "\ea9d";
-    }
-  }
-  
-  /* Mobile Navigation */
-  .mobile-nav {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    z-index: 9999;
-    overflow-y: auto;
-    left: -260px;
-    width: 260px;
-    padding-top: 18px;
-    background: #1f3548;
-    transition: 0.4s;
-  }
-  
-  .mobile-nav * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .mobile-nav a {
-    display: block;
-    position: relative;
-    color: #e3f0fc;
-    padding: 10px 20px;
-    font-weight: 500;
-  }
-  
-  .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
-    color: #9eccf4;
-    text-decoration: none;
-  }
-  
-  .mobile-nav .drop-down > a:after {
-    content: "\ea99";
-    font-family: IcoFont;
-    padding-left: 10px;
-    position: absolute;
-    right: 15px;
-  }
-  
-  .mobile-nav .active.drop-down > a:after {
-    content: "\eaa0";
-  }
-  
-  .mobile-nav .drop-down > a {
-    padding-right: 35px;
-  }
-  
-  .mobile-nav .drop-down ul {
-    display: none;
-    overflow: hidden;
-  }
-  
-  .mobile-nav .drop-down li {
-    padding-left: 20px;
-  }
-  
-  .mobile-nav-toggle {
-    position: fixed;
-    right: 15px;
-    top: 20px;
-    z-index: 9998;
-    border: 0;
-    background: none;
-    font-size: 24px;
-    transition: all 0.4s;
-    outline: none !important;
-    line-height: 1;
-    cursor: pointer;
-    text-align: right;
-  }
-  
-  .mobile-nav-toggle i {
-    color: #5c768d;
-  }
-  
-  .mobile-nav-overly {
-    width: 100%;
-    height: 100%;
-    z-index: 9997;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: rgba(31, 53, 72, 0.7);
-    overflow: hidden;
-    display: none;
-  }
-  
-  .mobile-nav-active {
-    overflow: hidden;
-  }
-  
-  .mobile-nav-active .mobile-nav {
-    left: 0;
-  }
-  
-  .mobile-nav-active .mobile-nav-toggle i {
-    color: #fff;
-  }
-  
-  /*--------------------------------------------------------------
-  # Hero Section
-  --------------------------------------------------------------*/
-  #hero {
-    width: 100%;
-    height: calc(100vh - 114px);
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  #hero .carousel-item {
-    width: 100%;
-    height: calc(100vh - 114px);
-    background-size: cover;
-    background-position: top right;
-    background-repeat: no-repeat;
-    overflow: hidden;
-  }
-  
-  #hero .carousel-item::before {
-    content: '';
-    background-color: rgba(13, 30, 45, 0.6);
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
-  }
-  
-  #hero .carousel-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    overflow: hidden;
-  }
-  
-  #hero .carousel-content {
-    text-align: left;
-  }
-  
-  @media (max-width: 992px) {
-    #hero, #hero .carousel-item {
-      height: calc(100vh - 70px);
-    }
-    #hero .carousel-content.container {
-      padding: 0 50px;
-    }
-  }
-  
-  #hero h2 {
-    color: #fff;
-    margin-bottom: 30px;
-    font-size: 48px;
-    font-weight: 900;
-  }
-  
-  #hero p {
-    width: 80%;
-    -webkit-animation-delay: 0.4s;
-    animation-delay: 0.4s;
-    color: #fff;
-  }
-  
-  #hero .carousel-inner .carousel-item {
-    transition-property: opacity;
-    background-position: center top;
-  }
-  
-  #hero .carousel-inner .carousel-item,
-  #hero .carousel-inner .active.carousel-item-left,
-  #hero .carousel-inner .active.carousel-item-right {
-    opacity: 0;
-  }
-  
-  #hero .carousel-inner .active,
-  #hero .carousel-inner .carousel-item-next.carousel-item-left,
-  #hero .carousel-inner .carousel-item-prev.carousel-item-right {
-    opacity: 1;
-    transition: 0.5s;
-  }
-  
-  #hero .carousel-inner .carousel-item-next,
-  #hero .carousel-inner .carousel-item-prev,
-  #hero .carousel-inner .active.carousel-item-left,
-  #hero .carousel-inner .active.carousel-item-right {
-    left: 0;
-    transform: translate3d(0, 0, 0);
-  }
-  
-  #hero .carousel-control-prev, #hero .carousel-control-next {
-    width: 10%;
-  }
-  
-  #hero .carousel-control-next-icon, #hero .carousel-control-prev-icon {
-    background: none;
-    font-size: 48px;
-    line-height: 1;
-    width: auto;
-    height: auto;
-  }
-  
-  #hero .carousel-indicators li {
-    cursor: pointer;
-  }
-  
-  #hero .btn-get-started {
-    font-family: "Raleway", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 12px 32px;
-    border-radius: 5px;
-    transition: 0.5s;
-    line-height: 1;
-    margin: 10px;
-    color: #fff;
-    -webkit-animation-delay: 0.8s;
-    animation-delay: 0.8s;
-    border: 0;
-    background: #428bca;
-  }
-  
-  #hero .btn-get-started:hover {
-    background: #1c5c93;
-  }
-  
-  @media (max-width: 768px) {
-    #hero h2 {
-      font-size: 28px;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    #hero p {
-      width: 60%;
-    }
-    #hero .carousel-control-prev, #hero .carousel-control-next {
-      width: 5%;
-    }
-  }
-  
-  /*--------------------------------------------------------------
-  # Sections General
-  --------------------------------------------------------------*/
-  section {
-    padding: 60px 0;
-  }
-  
-  .section-bg {
-    background-color: #f5f9fc;
-  }
-  
-  .section-title {
-    text-align: center;
-    padding-bottom: 30px;
-  }
-  
-  .section-title h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    padding-bottom: 0;
-    color: #5c768d;
-  }
-  
-  .section-title p {
-    margin-bottom: 0;
-  }
-  
-  /*--------------------------------------------------------------
-  # Breadcrumbs
-  --------------------------------------------------------------*/
-  .breadcrumbs {
-    padding: 15px 0;
-    background-color: #f5f9fc;
-    min-height: 40px;
-  }
-  
-  .breadcrumbs h2 {
-    font-size: 24px;
-    font-weight: 300;
-  }
-  
-  .breadcrumbs ol {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-  }
-  
-  .breadcrumbs ol li + li {
-    padding-left: 10px;
-  }
-  
-  .breadcrumbs ol li + li::before {
-    display: inline-block;
-    padding-right: 10px;
-    color: #6c757d;
-    content: "/";
-  }
-  
-  @media (max-width: 768px) {
-    .breadcrumbs .d-flex {
-      display: block !important;
-    }
-    .breadcrumbs ol {
-      display: block;
-    }
-    .breadcrumbs ol li {
-      display: inline-block;
-    }
-  }
-  
-  /*--------------------------------------------------------------
-  # About Us
-  --------------------------------------------------------------*/
-  .about {
-    padding-bottom: 30px;
-  }
-  
-  .about .container {
-    box-shadow: 0 5px 25px 0 rgba(214, 215, 216, 0.6);
-  }
-  
-  .about .video-box img {
-    padding: 15px 0;
-  }
-  
-  .about .section-title p {
-    text-align: left;
-    font-style: italic;
-    color: #666;
-  }
-  
-  .about .about-content {
-    padding: 40px;
-  }
-  
-  .about .icon-box + .icon-box {
-    margin-top: 40px;
-  }
-  
-  .about .icon-box .icon {
-    float: left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 72px;
-    height: 72px;
-    background: #f1f7fb;
-    border-radius: 6px;
-    transition: 0.5s;
-  }
-  
-  .about .icon-box .icon i {
-    color: #428bca;
-    font-size: 32px;
-  }
-  
-  .about .icon-box:hover .icon {
-    background: #428bca;
-  }
-  
-  .about .icon-box:hover .icon i {
-    color: #fff;
-  }
-  
-  .about .icon-box .title {
-    margin-left: 95px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    font-size: 18px;
-    text-transform: uppercase;
-  }
-  
-  .about .icon-box .title a {
-    color: #343a40;
-    transition: 0.3s;
-  }
-  
-  .about .icon-box .title a:hover {
-    color: #428bca;
-  }
-  
-  .about .icon-box .description {
-    margin-left: 95px;
-    line-height: 24px;
-    font-size: 14px;
-  }
-  
-  .about .video-box {
-    position: relative;
-  }
-  
-  .about .play-btn {
-    width: 94px;
-    height: 94px;
-    background: radial-gradient(#428bca 50%, rgba(66, 139, 202, 0.4) 52%);
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-    left: calc(50% - 47px);
-    top: calc(50% - 47px);
-    overflow: hidden;
-  }
-  
-  .about .play-btn::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-40%) translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 15px solid #fff;
-    z-index: 100;
-    transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-  
-  .about .play-btn::before {
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    -webkit-animation-delay: 0s;
-    animation-delay: 0s;
-    -webkit-animation: pulsate-btn 2s;
-    animation: pulsate-btn 2s;
-    -webkit-animation-direction: forwards;
-    animation-direction: forwards;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-    -webkit-animation-timing-function: steps;
-    animation-timing-function: steps;
-    opacity: 1;
-    border-radius: 50%;
-    border: 5px solid rgba(66, 139, 202, 0.7);
-    top: -15%;
-    left: -15%;
-    background: rgba(198, 16, 0, 0);
-  }
-  
-  .about .play-btn:hover::after {
-    border-left: 15px solid #428bca;
-    transform: scale(20);
-  }
-  
-  .about .play-btn:hover::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-40%) translateY(-50%);
-    width: 0;
-    height: 0;
-    border: none;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 15px solid #fff;
-    z-index: 200;
-    -webkit-animation: none;
-    animation: none;
-    border-radius: 0;
-  }
-  
-  @-webkit-keyframes pulsate-btn {
-    0% {
-      transform: scale(0.6, 0.6);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1, 1);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes pulsate-btn {
-    0% {
-      transform: scale(0.6, 0.6);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1, 1);
-      opacity: 0;
-    }
-  }
-  
-  /*--------------------------------------------------------------
-  # About Lists
-  --------------------------------------------------------------*/
-  .about-lists {
-    padding: 40px;
-  }
-  
-  .about-lists .row {
-    overflow: hidden;
-  }
-  
-  .about-lists .content-item {
-    padding: 40px;
-    border-left: 1px solid #d9e8f4;
-    border-bottom: 1px solid #d9e8f4;
-    margin: -1px;
-  }
-  
-  .about-lists .content-item span {
-    display: block;
-    font-size: 24px;
-    font-weight: 400;
-    color: #9eccf4;
-  }
-  
-  .about-lists .content-item h4 {
-    font-size: 28px;
-    font-weight: 400;
-    padding: 0;
-    margin: 20px 0;
-  }
-  
-  .about-lists .content-item p {
-    color: #aaaaaa;
-    font-size: 15px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  @media (max-width: 768px) {
-    .about-lists .content-item {
-      padding: 40px 0;
-    }
-  }
-  
-  /*--------------------------------------------------------------
-  # Counts
-  --------------------------------------------------------------*/
-  .counts {
-    padding-bottom: 30px;
-  }
-  
-  .counts .count-box {
-    box-shadow: 0px 0 16px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    background: #fff;
-    margin-bottom: 30px;
-  }
-  
-  .counts .count-box i {
-    display: block;
-    font-size: 64px;
-    margin-bottom: 15px;
-  }
-  
-  .counts .count-box span {
-    font-size: 42px;
-    display: block;
-    font-weight: 700;
-    color: #1c5c93;
-  }
-  
-  .counts .count-box p {
-    padding: 0;
-    margin: 0;
-    font-family: "Raleway", sans-serif;
-    font-size: 14px;
-  }
-  
-  /*--------------------------------------------------------------
-  # Services
-  --------------------------------------------------------------*/
-  .services {
-    padding-bottom: 30px;
-  }
-  
-  .services .icon-box {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .services .icon {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .services .icon i {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 20px;
-    background: #fff;
-    border-radius: 50%;
-    transition: 0.5s;
-    color: #428bca;
-    font-size: 40px;
-    overflow: hidden;
-    padding-top: 20px;
-    box-shadow: 0px 0 25px rgba(0, 0, 0, 0.15);
-  }
-  
-  .services .icon-box:hover .icon i {
-    box-shadow: 0px 0 30px rgba(66, 139, 202, 0.5);
-  }
-  
-  .services .title {
-    font-weight: 600;
-    margin-bottom: 15px;
-    font-size: 18px;
-    position: relative;
-    padding-bottom: 15px;
-  }
-  
-  .services .title a {
-    color: #444;
-    transition: 0.3s;
-  }
-  
-  .services .title a:hover {
-    color: #428bca;
-  }
-  
-  .services .title::after {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 50px;
-    height: 2px;
-    background: #428bca;
-    bottom: 0;
-    left: calc(50% - 25px);
-  }
-  
-  .services .description {
-    line-height: 24px;
-    font-size: 14px;
-  }
-  
-  /*--------------------------------------------------------------
-  # Our Portfolio
-  --------------------------------------------------------------*/
-  .portfolio .portfolio-item {
-    margin-bottom: 30px;
-  }
-  
-  .portfolio #portfolio-flters {
-    padding: 0;
-    margin: 0 0 35px 0;
-    list-style: none;
-    text-align: center;
-  }
-  
-  .portfolio #portfolio-flters li {
-    cursor: pointer;
-    margin: 0 15px 15px 0;
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 12px;
-    line-height: 20px;
-    color: #444;
-    border-radius: 4px;
-    text-transform: uppercase;
-    background: #fff;
-    margin-bottom: 5px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-    background: #428bca;
-    color: #fff;
-  }
-  
-  .portfolio #portfolio-flters li:last-child {
-    margin-right: 0;
-  }
-  
-  .portfolio .portfolio-wrap {
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .portfolio .portfolio-wrap img {
-    transition: 0.3s;
-  }
-  
-  .portfolio .portfolio-wrap .portfolio-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    opacity: 0;
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    text-align: center;
-    background: rgba(31, 53, 72, 0.6);
-    padding-bottom: 30px;
-  }
-  
-  .portfolio .portfolio-wrap .portfolio-info h4 {
-    font-size: 20px;
-    color: #fff;
-    font-weight: 600;
-  }
-  
-  .portfolio .portfolio-wrap .portfolio-info p {
-    color: #fff;
-    font-size: 14px;
-    text-transform: uppercase;
-  }
-  
-  .portfolio .portfolio-wrap .portfolio-info a {
-    color: #428bca;
-    margin: 0 4px;
-    font-size: 18px;
-    line-height: 1;
-    background-color: #fff;
-    padding-top: 7px;
-    border-radius: 50px;
-    text-align: center;
-    width: 36px;
-    height: 35px;
-    display: inline-block;
-    transition: 0.3s;
-  }
-  
-  .portfolio .portfolio-wrap .portfolio-info a:hover {
-    background: #428bca;
-    color: #fff;
-  }
-  
-  .portfolio .portfolio-wrap:hover {
-    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.16);
-  }
-  
-  .portfolio .portfolio-wrap:hover .portfolio-info {
-    opacity: 1;
-    padding-bottom: 0;
-  }
-  
-  .portfolio .portfolio-wrap:hover img {
-    transform: scale(1.1);
-  }
-  
-  /*--------------------------------------------------------------
-  # Portfolio Details
-  --------------------------------------------------------------*/
-  .portfolio-details {
-    padding-top: 30px;
-  }
-  
-  .portfolio-details .portfolio-details-container {
-    position: relative;
-  }
-  
-  .portfolio-details .portfolio-details-carousel {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .portfolio-details .portfolio-details-carousel .owl-nav, .portfolio-details .portfolio-details-carousel .owl-dots {
-    margin-top: 5px;
-    text-align: left;
-  }
-  
-  .portfolio-details .portfolio-details-carousel .owl-dot {
-    display: inline-block;
-    margin: 0 10px 0 0;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #ddd !important;
-  }
-  
-  .portfolio-details .portfolio-details-carousel .owl-dot.active {
-    background-color: #428bca !important;
-  }
-  
-  .portfolio-details .portfolio-info {
-    padding: 30px;
-    position: absolute;
-    right: 0;
-    bottom: -70px;
-    background: #fff;
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-    z-index: 2;
-  }
-  
-  .portfolio-details .portfolio-info h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .portfolio-details .portfolio-info ul {
-    list-style: none;
-    padding: 0;
-    font-size: 15px;
-  }
-  
-  .portfolio-details .portfolio-info ul li + li {
-    margin-top: 10px;
-  }
-  
-  .portfolio-details .portfolio-description {
-    padding-top: 50px;
-  }
-  
-  .portfolio-details .portfolio-description h2 {
-    width: 50%;
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  
-  .portfolio-details .portfolio-description p {
-    padding: 0 0 0 0;
-  }
-  
-  @media (max-width: 768px) {
-    .portfolio-details .portfolio-description h2 {
-      width: 100%;
-    }
-    .portfolio-details .portfolio-info {
-      position: static;
-      margin-top: 30px;
-    }
-  }
-  
-  /*--------------------------------------------------------------
-  # Our Team
-  --------------------------------------------------------------*/
-  .team {
-    background: #fff;
-    padding: 60px 0 30px 0;
-  }
-  
-  .team .member {
-    text-align: center;
-    margin-bottom: 80px;
-    position: relative;
-  }
-  
-  .team .member .pic {
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .team .member img {
-    transition: all ease-in-out 0.4s;
-  }
-  
-  .team .member:hover img {
-    transform: scale(1.1);
-  }
-  
-  .team .member .member-info {
-    position: absolute;
-    bottom: -48px;
-    left: 20px;
-    right: 20px;
-    background: linear-gradient(360deg, #5c768d 0%, rgba(92, 118, 141, 0.9) 35%, rgba(140, 167, 191, 0.8) 100%);
-    padding: 15px 0;
-    border-radius: 4px;
-  }
-  
-  .team .member h4 {
-    font-weight: 700;
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #fff;
-    position: relative;
-    padding-bottom: 10px;
-  }
-  
-  .team .member h4::after {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 50px;
-    height: 1px;
-    background: #fff;
-    bottom: 0;
-    left: calc(50% - 25px);
-  }
-  
-  .team .member span {
-    font-style: italic;
-    display: block;
-    font-size: 13px;
-    color: #fff;
-  }
-  
-  .team .member .social {
-    margin-top: 15px;
-  }
-  
-  .team .member .social a {
-    transition: color 0.3s;
-    color: #fff;
-  }
-  
-  .team .member .social a:hover {
-    color: #9eccf4;
-  }
-  
-  .team .member .social i {
-    font-size: 16px;
-    margin: 0 2px;
-  }
-  
-  @media (max-width: 992px) {
-    .team .member {
-      margin-bottom: 100px;
-    }
-  }
-  
-  /*--------------------------------------------------------------
-  # Frequently Asked Questions
-  --------------------------------------------------------------*/
-  .faq {
-    padding-bottom: 30px;
-  }
-  
-  .faq .faq-item {
-    margin-bottom: 40px;
-  }
-  
-  .faq .faq-item h4 {
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #1f3548;
-  }
-  
-  /*--------------------------------------------------------------
-  # Contact Us
-  --------------------------------------------------------------*/
-  .contact .info-box {
-    color: #444;
-    text-align: center;
-    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-    padding: 20px 0 30px 0;
-    margin-bottom: 30px;
-    width: 100%;
-  }
-  
-  .contact .info-box i {
-    font-size: 32px;
-    color: #428bca;
-    border-radius: 50%;
-    padding: 8px;
-    border: 2px dotted #9eccf4;
-  }
-  
-  .contact .info-box h3 {
-    font-size: 20px;
-    color: #666;
-    font-weight: 700;
-    margin: 10px 0;
-  }
-  
-  .contact .info-box p {
-    padding: 0;
-    line-height: 24px;
-    font-size: 14px;
-    margin-bottom: 0;
-  }
-  
-  .contact .php-email-form {
-    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-    padding: 30px;
-  }
-  
-  .contact .php-email-form .validate {
-    display: none;
-    color: red;
-    margin: 0 0 15px 0;
-    font-weight: 400;
-    font-size: 13px;
-  }
-  
-  .contact .php-email-form .error-message {
-    display: none;
-    color: #fff;
-    background: #ed3c0d;
-    text-align: left;
-    padding: 15px;
-    font-weight: 600;
-  }
-  
-  .contact .php-email-form .error-message br + br {
-    margin-top: 25px;
-  }
-  
-  .contact .php-email-form .sent-message {
-    display: none;
-    color: #fff;
-    background: #18d26e;
-    text-align: center;
-    padding: 15px;
-    font-weight: 600;
-  }
-  
-  .contact .php-email-form .loading {
-    display: none;
-    background: #fff;
-    text-align: center;
-    padding: 15px;
-  }
-  
-  .contact .php-email-form .loading:before {
-    content: "";
-    display: inline-block;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    margin: 0 10px -6px 0;
-    border: 3px solid #18d26e;
-    border-top-color: #eee;
-    -webkit-animation: animate-loading 1s linear infinite;
-    animation: animate-loading 1s linear infinite;
-  }
-  
-  .contact .php-email-form input, .contact .php-email-form textarea {
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 14px;
-  }
-  
-  .contact .php-email-form input::focus, .contact .php-email-form textarea::focus {
-    background-color: #428bca;
-  }
-  
-  .contact .php-email-form input {
-    padding: 20px 15px;
-  }
-  
-  .contact .php-email-form textarea {
-    padding: 12px 15px;
-  }
-  
-  .contact .php-email-form button[type="submit"] {
-    background: #428bca;
-    border: 0;
-    padding: 10px 24px;
-    color: #fff;
-    transition: 0.4s;
-  }
-  
-  .contact .php-email-form button[type="submit"]:hover {
-    background: #6aa3d5;
-  }
-  
-  @-webkit-keyframes animate-loading {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  @keyframes animate-loading {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  #footer {
-    background: #587187;
-    padding: 0 0 30px 0;
-    color: #fff;
-    font-size: 14px;
-  }
-  
-  #footer .footer-top {
-    background: #5c768d;
-    border-top: 1px solid #768fa6;
-    border-bottom: 1px solid #67839c;
-    padding: 60px 0 30px 0;
-  }
-  
-  #footer .footer-top .footer-info {
-    margin-bottom: 30px;
-  }
-  
-  #footer .footer-top .footer-info h3 {
-    font-size: 24px;
-    margin: 0 0 20px 0;
-    padding: 2px 0 2px 0;
-    line-height: 1;
-    font-weight: 700;
-  }
-  
-  #footer .footer-top .footer-info p {
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 0;
-    font-family: "Raleway", sans-serif;
-    color: #fff;
-  }
-  
-  #footer .footer-top .social-links a {
-    font-size: 18px;
-    display: inline-block;
-    background: #768fa6;
-    color: #fff;
-    line-height: 1;
-    padding: 8px 0;
-    margin-right: 4px;
-    border-radius: 50%;
-    text-align: center;
-    width: 36px;
-    height: 36px;
-    transition: 0.3s;
-  }
-  
-  #footer .footer-top .social-links a:hover {
-    background: #428bca;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  #footer .footer-top h4 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    position: relative;
-    padding-bottom: 12px;
-  }
-  
-  #footer .footer-top .footer-links {
-    margin-bottom: 30px;
-  }
-  
-  #footer .footer-top .footer-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  #footer .footer-top .footer-links ul i {
-    padding-right: 2px;
-    color: #9eccf4;
-    font-size: 18px;
-    line-height: 1;
-  }
-  
-  #footer .footer-top .footer-links ul li {
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  #footer .footer-top .footer-links ul li:first-child {
-    padding-top: 0;
-  }
-  
-  #footer .footer-top .footer-links ul a {
-    color: #fff;
-    transition: 0.3s;
-    display: inline-block;
-    line-height: 1;
-  }
-  
-  #footer .footer-top .footer-links ul a:hover {
-    color: #9eccf4;
-  }
-  
-  #footer .footer-top .footer-newsletter form {
-    margin-top: 30px;
-    background: #fff;
-    padding: 6px 10px;
-    position: relative;
-    border-radius: 4;
-  }
-  
-  #footer .footer-top .footer-newsletter form input[type="email"] {
-    border: 0;
-    padding: 4px;
-    width: calc(100% - 110px);
-  }
-  
-  #footer .footer-top .footer-newsletter form input[type="submit"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border: 0;
-    background: none;
-    font-size: 16px;
-    padding: 0 20px;
-    background: #428bca;
-    color: #fff;
-    transition: 0.3s;
-    border-radius: 4;
-  }
-  
-  #footer .footer-top .footer-newsletter form input[type="submit"]:hover {
-    background: #5295ce;
-  }
-  
-  #footer .copyright {
-    text-align: center;
-    padding-top: 30px;
-  }
-  
-  #footer .credits {
-    padding-top: 10px;
-    text-align: center;
-    font-size: 13px;
-    color: #fff;
-  }
-  
-  #footer .credits a {
-    color: #9eccf4;
-  }
-  
-  </style>
+ 
 </head>
   <body>
-    
+    <div class="sticky-top">
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-none d-lg-block">
     <div class="container clearfix ">
       <div class="contact-info float-left">
-        <i class="fa fa-envelope"></i><a href="mailto:contact@example.com">contact@example.com</a>
-        <i class="icofont-phone"></i> +1 1111 11111 11
+        <i class="fa fa-envelope"></i><a href="mailto:contact@example.com">schoolediaryproject@gmail.com
+        </a>
+        <i class="fa fa-phone"></i> +91 8989234653
+
       </div>
     
       <div class="social-links float-right">
@@ -1512,7 +39,6 @@ body {
   </section>
  <!-- ======= Header ======= -->
  <header id="header">
-
     <div class="container ">
 
       <div class="logo float-left">
@@ -1526,10 +52,8 @@ body {
           <li class="active"><a href="index.html">Home</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
-
-          
           <li><a href="#team">Team</a></li>
-         <li class="Sign up"><a  routerLink="/register" routerLinkActive="active">Sign  Up</a></li>
+          <li class="Sign up"><a  routerLink="/register" routerLinkActive="active">Sign  Up</a></li>
           <li class="Login"><a routerLink="/login" routerLinkActive="active">Login</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
@@ -1537,7 +61,7 @@ body {
 
     </div>
   </header><!-- End Header -->
-
+</div>
  <!-- ======= Hero Section ======= -->
  <section id="hero">
     <div class="hero-container">
@@ -1552,7 +76,8 @@ body {
             <div class="carousel-container">
               <div class="carousel-content container">
                 <h2 class="animate__animated animate__fadeInDown">Welcome to <span>School Diary</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <p class="animate__animated animate__fadeInUp">  School eDiary is an advanced application for school to make better communication between student/parent and teacher.Relevant features like Notice Board, Class Diary, Profile, Attendance,Academic Details,etc has been packed in the application in an easy to use interface.
+                </p>
                 <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
               </div>
             </div>
@@ -1567,6 +92,7 @@ body {
       </div>
     </div>
   </section><!-- End Hero -->
+
 
 <!-------------------------------------------------------------------------------------->
 
@@ -1586,19 +112,28 @@ body {
 
             <div class="section-title">
               <h2>About Us</h2>
-              <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
+              <p>
+                School eDiary is a light application with clean UI designed to replace the paper-based school diary.
+We are trying to simplify the commnication process between school and students or parents in a paperless way.
+In today's world almost every parent has a Smartphone, where they find and fill theirbasic need.
+So we are trying to add their childs's academic need and performance in a single application.
+              </p>
             </div>
 
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="bx bx-fingerprint"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <h4 class="title"><a href="">24/7 availability</a></h4>
+              <p class="description">
+                The well-functioning of the e-diary is in the hands of a team of professionals, who are in charge not only of proper performance of the software, but also of the security of the information stored therein.
+              </p>
             </div>
 
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="bx bx-gift"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              <h4 class="title"><a href="">Information security</a></h4>
+              <p class="description">
+                E-diary is available to students, parents and teachers all day, every day. A click on the link on the homepage opens the portal which you access with your username and password, assigned to you by the school.
+              </p>
             </div>
 
           </div>
@@ -1613,133 +148,114 @@ body {
 
         <div class="row no-gutters">
 
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
-            <span>01</span>
+          <div class="col-lg-6 col-md-6 content-item" data-aos="fade-up">
+            <span style="color: #16c7ff; font-weight: 600;">01</span>
             <h4>Administration</h4>
-            <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+            <p>Admin has all the records of student, parent & faculty.
+              Communicate with parents regulatory bodies and the public.
+            </p>
           </div>
 
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="100">
-            <span>02</span>
+          <div class="col-lg-6 col-md-6 content-item" data-aos="fade-up" data-aos-delay="100">
+            <span style="color: #16c7ff; font-weight: 600;">02</span>
             <h4>Faculty</h4>
-            <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</p>
+            <p>
+              Faculty here can mark attendance, add notice class wise, update result of students. This helps faculty to keep a track of the students in his/her respective class.
+            </p>
           </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 col-md-6 content-item" data-aos="fade-up" data-aos-delay="200">
 
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="200">
-            <span>03</span>
+            <span style="color: #16c7ff; font-weight: 600;">03</span>
             <h4> Parents</h4>
-            <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
+            <p>
+              Parents are able to view attendance and result of his/her child.
+              This helps them to keep a track of their child's progress.
+            </p>
           </div>
 
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="300">
-            <span>04</span>
+          <div class="col-lg-6 col-md-6 content-item" data-aos="fade-up" data-aos-delay="300">
+            <span style="color: #16c7ff; font-weight: 600;">04</span>
             <h4>Students</h4>
-            <p>Inventore quo sint a sint rerum. Distinctio blanditiis deserunt quod soluta quod nam mider lando casa</p>
+            <p>
+              Students here can view their profile, attendance, class notice, result.
+            </p>
           </div>
 
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="400">
-            <span>05</span>
-            <h4>Lorem Ipsum</h4>
-            <p>Vitae dolorem in deleniti ipsum omnis tempore voluptatem. Qui possimus est repellendus est quibusdam</p>
-          </div>
-
-          <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="500">
-            <span>06</span>
-            <h4>Lorem Ipsum</h4>
-            <p>Quis eum numquam veniam ea voluptatibus voluptas. Excepturi aut nostrum repudiandae voluptatibus corporis sequi</p>
-          </div>
 
         </div>
 
       </div>
+
+     
     </section><!-- End About Lists Section -->
 
-    <!-- ======= Counts Section ======= -->
-    <section class="counts section-bg">
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
-            <div class="count-box">
-              <i class="icofont-simple-smile" style="color: #20b38e;"></i>
-              <span data-toggle="counter-up"></span>
-              <p></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="count-box">
-              <i class="icofont-document-folder" style="color: #c042ff;"></i>
-              <span data-toggle="counter-up"></span>
-              <p></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
-            <div class="count-box">
-              <i class="icofont-live-support" style="color: #46d1ff;"></i>
-              <span data-toggle="counter-up"></span>
-              <p></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="600">
-            <div class="count-box">
-              <i class="icofont-users-alt-5" style="color: #ffb459;"></i>
-              <span data-toggle="counter-up"></span>
-              <p></p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
-
+   
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container">
-
-        <div class="section-title">
+         <div class="section-title">
           <h2>Services</h2>
         </div>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="fa fa-computer"></i>
+            <div class="icon"><i class="fa fa-list-alt
+              " style="color:#16c7ff;"></i>
 
             </div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            <h4 class="title"><a href="">Notice Board</a></h4>
+            <p class="description">
+              Instance alerts on any circular/notice from school.Students can view all the global and class notices.
+            </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="icofont-chart-bar-graph"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            <div class="icon">
+              <i class="fa fa-user" style="color: #16c7ff
+              ;"></i>
+
+            </div>
+            <h4 class="title"><a href="">Profile</a></h4>
+            <p class="description">Displays complete profile of the student, parent details, class teacher details, addresss and emergency contact number.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="icofont-earth"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            <div class="icon">
+
+              <i class="fa fa-check-square-o
+              "></i>
+
+            </div>
+            <h4 class="title"><a href="">Attendance</a></h4>
+            <p class="description">Detailed view of the student attendance in the current academic year including presents, absents and leaves.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="icofont-image"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <div class="icon">
+              <i class="fa fa-graduation-cap
+              "></i>
+             <!----<i class="fa fa-poll-h" style="color: #16c7ff;"></i>-->
+
+            </div>
+            <h4 class="title"><a href="">Result</a></h4>
+            <p class="description">Parents can see the term-wise and subject-wise marks statement of their ward thereby keeping a track of their academic performance.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon"><i class="icofont-settings"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            <div class="icon"><i class="fa fa-comments" style="color:#16c7ff;"></i></div>
+            <h4 class="title"><a href="">Feedback</a></h4>
+            <p class="description">
+              Parents/Teachers can share their valuable feedback about school infrastructure or curriculum to the admin.
+            </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon"><i class="icofont-tasks-alt"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            <div class="icon"><i class="fa fa-phone" style="color:#16c7ff;
+              "></i>
+            </div>
+            <h4 class="title"><a href="">Contact Us</a></h4>
+            <p class="description">
+              Remain updated about the contact details, website,social media accounts and visiting hours of the schools from the app.
+            </p>
           </div>
         </div>
-
       </div>
     </section><!-- End Services Section -->
 
@@ -1748,10 +264,9 @@ body {
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="section-title">
-          <h2>XXXXXXXXXXXXXXXXXXXXXXXXXXX</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quidem nobis corporis quaerat nam excepturi ducimus, illum provident adipisci dicta esse voluptate quibusdam a, quo aperiam fuga. Voluptatem, impedit debitis?</p>
+          <h2>School-E-Diary Gallery </h2>
+      
         </div>
-
 
         <div class="row ">
 
@@ -1762,7 +277,7 @@ body {
                 <h4>App 1</h4>
                 <p>App</p>
                 <div class="portfolio-links">
-                  <a href="assets/img3.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="icofont-eye"></i></a>
+                  <a href="assets/1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="icofont-eye"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="icofont-external-link"></i></a>
                 </div>
               </div>
@@ -1771,12 +286,12 @@ body {
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img3.jpg" class="img-fluid" alt="">
+              <img src="assets/2.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Web 3</h4>
                 <p>Web</p>
                 <div class="portfolio-links">
-                  <a href="assets/img3.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="icofont-eye"></i></a>
+                  <a href="assets/3.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="icofont-eye"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="icofont-external-link"></i></a>
                 </div>
               </div>
@@ -1785,12 +300,12 @@ body {
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img3.jpg" class="img-fluid" alt="">
+              <img src="assets/4.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>App 2</h4>
                 <p>App</p>
                 <div class="portfolio-links">
-                  <a href="assets/img3.jpg" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="icofont-eye"></i></a>
+                  <a href="assets/5.jpg" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="icofont-eye"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="icofont-external-link"></i></a>
                 </div>
               </div>
@@ -1799,12 +314,12 @@ body {
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img3.jpg" class="img-fluid" alt="">
+              <img src="assets/6.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Card 2</h4>
                 <p>Card</p>
                 <div class="portfolio-links">
-                  <a href="assets/img3.jpg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="icofont-eye"></i></a>
+                  <a href="assets/7.jpg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="icofont-eye"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="icofont-external-link"></i></a>
                 </div>
               </div>
@@ -1813,12 +328,12 @@ body {
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img3.jpg" class="img-fluid" alt="">
+              <img src="assets/8.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Web 2</h4>
                 <p>Web</p>
                 <div class="portfolio-links">
-                  <a href="assets/img3.jpg" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="icofont-eye"></i></a>
+                  <a href="assets/9.jpg" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="icofont-eye"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="icofont-external-link"></i></a>
                 </div>
               </div>
@@ -1888,73 +403,94 @@ body {
 
     <!-- ======= Our Team Section ======= -->
     <section id="team" class="team">
-      <div class="container">
+      <div class="container ">
       
 
         <div class="section-title">
           <h2>Our Team</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+        
         </div>
 
-        <div class="row">
+        <div class="row d-flex m-5 justify-content-center align-items-center">
 
-          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="col-xl-3 col-lg-4 col-md-6" >
             <div class="member">
-              <div class="pic"><img src="assets/imgg.jpeg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Aditya Soni</h4>
                 <span>Full Stack Developer</span>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                  <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                  <a href="#" class="skype"><i class='fa fa-skype ' aria-hidden="true"></i></a>
+                  <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="col-xl-3 col-lg-4 col-md-6" >
             <div class="member">
-              <div class="pic"><img src="assets/imgg.jpeg" class="img-fluid" alt=""></div>
+
               <div class="member-info">
                 <h4>Anuja Shirsath</h4>
-                <span>Front End Developer</span>
+                <span>Full Stack Developer</span>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#" class="skype"><i class='fa fa-skype ' aria-hidden="true"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
             <div class="member">
-              <div class="pic"><img src="assets/imgg.jpeg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Aditya Soni</h4>
+                <h4>Aditi Gudadhe</h4>
                 <span>Full Stack Developer</span>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#" class="skype"><i class='fa fa-skype ' aria-hidden="true"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
+
+        </div>
+        <div class="row d-flex m-5 justify-content-center align-items-center">
+          <div class="col-xl-3 col-lg-4 col-md-6 mt-3" data-aos="fade-up">
             <div class="member">
-              <div class="pic"><img src="assets/imgg.jpeg" class="img-fluid" alt=""></div>
+
               <div class="member-info">
-                <h4>Aditya Soni</h4>
+                <h4>Mrunali Besarkar</h4>
                 <span>Full Stack Developer</span>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                  <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                  <a href="#" class="skype"><i class='fa fa-skype ' aria-hidden="true"></i></a>
+                  <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 mt-3" data-aos="fade-up">
+            <div class="member">
+
+              <div class="member-info">
+                <h4>Shubham Lothe</h4>
+                <span>Full Stack Developer</span>
+                <div class="social">
+                  <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                  <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                  <a href="#" class="skype"><i class='fa fa-skype ' aria-hidden="true"></i></a>
+                  <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>
@@ -1963,6 +499,9 @@ body {
         </div>
 
       </div>
+      
+      
+        
     </section><!-- End Our Team Section -->
 
     <!-- ======= Frequently Asked Questions Section ======= -->
@@ -1998,7 +537,7 @@ body {
             <div class="info-box">
               <i class="fa fa-envelope"></i>
               <h3>Email Us</h3>
-              <p>info@example.com<br>contact@example.com</p>
+              <p>contact@example.com<br> schoolediaryproject@gmail.com</p>
             </div>
           </div>
 
@@ -2006,7 +545,8 @@ body {
             <div class="info-box ">
               <i class="fa fa-phone" aria-hidden="true"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+              <p>+91 8989234653<br>+91 7837460012
+              </p>
             </div>
           </div>
 
@@ -2014,24 +554,28 @@ body {
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="form-row">
                 <div class="col-lg-6 form-group">
-                  <input [(ngModel)]="cm.name" type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" [(ngModel)]="cm.name" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validate"></div>
                 </div>
                 <div class="col-lg-6 form-group">
-                  <input [(ngModel)]="cm.contactPersonEmail"  type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" [(ngModel)]="cm.contactPersonEmail" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                   <div class="validate"></div>
                 </div>
               </div>
               <div class="form-group">
-                <input [(ngModel)]="cm.subject" type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control"[(ngModel)]="cm.subject" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                 <div class="validate"></div>
               </div>
               <div class="form-group">
-                <textarea [(ngModel)]="cm.message" class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <textarea class="form-control" [(ngModel)]="cm.message" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                 <div class="validate"></div>
               </div>
-             
-              <div  class="text-center"><button (click)="submit()" type="submit">Send Message</button></div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit" (click)=" submit()">Send Message</button></div>
             </form>
           </div>
 
@@ -2042,6 +586,7 @@ body {
 
   </main><!-- End #main -->
 
+ 
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -2053,8 +598,9 @@ body {
             <p>
               A100 ABC Street <br>
               Mumbai 535022, India<br><br>
-              <strong>Phone:</strong> +1 1111 11111 11<br>
-              <strong>Email:</strong> xyz@example.com<br>
+              <strong>Phone:</strong>+91 8989234653<br>
+              <strong>Email:</strong> schoolediaryproject@gmail.com
+              <br>
             </p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -2079,17 +625,21 @@ body {
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li> <a href="#">Lorem Ipsum</a></li>
-              <li><a href="#">Lorem Ipsum</a></li>
-              <li><a href="#">Lorem Ipsum</a></li>
-              <li> <a href="#">Lorem Ipsum</a></li>
-              <li> <a href="#">Lorem Ipsum</a></li>
+              <li> <a href="#">Notice Board</a></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Attendance</a></li>
+              <li> <a href="#">Result</a></li>
+              <li> <a href="#">Feedback</a></li>
+              <li> <a href="#">Contact Us</a></li>
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <p>School will re-open soon in mid-february.</p>
+                         <p>Communicate with us any time.
+                         We will be there 24/7</p>
+
             <form action="" method="post">
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
@@ -2108,41 +658,16 @@ body {
     </div>
   </footer><!-- End Footer -->
 
+
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Optional JavaScript -->
+<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
 
 

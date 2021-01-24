@@ -18,6 +18,9 @@ var RaiseRequestComponent = /** @class */ (function () {
     }
     RaiseRequestComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (!sessionStorage.getItem('id')) {
+            this.router.navigate(['homepage']);
+        }
         var id = sessionStorage.getItem('id');
         this.Http.getUser(id).subscribe(function (res) {
             _this.user = res;
@@ -38,6 +41,25 @@ var RaiseRequestComponent = /** @class */ (function () {
     };
     RaiseRequestComponent.prototype.back = function () {
         this.router.navigate(['userHome']);
+    };
+    RaiseRequestComponent.prototype.logout = function () {
+        sessionStorage.removeItem('id');
+        this.router.navigate(['homepage']);
+    };
+    RaiseRequestComponent.prototype.home = function () {
+        this.router.navigate(['userHome']);
+    };
+    RaiseRequestComponent.prototype.vProfile = function () {
+        this.router.navigate(['viewProfile']);
+    };
+    RaiseRequestComponent.prototype.attendance = function () {
+        this.router.navigate(['attendance']);
+    };
+    RaiseRequestComponent.prototype.result = function () {
+        this.router.navigate(['result']);
+    };
+    RaiseRequestComponent.prototype.notices = function () {
+        this.router.navigate(['noticeUpdate']);
     };
     RaiseRequestComponent = __decorate([
         core_1.Component({

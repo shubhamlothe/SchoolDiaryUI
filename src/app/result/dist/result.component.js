@@ -15,6 +15,7 @@ var ResultComponent = /** @class */ (function () {
         this.Http = Http;
         this.router = router;
         this.datePipe = datePipe;
+        this.user = new http_client_service_service_1.User();
         this.isP = false;
         this.isStu = false;
         this.stu = new http_client_service_service_1.student;
@@ -23,11 +24,16 @@ var ResultComponent = /** @class */ (function () {
     }
     ResultComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (!sessionStorage.getItem('id')) {
+            this.router.navigate(['homepage']);
+        }
         this.Http.getUser(sessionStorage.getItem('id')).subscribe(function (res) {
+            _this.user = res;
             _this.role_id = res.role_id;
             if (_this.role_id == 1) {
                 _this.isDisplay = true;
                 _this.getStudentToUpdateResult();
+                _this.getAlreadyAppliedExams();
             }
             else if (_this.role_id == 2) {
                 _this.isStu = true;
@@ -90,6 +96,37 @@ var ResultComponent = /** @class */ (function () {
                 res[i].exam_date = res[i].exam_date.slice(0, 2) + "/" + res[i].exam_date.slice(2, 4) + "/" + res[i].exam_date.slice(4, 8);
             }
         });
+    };
+    ResultComponent.prototype.getAlreadyAppliedExams = function () {
+        var _this = this;
+        this.Http.getClass(sessionStorage.getItem('id')).subscribe(function (res) {
+            _this.Faculty.teaching_class = res.teaching_class;
+            _this.Http.getAlreadyAppliedExams(_this.Faculty.teaching_class).subscribe(function (res) {
+                _this.alreadyRes = res;
+                for (var i = 0; i < res.length; i++) {
+                    res[i].exam_date = res[i].exam_date.slice(0, 2) + "/" + res[i].exam_date.slice(2, 4) + "/" + res[i].exam_date.slice(4, 8);
+                }
+            });
+        });
+    };
+    ResultComponent.prototype.logout = function () {
+        sessionStorage.removeItem('id');
+        this.router.navigate(['homepage']);
+    };
+    ResultComponent.prototype.home = function () {
+        this.router.navigate(['userHome']);
+    };
+    ResultComponent.prototype.vProfile = function () {
+        this.router.navigate(['viewProfile']);
+    };
+    ResultComponent.prototype.attendance = function () {
+        this.router.navigate(['attendance']);
+    };
+    ResultComponent.prototype.result = function () {
+        this.router.navigate(['result']);
+    };
+    ResultComponent.prototype.notices = function () {
+        this.router.navigate(['noticeUpdate']);
     };
     ResultComponent = __decorate([
         core_1.Component({

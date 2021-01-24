@@ -2,7 +2,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClientServiceService, notice } from '../http-client-service.service';
+import { HttpClientServiceService, notice, User } from '../http-client-service.service';
 
 @Component({
   selector: 'app-user-home-page',
@@ -22,24 +22,25 @@ export class UserHomePageComponent implements OnInit {
   clsNotice: notice[];
   myDate = new Date()
   globalNotice: notice[];
+  user: User = new User();
   constructor(private router: Router, private Http: HttpClientServiceService, private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
     if (!sessionStorage.getItem('id')) {
       this.router.navigate(['homepage']);
+    } else {
+      this.Http.getUser(sessionStorage.getItem('id')).subscribe(res => {
+        this.user = res;
+      })
     }
-
     this.getdetails()
-    this.getclsNoticeForFaculty();
-    this.getclsNoticeForStudent();
     this.getGlobalNotice();
   }
 
   getclsNoticeForStudent() {
     this.Http.getStudentClas(sessionStorage.getItem('id')).subscribe(res => {
       this.n.student_class = res.student_class;
-      alert(this.n.student_class);
       let latest_date = this.datePipe.transform(this.myDate, 'ddMMyyyy');
       this.n.date_to = latest_date;
       this.getNotice();
@@ -67,7 +68,6 @@ export class UserHomePageComponent implements OnInit {
         res[i].date_to = res[i].date_to.slice(0, 2) + "-" + res[i].date_to.slice(2, 4) + "-" + res[i].date_to.slice(4, 8);
       }
       this.clsNotice = res;
-
     })
   }
 
@@ -110,6 +110,11 @@ export class UserHomePageComponent implements OnInit {
         this.isAdmin = true;
         this.isFaculty = false;
         this.isStudent = false;
+        let latest_date = this.datePipe.transform(this.myDate, 'ddMMyyyy');
+        this.Http.getAllNoticeForAdmin(latest_date).subscribe(res => {
+          this.clsNotice = res;
+
+        })
       }
       else if (this.role_id == 1) {
 
@@ -117,12 +122,14 @@ export class UserHomePageComponent implements OnInit {
         this.isFaculty = true;
         this.isAdmin = false;
         this.isStudent = false;
+        this.getclsNoticeForFaculty();
       }
       else if (this.role_id == 2 || this.role_id == 3) {
         this.isDisplay = false;
         this.isStudent = true;
         this.isAdmin = false;
         this.isFaculty = false;
+        this.getclsNoticeForStudent();
       }
       else {
         this.isDisplay = false;
@@ -159,5 +166,30 @@ export class UserHomePageComponent implements OnInit {
   }
   raiseRequest() {
     this.router.navigate(['raiseRequest']);
+  }
+
+  back() {
+    this.router.navigate(['userHome']);
+  }
+
+
+
+
+
+  home() {
+    this.router.navigate(['userHome']);
+  }
+
+  vProfile() {
+    this.router.navigate(['viewProfile']);
+  }
+
+
+  result() {
+    this.router.navigate(['result']);
+  }
+
+  notices() {
+    this.router.navigate(['noticeUpdate']);
   }
 }

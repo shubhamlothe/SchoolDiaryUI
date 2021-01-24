@@ -16,11 +16,11 @@ var forget_password_component_1 = require("./forget-password/forget-password.com
 var view_profile_component_1 = require("./view-profile/view-profile.component");
 var user_home_page_component_1 = require("./user-home-page/user-home-page.component");
 var notice_update_component_1 = require("./notice-update/notice-update.component");
-var attendance_update_component_1 = require("./attendance-update/attendance-update.component");
 var attendance_component_1 = require("./attendance/attendance.component");
 var result_component_1 = require("./result/result.component");
 var approve_user_component_1 = require("./approve-user/approve-user.component");
 var raise_request_component_1 = require("./raise-request/raise-request.component");
+var page_not_found_component_1 = require("./page-not-found/page-not-found.component");
 var routes = [
     { path: '', component: homepage_component_1.HomepageComponent },
     { path: 'homepage', component: homepage_component_1.HomepageComponent },
@@ -30,11 +30,11 @@ var routes = [
     { path: 'viewProfile', component: view_profile_component_1.ViewProfileComponent },
     { path: 'userHome', component: user_home_page_component_1.UserHomePageComponent },
     { path: 'noticeUpdate', component: notice_update_component_1.NoticeUpdateComponent },
-    { path: 'applyAttendance', component: attendance_update_component_1.AttendanceUpdateComponent },
     { path: 'attendance', component: attendance_component_1.AttendanceComponent },
     { path: 'result', component: result_component_1.ResultComponent },
     { path: 'approveUser', component: approve_user_component_1.ApproveUserComponent },
-    { path: 'raiseRequest', component: raise_request_component_1.RaiseRequestComponent }
+    { path: 'raiseRequest', component: raise_request_component_1.RaiseRequestComponent },
+    { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

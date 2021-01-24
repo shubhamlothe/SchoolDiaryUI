@@ -99,25 +99,31 @@ export class RegisterComponent implements OnInit {
 
     // alert(this.user.dob);
     this.httpClientService.Register(this.user).subscribe(res => {
-      //  alert("Successfully Registered");
-      this.user.fName = "";
-      this.user.lName = "";
-      this.user.email_id = "";
-      this.user.mobile_no = "";
-      this.user.address = "";
-      this.user.city = "";
-      this.user.state = "";
-      this.user.fName_f = "";
-      this.user.lName_f = "";
-      this.user.email_id_f = "";
-      this.user.mobile_no_f = "";
-      this.user.dob = "";
-      this.user.gender = "";
-      this.user.student_class = null;
-      this.user.faculty_class = null;
-      this.user.joining_date = "";
-      this.user.password = "";
-      console.log(this.user.fName, this.user.lName, this.user.email_id, this.user.mobile_no, this.user.address, this.user.state);
+      if (res != null) {
+
+
+        //  alert("Successfully Registered");
+        this.user.fName = "";
+        this.user.lName = "";
+        this.user.email_id = "";
+        this.user.mobile_no = "";
+        this.user.address = "";
+        this.user.city = "";
+        this.user.state = "";
+        this.user.fName_f = "";
+        this.user.lName_f = "";
+        this.user.email_id_f = "";
+        this.user.mobile_no_f = "";
+        this.user.dob = "";
+        this.user.gender = "";
+        this.user.student_class = null;
+        this.user.faculty_class = null;
+        this.user.joining_date = "";
+        this.user.password = "";
+        this.router.navigate(['login']);
+      } else {
+        alert("Please fill all the details");
+      }
     })
   }
   getCountries() {

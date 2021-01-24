@@ -15,6 +15,9 @@ export class ApproveUserComponent implements OnInit {
   constructor(private abc: HttpClientServiceService, private router: Router) { }
 
   ngOnInit(): void {
+    if (!sessionStorage.getItem('id')) {
+      this.router.navigate(['homepage']);
+    }
     this.GetPending();
   }
   GetPending() {
@@ -32,6 +35,35 @@ export class ApproveUserComponent implements OnInit {
     this.abc.approval(this.users).subscribe(res => {
       this.router.navigate(['userHome']);
     })
+  }
+
+
+
+  logout() {
+    sessionStorage.removeItem('id');
+    this.router.navigate(['homepage']);
+  }
+
+  home() {
+    this.router.navigate(['userHome']);
+  }
+
+  vProfile() {
+    this.router.navigate(['viewProfile']);
+  }
+
+  attendance() {
+    this.router.navigate(['attendance']);
+  }
+  result() {
+    this.router.navigate(['result']);
+  }
+
+  notices() {
+    this.router.navigate(['noticeUpdate']);
+  }
+  back() {
+    this.router.navigate(['userHome']);
   }
 }
 

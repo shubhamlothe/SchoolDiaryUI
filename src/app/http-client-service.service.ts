@@ -158,10 +158,18 @@ export class HttpClientServiceService {
   constructor(private httpClient: HttpClient) { }
 
   Register(user: User) {
-    alert(user.securityQuestionId_F);
+
+    if (user.securityQuestionId_S == null) {
+      alert("please fill all the details");
+      return;
+    }
     return this.httpClient.post<User>("http://localhost:8080/user_reg", user);
   }
   login(user: User) {
+    if (user.email_id == null || user.password == null) {
+      alert("Please fill all the fields");
+      return;
+    }
     return this.httpClient.post<User>("http://localhost:8080/login", user);
   }
   StudentList(cls: number) {
@@ -259,6 +267,17 @@ export class HttpClientServiceService {
 
   addNotice(Notice: notice) {
     return this.httpClient.post<notice>("http://localhost:8080/AddNotice/", Notice);
+  }
+
+  getAllNoticeForAdmin(date: string) {
+
+    return this.httpClient.get<notice[]>("http://localhost:8080/getClassNoticesForAdmin/" + date);
+  }
+
+  getAlreadyAppliedExams(cls: number) {
+
+    return this.httpClient.get<result[]>("http://localhost:8080/getAlreadyAppliedExams/" + cls)
+
   }
 
 }

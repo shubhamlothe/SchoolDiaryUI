@@ -65,7 +65,9 @@ export class LoginComponent implements OnInit {
 
 
       } else {
-        //alert("Wrong Credentials");
+        alert("Wrong Credentials");
+        this.user.email_id = null;
+        this.user.password = null;
       }
     })
   }

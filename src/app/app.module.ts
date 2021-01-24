@@ -10,15 +10,16 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-import { FacultyComponent } from './faculty/faculty.component';
+
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 import { NoticeUpdateComponent } from './notice-update/notice-update.component';
-import { AttendanceUpdateComponent } from './attendance-update/attendance-update.component';
+
 import { AttendanceComponent } from './attendance/attendance.component';
 import { ResultComponent } from './result/result.component';
 import { ApproveUserComponent } from './approve-user/approve-user.component';
 import { RaiseRequestComponent } from './raise-request/raise-request.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,15 +28,15 @@ import { RaiseRequestComponent } from './raise-request/raise-request.component';
     HomepageComponent,
     LoginComponent,
     ForgetPasswordComponent,
-    FacultyComponent,
     ViewProfileComponent,
     UserHomePageComponent,
     NoticeUpdateComponent,
-    AttendanceUpdateComponent,
+
     AttendanceComponent,
     ResultComponent,
     ApproveUserComponent,
-    RaiseRequestComponent
+    RaiseRequestComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,7 @@ import { RaiseRequestComponent } from './raise-request/raise-request.component';
     HttpClientModule,
     FormsModule,
     CommonModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

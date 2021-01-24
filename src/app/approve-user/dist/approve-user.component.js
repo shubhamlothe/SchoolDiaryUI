@@ -15,6 +15,9 @@ var ApproveUserComponent = /** @class */ (function () {
         this.router = router;
     }
     ApproveUserComponent.prototype.ngOnInit = function () {
+        if (!sessionStorage.getItem('id')) {
+            this.router.navigate(['homepage']);
+        }
         this.GetPending();
     };
     ApproveUserComponent.prototype.GetPending = function () {
@@ -33,6 +36,28 @@ var ApproveUserComponent = /** @class */ (function () {
         this.abc.approval(this.users).subscribe(function (res) {
             _this.router.navigate(['userHome']);
         });
+    };
+    ApproveUserComponent.prototype.logout = function () {
+        sessionStorage.removeItem('id');
+        this.router.navigate(['homepage']);
+    };
+    ApproveUserComponent.prototype.home = function () {
+        this.router.navigate(['userHome']);
+    };
+    ApproveUserComponent.prototype.vProfile = function () {
+        this.router.navigate(['viewProfile']);
+    };
+    ApproveUserComponent.prototype.attendance = function () {
+        this.router.navigate(['attendance']);
+    };
+    ApproveUserComponent.prototype.result = function () {
+        this.router.navigate(['result']);
+    };
+    ApproveUserComponent.prototype.notices = function () {
+        this.router.navigate(['noticeUpdate']);
+    };
+    ApproveUserComponent.prototype.back = function () {
+        this.router.navigate(['userHome']);
     };
     ApproveUserComponent = __decorate([
         core_1.Component({

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -8,24 +7,109 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
-    <!-- Google Fonts -->
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
+
     <script src="https://kit.fontawesome.com/f059dbf7f4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
   ">
+
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900"
         rel="stylesheet">
-    <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/f059dbf7f4.js" crossorigin="anonymous"></script>
     <style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        /*
+ * Off Canvas sidebar at medium breakpoint
+ * --------------------------------------------------
+ */
+        @media screen and (max-width: 992px) {
+
+            .row-offcanvas {
+                position: relative;
+                -webkit-transition: all 0.25s ease-out;
+                -moz-transition: all 0.25s ease-out;
+                transition: all 0.25s ease-out;
+            }
+
+            .row-offcanvas-left .sidebar-offcanvas {
+                left: -33%;
+            }
+
+            .row-offcanvas-left.active {
+                left: 33%;
+                margin-left: -6px;
+            }
+
+            .sidebar-offcanvas {
+                position: absolute;
+                top: 0;
+                width: 33%;
+                height: 100%;
+                overflow: auto;
+            }
+        }
+
+        /*
+ * Off Canvas wider at sm breakpoint
+ * --------------------------------------------------
+ */
+        @media screen and (max-width: 34em) {
+            .row-offcanvas-left .sidebar-offcanvas {
+                left: -45%;
+            }
+
+            .row-offcanvas-left.active {
+                left: 45%;
+                margin-left: -6px;
+            }
+
+            .sidebar-offcanvas {
+                width: 45%;
+            }
+        }
+
+        .card {
+            overflow: hidden;
+        }
+
+        .card-body .rotate {
+            z-index: 8;
+            float: right;
+            height: 100%;
+        }
+
+        .card-body .rotate i {
+            color: rgba(20, 20, 20, 0.15);
+            position: absolute;
+            left: 0;
+            left: auto;
+            right: -10px;
+            bottom: 0;
+            display: block;
+            -webkit-transform: rotate(-44deg);
+            -moz-transform: rotate(-44deg);
+            -o-transform: rotate(-44deg);
+            -ms-transform: rotate(-44deg);
+            transform: rotate(-44deg);
+        }
+
         body {
             font-family: "Open Sans", sans-serif;
             color: #444;
         }
 
         a {
-            color: #103453;
+            color: white;
             ;
         }
 
@@ -123,7 +207,7 @@
   --------------------------------------------------------------*/
         #header {
             height: 70px;
-
+            margin-left: 120px;
             transition: all 0.5s;
             transition: all 0.5s;
             padding: 10px 0;
@@ -187,6 +271,71 @@
             text-decoration: none;
         }
 
+        .nav-menu .drop-down ul {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            padding: 10px 0;
+            background: #fff;
+            box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+            transition: ease all 0.3s;
+        }
+
+        .nav-menu .drop-down:hover>ul {
+            opacity: 1;
+            top: 100%;
+            visibility: visible;
+        }
+
+        .nav-menu .drop-down li {
+            min-width: 180px;
+            position: relative;
+        }
+
+        .nav-menu .drop-down ul a {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: none;
+            color: #103453;
+        }
+
+        .nav-menu .drop-down ul a:hover,
+        .nav-menu .drop-down ul .active>a,
+        .nav-menu .drop-down ul li:hover>a {
+            color: #103453;
+        }
+
+        .nav-menu .drop-down>a:after {
+            content: "\ea99";
+            font-family: IcoFont;
+            padding-left: 5px;
+        }
+
+        .nav-menu .drop-down .drop-down ul {
+            top: 0;
+            left: 100%;
+        }
+
+        .nav-menu .drop-down .drop-down:hover>ul {
+            opacity: 1;
+            top: 0;
+        }
+
+        .nav-menu .drop-down .drop-down>a {
+            padding-right: 35px;
+        }
+
+        .nav-menu .drop-down .drop-down>a:after {
+            content: "\eaa0";
+            font-family: IcoFont;
+            position: absolute;
+            right: 15px;
+        }
 
 
         /* Mobile Navigation */
@@ -271,7 +420,9 @@
         .mobile-nav-overly {
             width: 100%;
             height: 100%;
-
+            z-index: 9997;
+            top: 0;
+            left: 0;
             position: fixed;
             background: rgba(31, 53, 72, 0.7);
             overflow: hidden;
@@ -294,7 +445,7 @@
   # Hero Section
   --------------------------------------------------------------*/
         #hero {
-
+            width: 100%;
             height: calc(100vh - 114px);
             padding: 0;
             overflow: hidden;
@@ -1466,6 +1617,460 @@
         }
 
         .page-wrapper .theme {
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            border-radius: 4px;
+            margin: 2px;
+        }
+
+        .page-wrapper #theme {
+            background-color: #103453;
+            ;
+        }
+
+        /*----------------toggeled sidebar----------------*/
+
+        .page-wrapper.toggled .sidebar-wrapper {
+            left: 0px;
+        }
+
+
+
+
+        /*----------------show sidebar button----------------*/
+        #show-sidebar {
+            position: fixed;
+            left: 0;
+
+            border-radius: 0 4px 4px 0px;
+            width: 35px;
+            transition-delay: 0.3s;
+        }
+
+        .page-wrapper.toggled #show-sidebar {
+            left: -40px;
+        }
+
+        /*----------------sidebar-wrapper----------------*/
+
+        .sidebar-wrapper {
+            width: 260px;
+            height: 100%;
+            max-height: 100%;
+            position: fixed;
+
+            left: -300px;
+
+        }
+
+        .sidebar-wrapper ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-wrapper a {
+            text-decoration: none;
+        }
+
+        /*----------------sidebar-content----------------*/
+
+        .sidebar-content {
+            max-height: calc(100% - 30px);
+            height: calc(100% - 30px);
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .sidebar-content.desktop {
+            overflow-y: hidden;
+        }
+
+        /*--------------------sidebar-brand----------------------*/
+
+        .sidebar-wrapper .sidebar-brand {
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-wrapper .sidebar-brand>a {
+            text-transform: uppercase;
+            font-weight: bold;
+            flex-grow: 1;
+        }
+
+        .sidebar-wrapper .sidebar-brand #close-sidebar {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*--------------------sidebar-header----------------------*/
+
+        .sidebar-wrapper .sidebar-header {
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .sidebar-wrapper .sidebar-header .user-pic {
+            float: left;
+            width: 60px;
+            padding: 2px;
+            border-radius: 12px;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+
+        .sidebar-wrapper .sidebar-header .user-pic img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .sidebar-wrapper .sidebar-header .user-info {
+            float: left;
+        }
+
+        .sidebar-wrapper .sidebar-header .user-info>span {
+            display: block;
+        }
+
+        .sidebar-wrapper .sidebar-header .user-info .user-role {
+            font-size: 12px;
+        }
+
+        .sidebar-wrapper .sidebar-header .user-info .user-status {
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .sidebar-wrapper .sidebar-header .user-info .user-status i {
+            font-size: 8px;
+            margin-right: 4px;
+            color: #5cb85c;
+        }
+
+        /*-----------------------sidebar-search------------------------*/
+
+        .sidebar-wrapper .sidebar-search>div {
+            padding: 10px 20px;
+        }
+
+        /*----------------------sidebar-menu-------------------------*/
+
+        .sidebar-wrapper .sidebar-menu {
+            padding-bottom: 10px;
+        }
+
+        .sidebar-wrapper .sidebar-menu .header-menu span {
+            font-weight: bold;
+            font-size: 14px;
+            padding: 15px 20px 5px 20px;
+            display: inline-block;
+        }
+
+        .sidebar-wrapper .sidebar-menu ul li a {
+            display: inline-block;
+            width: 100%;
+            text-decoration: none;
+            position: relative;
+            padding: 8px 30px 8px 20px;
+            color: white;
+            ;
+        }
+
+        .sidebar-wrapper .sidebar-menu ul li a i {
+            margin-right: 10px;
+            font-size: 12px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .sidebar-wrapper .sidebar-menu ul li a:hover>i::before {
+            display: inline-block;
+            animation: swing ease-in-out 0.5s 1 alternate;
+        }
+
+        .sidebar-wrapper .sidebar-menu .sidebar-dropdown>a:after {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f105";
+            font-style: normal;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            background: 0 0;
+            position: absolute;
+            right: 15px;
+            top: 14px;
+        }
+
+        .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu ul {
+            padding: 5px 0;
+        }
+
+        .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li {
+            padding-left: 25px;
+            font-size: 13px;
+        }
+
+        .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a:before {
+            content: "\f111";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 400;
+            font-style: normal;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin-right: 10px;
+            font-size: 8px;
+        }
+
+        .sidebar-wrapper .sidebar-menu ul li a span.label,
+        .sidebar-wrapper .sidebar-menu ul li a span.badge {
+            float: right;
+            margin-top: 8px;
+            margin-left: 5px;
+        }
+
+        .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a .badge,
+        .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a .label {
+            float: right;
+            margin-top: 0px;
+        }
+
+        .sidebar-wrapper .sidebar-menu .sidebar-submenu {
+            display: none;
+        }
+
+        .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active>a:after {
+            transform: rotate(90deg);
+            right: 17px;
+        }
+
+        /*--------------------------side-footer------------------------------*/
+
+        .sidebar-footer {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            display: flex;
+        }
+
+        .sidebar-footer>a {
+            flex-grow: 1;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            position: relative;
+        }
+
+        .sidebar-footer>a .notification {
+            position: absolute;
+            top: 0;
+        }
+
+
+        /*--------------------------page-content-----------------------------*/
+
+        .page-wrapper .page-content {
+            display: inline-block;
+            width: 100%;
+            padding-left: 0px;
+
+
+        }
+
+        .page-wrapper .page-content>div {
+            padding: 20px 40px;
+        }
+
+        .page-wrapper .page-content {
+            overflow-x: hidden;
+        }
+
+
+        /************main-content******************/
+        #main-content {
+            width: 100%;
+            transition: all 0.5s ease;
+        }
+
+        #wrapper #main-content {
+            position: absolute;
+            margin-right: -270px;
+
+            transition: all 0.5s ease;
+        }
+
+        #main-content {
+            margin-left: 270px;
+            transition: all 0.5s ease;
+        }
+
+
+
+
+        /*------scroll bar---------------------*/
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 7px;
+        }
+
+        ::-webkit-scrollbar-button {
+            width: 0px;
+            height: 0px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #103453;
+            ;
+            border: 0px none #ffffff;
+            border-radius: 0px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #103453;
+            ;
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background: #103453;
+            ;
+            ;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+            border: 0px none #ffffff;
+            border-radius: 50px;
+        }
+
+        ::-webkit-scrollbar-track:hover {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-track:active {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: transparent;
+        }
+
+
+        /*-----------------------------theme-------------------------------------------------*/
+
+        #theme .sidebar-wrapper {
+            background: #103453;
+            ;
+        }
+
+        #theme .sidebar-wrapper .sidebar-header,
+        #theme .sidebar-wrapper .sidebar-search,
+        #theme .sidebar-wrapper .sidebar-menu {
+            border-top: 1px solid #103453;
+            ;
+        }
+
+        #theme .sidebar-wrapper .sidebar-search input.search-menu,
+        #theme .sidebar-wrapper .sidebar-search .input-group-text {
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        #theme .sidebar-wrapper .sidebar-header .user-info .user-role,
+        #theme .sidebar-wrapper .sidebar-header .user-info .user-status,
+        #theme .sidebar-wrapper .sidebar-search input.search-menu,
+        #theme .sidebar-wrapper .sidebar-search .input-group-text,
+        #theme .sidebar-wrapper .sidebar-brand>a,
+        #theme .sidebar-wrapper .sidebar-menu ul li a,
+        #theme .sidebar-footer>a {
+            color: white;
+        }
+
+        #theme .sidebar-wrapper .sidebar-menu ul li:hover>a,
+        #theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active>a,
+        #theme .sidebar-wrapper .sidebar-header .user-info,
+        #theme .sidebar-wrapper .sidebar-brand>a:hover,
+        #theme .sidebar-footer>a:hover i {
+            color: white;
+        }
+
+        .page-wrapper #theme.toggled #close-sidebar {
+            color: white;
+        }
+
+        .page-wrapper #theme.toggled #close-sidebar:hover {
+            color: #ffffff;
+        }
+
+        #theme .sidebar-wrapper ul li:hover a i,
+        #theme .sidebar-wrapper .sidebar-dropdown .sidebar-submenu li a:hover:before,
+        #theme .sidebar-wrapper .sidebar-search input.search-menu:focus+span,
+        #theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active a i {
+            color: white;
+            ;
+            text-shadow: 0px 0px 10px rgba(22, 199, 255, 0.5);
+        }
+
+        #theme .sidebar-wrapper .sidebar-menu ul li a i,
+        #theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown div,
+        #theme .sidebar-wrapper .sidebar-search input.search-menu,
+        #theme .sidebar-wrapper .sidebar-search .input-group-text {
+            background: #103453;
+        }
+
+        #theme .sidebar-wrapper .sidebar-menu .header-menu span {
+            color: white;
+        }
+
+        #theme .sidebar-footer {
+            background: #103453;
+            ;
+            box-shadow: 0px -1px 5px #103453;
+            ;
+            border-top: 1px solid #103453;
+            ;
+        }
+
+        #theme .sidebar-footer>a:first-child {
+            border-left: none;
+        }
+
+        #theme .sidebar-footer>a:last-child {
+            border-right: none;
+        }
+
+        /*--------------------------------------------------------------
+  #Sidebar
+  --------------------------------------------------------------*/
+
+        body {
+            font-size: 0.9rem;
+        }
+
+
+        /*----------------page-wrapper----------------*/
+
+        .page-wrapper {
+            height: 100vh;
+
+
+        }
+
+        .page-wrapper .theme {
 
             height: 40px;
             display: inline-block;
@@ -1499,7 +2104,7 @@
 
         .page-wrapper.toggled #show-sidebar {
             left: -40px;
-          
+
         }
 
         /*----------------sidebar-wrapper----------------*/
@@ -1508,8 +2113,8 @@
             width: 260px;
             height: 100%;
             max-height: 100%;
-            position:fixed;
-            overflow:none;
+            position: fixed;
+            overflow: none;
 
             left: -300px;
 
@@ -1904,368 +2509,285 @@
             border-right: none;
         }
     </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="container-fluid">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #103453;">
+        <a class="navbar-brand text-light " style="font-weight: bold; font-size: 25px;" >School Diary</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+  
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+  
+                <button class="btn  my-2 my-sm-0"  (click)="logout()" style="outline:  #103453;color: #fff;"  type="submit"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                  Log Out</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container-fluid" id="main" >
 
-        <div class="row">
-            <div class="col-2">
-               
-                <div class="page-wrapper  toggled" id="theme">
-                    <a id="show-sidebar" class="btn btn-sm" style="background-color: #103453; color: white;" href="#">
-                        <i class="fas fa-bars"></i>
-                    </a>
-                    <nav id="sidebar" class="sidebar-wrapper">
-                        <div class="sidebar-content">
-                            <div class="sidebar-brand">
-                                <a href="#">Profile</a>
-                                <div id="close-sidebar" style="color: white;">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                            <div class="sidebar-header">
-                                <div class="user-pic">
-                                    <img class="img-responsive img-rounded"
-                                        src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-                                        alt="User picture">
-                                </div>
-                                <div class="user-info">
-                                    <span class="user-name">
-                                        <strong>USERNAME</strong>
-                                    </span>
-                                    <span class="user-role">Administrator</span>
-                                    <span class="user-status">
-                                        <i class="fa fa-circle"></i>
-                                        <span>Online</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <!-- sidebar-header  -->
+        <div class="row row-offcanvas row-offcanvas-left" style="color: white;">
 
-                            <!-- sidebar-search  -->
-                            <div class="sidebar-menu">
-                                <ul>
-                                    <li class="header-menu">
-                                        <span>General</span>
-                                    </li>
-                                    <li class="sidebar-dropdown">
-                                        <a href="#">
-                                            <i class="fa fa-tachometer-alt"></i>
-                                            <span>Dashboard</span>
+            <div class="col-md-3 col-lg-2 sidebar-offcanvas  pl-0"  style="background-color: #103453; height: 1000px;" id="sidebar" role="navigation">
 
-                                        </a>
-                                        <div class="sidebar-submenu">
-                                            <ul>
-                                                <li><a href="ProfileSidebar1.html">Dashboard 1</a></li>
-                                                <li><a href="#">Dashboard 2</a></li>
-                                                <li>
-                                                    <a href="#">Dashboard 3</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="sidebar-dropdown">
-                                        <a href="#"><span><i class="fab fa-youtube"></i>Courses</span></a>
-                                        <div class="sidebar-submenu">
-                                            <ul>
-                                                <li><a href="C++.html">C++</a></li>
-                                                <li><a href="Java.html">Java</a></li>
-                                                <li><a href="DS.html">Data Structures</a></li>
-                                                <li><a href="">SQL</a></li>
+                <div class="sidebar-content ">
+                    <div class="sidebar-brand m-3"  >
+                      <a href="#"></a>
+                      <div id="close-sidebar mt-5" style="color: white;">
+                          <i class="fa fa-user-circle " style="size:50px ; font-size:22px"> PROFILE </i>
+                      </div>
+                    </div>
+                    <div class="sidebar-header ml-3 p-3">
 
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="UserInfo.html"><i class="fas fa-users"></i><span>Users</span></a>
-                                    </li>
-                                    <li class="sidebar-dropdown"><a href="#"><span>HEADING</span></a>
-                                        <div class="sidebar-submenu">
-                                            <ul>
-                                                <li><a href="#">LINK 1</a></li>
-                                                <li><a href="#">LINK 2</a></li>
-                                                <li><a href="#">LINK 3</a></li>
-                                                <li><a href="#">LINK 4</a></li>
-                                                <li><a href="#">LINK 5</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="sidebar-dropdown">
-                                        <a href="#"><span>HEADING</span></a>
-                                        <div class="sidebar-submenu">
-                                            <ul>
-                                                <li><a href="#">LINK 1</a></li>
-                                                <li><a href="#">LINK 2</a></li>
-                                                <li><a href="#">LINK 3</a></li>
-                                                <li><a href="#">LINK 4</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="sidebar-dropdown">
-                                        <a href="#"><span>HEADING</span></a>
-                                        <div class="sidebar-submenu">
-                                            <ul>
-                                                <li><a href="#">LINK 1</a></li>
-                                                <li><a href="#">LINK 2</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="header-menu"><span>HEADING</span></li>
-                                    <li><button (click)="back()"><i class="fa fa-book"></i><span>BACK</span></button></li>
-
-                                </ul>
-                            </div>
-                            <!-- sidebar-menu  -->
+                      <div class="user-info mt-4">
+                          <span class="user-name">
+                              <strong>{{user.fName}}</strong>
+                          </span>
+                          <div class="row mt-1">
+                          <span class="user-role" style=
+                          "font-weight: bold;"></span>
                         </div>
-                        <!-- sidebar-content  -->
-                        <div class="sidebar-footer">
-                            <a href="#">
-                                <i class="fa fa-bell"></i>
-                                <span class="badge badge-pill badge-warning notification">3</span>
-                            </a>
-                            <a href="#">
-                                <i class="fa fa-envelope"></i>
-                                <span class="badge badge-pill badge-success notification">7</span>
-                            </a>
-                            <a href="#"><i class="fa fa-cog"></i></a>
+                          <span class="user-status" style="font-size: 10px;
+                          margin-right: 4px;
+                          color: #5cb85c;">
+                              <i class="fa fa-circle"></i>
+                          </span>
+                          <span>Online</span>
+                      </div>
+                  </div>
+                  <!-- sidebar-header  -->
+
+                  <!-- sidebar-search  -->
+                  <div class="sidebar-menu ml-2 mt-4 p-3">
+
+
+                              <span style=
+                              "font-weight: bold;">DASHBOARD</span>
+
+                         <!--- <li class="sidebar-dropdown">
+                              <a href="#">
+                                  <i class="fa fa-tachometer-alt"></i>
+                                  <span>Dashboard</span>
+
+                              </a>-->
+                              <ul>
+                                <div class="row mt-4 p-1">
+                              <li><button (click)="home()"><i class="fa fa-home "></i><span> Home</span>
+                              </button></li>
+                            </div>
+                            <div class="row mt-4 p-1">
+                                <li><button (click)="vProfile()"><i class="fa fa-user "></i><span> View Profile</span>
+                                </button></li>
+                          </div>
+                          <div class="row mt-4  p-1">
+                            <li><button (click)="attendance()"><i class="fa fa-square-o "></i><span> Attendance</span>
+                            </button></li>
+                          </div>
+
+                        <!---  <li class="sidebar-dropdown">
+                              <a href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i><span>Attendance</span></a>
+                              <div class="sidebar-submenu">
+                                  <ul>
+                                      <li><a href="#">LINK 1</a></li>
+                                      <li><a href="#">LINK 2</a></li>
+                                      <li><a href="#">LINK 3</a></li>
+                                      <li><a href="#">LINK 4</a></li>
+                                  </ul>
+                              </div>
+                          </li>-->
+                          <div class="row mt-4  p-1">
+                            <li><button (click)="result()"><i class="fa fa-note-o "></i><span> Result </span>
+                            </button></li>
+                          </div>
+                          <div class="row mt-4  p-1">
+                            <li><button (click)="notices()"><i class="fa fa-note-envelope "></i><span> Notice</span>
+                            </button></li>
+                          </div>
+
+
+                          <div class="row mt-5  p-1">
+                            <button type="button" class="btn-sm btn-light" (click)="back()"><i class="fa fa-angle-left " style="font-weight: bold;"> BACK</i></button>
 
                         </div>
-                    </nav>
-                </div>
+                      </ul>
+                  </div>
+                  <!-- sidebar-menu  -->
+              </div>
+
 
 
             </div>
-            <div class="col-10">
-                <div class="row"  style="background-color: #103453;">
-                    <nav class="navbar ">
-                        <form class="form-inline">
-                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                          <button class="btn my-2 my-sm-0" style="outline-color: #103453;color: white;" type="submit">Search</button>
-                        </form>
-                      </nav>
+            <div class="col-md-3 col-lg-9 pl-0 m-5" >
+                <div class="row" >
+                    <div class="container-fluid" style="background-color: #fff;
+                    box-shadow: 0 0 10px 1px #eee;color:black;font-weight: bold;">
+                        <div class="row m-3 mt-5 " >
 
-                </div>
-                <div class="row">
-                    <div class="container-fluid">
-<div class="row m-3 mt-5">
-    
-    <div class="col">
-    <h3 style="color: #103453;"><b>Profile</b></h3>
-    </div>
-
-</div>
-                        <div class="row m-3 mt-5">
-                            <div class="col-md-6">
-                                <label>First Name</label>
-                                <input type="text" disabled [(ngModel)]="user.fName" class="form-control"  placeholder="Enter Your Firstname...">
+                            <div class="col ">
+                                
+                                <h3 style="color: #103453;"><b><i class="fa fa-user-circle " aria-hidden="true"> Profile View</i></b></h3>
+                              
                             </div>
-                            <div class="col-md-6">
-                                <label>Last Name</label>
-                                <input type="text" disabled [(ngModel)]="user.lName" class="form-control" placeholder="Enter Your Lastname...">
+                          
+
+                        </div>
+                        <div class="row m-3 mt-5">
+                            <div class="col-md-4">
+                                <label id="labelC">First Name</label>
+                                <input type="text" disabled [(ngModel)]="user.fName" class="form-control"
+                                    placeholder="Enter Your Firstname...">
+                            </div>
+                            <div class="col-md-4">
+                                <label   id="labelC">Last Name</label>
+                                <input type="text" disabled [(ngModel)]="user.lName" class="form-control"
+                                    placeholder="Enter Your Lastname...">
+                            </div>
+                            <div class="col col-md-3">
+                                <label>Date Of Birth</label>
+                                <input type="text" disabled class="form-control" placeholder [(ngModel)]="user.dob"
+                                    class="form-control" placeholder="dd/mm/yyyy">
                             </div>
                         </div>
                         <div class="row  m-3">
                             <div class="col">
                                 <label for="inputEmail4">Email Id</label>
-                                <input type="email" disabled [(ngModel)]="user.email_id" class="form-control"placeholder="Email address">
+                                <input type="email" disabled [(ngModel)]="user.email_id" class="form-control"
+                                    placeholder="Email address">
                             </div>
-                            <div class="col-3">
-                                <label>Date Of Birth</label>
-                                <input type="text" disabled class="form-control" placeholder [(ngModel)]="user.dob" class="form-control"  placeholder="dd/mm/yyyy">
+                            <div class="col">
+                                <label for="inputEmail4">Mobile Number</label>
+                                <input type="text" disabled [(ngModel)]="user.mobile_no" class="form-control"
+                                    placeholder="Contact number...">
                             </div>
+                           
                         </div>
                         <div class="row  m-3">
-                            <div class="col-3">
+                            <div class="col">
                                 <fieldset class="form-group">
                                     <div class="row">
-                                        <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                                        <legend class="col-form-label col-sm-2 pt-0 p-1">Gender</legend>
                                         <div class="col-sm-10">
                                             <div class="form-check">
-                                                <input class="form-check-input" [(ngModel)]="user.gender" type="radio" name="gridRadios" id="gridRadios1"
-                                                    value="option1" >
+                                                <input class="form-check-input" [(ngModel)]="user.gender" type="radio"
+                                                    name="gridRadios" id="gridRadios1" value="option1">
                                                 <label class="form-check-label" for="gridRadios1">
                                                     Male
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" [(ngModel)]="user.gender" type="radio" name="gridRadios" id="gridRadios2"
-                                                    value="option2" >
+                                                <input class="form-check-input" [(ngModel)]="user.gender" type="radio"
+                                                    name="gridRadios" id="gridRadios2" value="option2">
                                                 <label class="form-check-label" for="gridRadios2">
                                                     Female
                                                 </label>
                                             </div>
-                
+
                                         </div>
                                     </div>
                                 </fieldset>
                             </div>
-                            <div class="col-3">
-                                <label for="inputEmail4">Mobile Number</label>
-                                <input type="text" disabled [(ngModel)]="user.mobile_no" class="form-control"  placeholder="Contact number...">
-                            </div>
-                            <div class="col-6">
-                                <label for="inputAddress">Permanent Address</label>
-                                <input type="text" [(ngModel)]="user.address" class="form-control"  placeholder="Plot No. Street Name ">
-                            </div>
-                        </div>
-                
-                
-                        <div class="row  m-3">
-
-           
+                         
                             <div class="col">
-                                <label  id="CustomID" for="inputState">Country</label>
+                                <label for="inputAddress">Permanent Address</label>
+                                <input type="text" [(ngModel)]="user.address" class="form-control"
+                                    placeholder="Plot No. Street Name ">
+                            </div>
+                            <div class="col">
+                                <label id="CustomID" for="inputState">Country</label>
                                 <select class="form-control" id="Role" [(ngModel)]="user.country" (change)="getState()">
                                     <option selected value="0">Choose...</option>
-                                    <option  *ngFor="let con of countries"  [value]="con.iso2">{{con.name}}</option>
-                                   
+                                    <option *ngFor="let con of countries" [value]="con.iso2">{{con.name}}</option>
+
                                 </select>
                             </div>
-                            <div class="col">
-                                <label  id="CustomID" for="inputState">State</label>
+                        </div>
+
+
+                        <div class="row  m-3">
+
+
+                        
+                            <div class="col col-md-4">
+                                <label id="CustomID" for="inputState">State</label>
                                 <select class="form-control" id="Role" [(ngModel)]="user.state" (change)="getCity()">
                                     <option selected value="0">Choose...</option>
-                                    <option  *ngFor="let con of state"  [value]="con.iso2">{{con.name}}</option>
-                                   
+                                    <option *ngFor="let con of state" [value]="con.iso2">{{con.name}}</option>
+
                                 </select>
                             </div>
-                
-                            <div class="col">
-                                <label  id="CustomID" for="inputState">City</label>
+
+                            <div class="col col-md-4">
+                                <label id="CustomID" for="inputState">City</label>
                                 <select class="form-control" id="Role" [(ngModel)]="user.city">
                                     <option selected value="0">Choose...</option>
-                                    <option  *ngFor="let con of city"  [value]="con.name">{{con.name}}</option>
-                                   
+                                    <option *ngFor="let con of city" [value]="con.name">{{con.name}}</option>
+
                                 </select>
                             </div>
-                
+
                         </div>
-                        <div class="row  m-3">  
+                        <div class="row  m-3">
                             <div *ngIf=isFaculty class="col-2">
-                             <label>Teaching Class</label>
-                             <input type="text" class="form-control">
+                                <label>Teaching Class</label>
+                                <input type="text" class="form-control">
                             </div>
-                         <div *ngIf=isFaculty class="col-3">
-                             <label>Joining Date</label>
-                             <input type="text"  class="form-control" placeholder="dd/mm/yyyy">
-                         </div>
-                         </div>
-                       
-                            <div *ngIf=isStudent class="row  m-3">
-                            <div  class="col-4"> <label>Class</label>
-                                <input type="text" class="form-control" >
+                            <div *ngIf=isFaculty class="col-3">
+                                <label>Joining Date</label>
+                                <input type="text" class="form-control" placeholder="dd/mm/yyyy">
+                            </div>
+                        </div>
+
+                        <div *ngIf=isStudent class="row  m-3">
+                            <div class="col-4"> <label>Class</label>
+                                <input type="text" class="form-control">
                             </div>
                             <div *ngIf=isStudent class="col"><label>Father's Mobile No:</label>
-                                <input type="text" class="form-control"  placeholder="Contact number..">
-                            </div> 
-                            </div>     
-                          
-                        
-                
+                                <input type="text" class="form-control" placeholder="Contact number..">
+                            </div>
+                        </div>
+
+
+
                         <div *ngIf=isStudent class="row m-3">
                             <div class="col-4"> <label>Father's First Name</label>
-                                <input type="text" class="form-control" 
-                                    placeholder="Enter Your Firstname...">
+                                <input type="text" class="form-control" placeholder="Enter Your Firstname...">
                             </div>
                             <div *ngIf=isStudent class="col-4"><label>Father's Last Name</label>
-                                <input type="text" class="form-control"  placeholder="Enter Your Lastname...">
+                                <input type="text" class="form-control" placeholder="Enter Your Lastname...">
                             </div>
-                            <div *ngIf=isStudent class="col-4"><label >Father's Email</label>
-                                <input type="email" class="form-control"  placeholder="Email">
+                            <div *ngIf=isStudent class="col-4"><label>Father's Email</label>
+                                <input type="email" class="form-control" placeholder="Email">
                             </div>
                         </div>
-                       
-                
-                
+
+
+
                         <div class="row m-3">
                             <div class="col">
-                                <button (click)="save()" type="submit"   style="background-color: #103453;color: white;" class="btn">Save</button>
+                                <button (click)="save()" type="submit" style="background-color: #103453;color: white;"
+                                    class="btn">Save</button>
                             </div>
                         </div>
-                        
-                
-                    </div>
-                
-                </div>
-                <div class="row">
 
-                    <div class="col">
-                        <!-- ======= Footer ======= -->
-     <footer id="footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>School Diary</h3>
-                        <p>
-                            A100 ABC Street <br>
-                            Mumbai 535022, India<br><br>
-                            <strong>Phone:</strong> +1 1111 11111 11<br>
-                            <strong>Email:</strong> xyz@example.com<br>
-                        </p>
-                        <div class="social-links mt-3">
-                            <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            <a href="#" class="skype"><i class='fa fa-skype ' aria-hidden="true"></i></a>
-                            <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
-                        <ul>
-                            <li> <a href="#">Lorem Ipsum</a></li>
-                            <li><a href="#">Lorem Ipsum</a></li>
-                            <li><a href="#">Lorem Ipsum</a></li>
-                            <li> <a href="#">Lorem Ipsum</a></li>
-                            <li> <a href="#">Lorem Ipsum</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4>Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                        <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="Subscribe">
-                        </form>
 
                     </div>
 
                 </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong><span>School Diary</span></strong>. All Rights Reserved
-            </div>
-
-        </div>
-    </footer><!-- End Footer -->
-
-
-                    </div>
-                </div>
 
             </div>
 
         </div>
-        </div>
+    </div>
 
-      
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -2281,5 +2803,3 @@
 </body>
 
 </html>
-
-

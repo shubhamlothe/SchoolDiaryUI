@@ -15,9 +15,22 @@ var NoticeUpdateComponent = /** @class */ (function () {
         this.router = router;
         this.datePipe = datePipe;
         this.HttpClientService = HttpClientService;
+        this.isF = false;
+        this.isA = false;
         this.noticeUpdate = new http_client_service_service_1.notice();
+        this.user = new http_client_service_service_1.User();
     }
     NoticeUpdateComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (!sessionStorage.getItem('id')) {
+            this.router.navigate(['homepage']);
+        }
+        else {
+            this.HttpClientService.getUser(sessionStorage.getItem('id')).subscribe(function (res) {
+                _this.user = res;
+            });
+        }
+        this.getdetails();
     };
     NoticeUpdateComponent.prototype.back = function () {
         this.router.navigate(['userHome']);
@@ -32,6 +45,37 @@ var NoticeUpdateComponent = /** @class */ (function () {
         this.HttpClientService.addNotice(this.noticeUpdate).subscribe(function (res) {
             alert("added");
         });
+    };
+    NoticeUpdateComponent.prototype.getdetails = function () {
+        var _this = this;
+        this.HttpClientService.getUser(sessionStorage.getItem('id')).subscribe(function (res) {
+            _this.role_id = res.role_id;
+            if (_this.role_id == 0) {
+                _this.isA = true;
+            }
+            else if (_this.role_id == 1) {
+                _this.isF = true;
+            }
+        });
+    };
+    NoticeUpdateComponent.prototype.logout = function () {
+        sessionStorage.removeItem('id');
+        this.router.navigate(['homepage']);
+    };
+    NoticeUpdateComponent.prototype.home = function () {
+        this.router.navigate(['userHome']);
+    };
+    NoticeUpdateComponent.prototype.vProfile = function () {
+        this.router.navigate(['viewProfile']);
+    };
+    NoticeUpdateComponent.prototype.attendance = function () {
+        this.router.navigate(['attendance']);
+    };
+    NoticeUpdateComponent.prototype.result = function () {
+        this.router.navigate(['result']);
+    };
+    NoticeUpdateComponent.prototype.notices = function () {
+        this.router.navigate(['notices']);
     };
     NoticeUpdateComponent = __decorate([
         core_1.Component({

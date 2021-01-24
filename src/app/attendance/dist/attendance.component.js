@@ -19,8 +19,18 @@ var AttendanceComponent = /** @class */ (function () {
         this.isDisplay = false;
         this.isOther = false;
         this.stu = new http_client_service_service_1.student;
+        this.user = new http_client_service_service_1.User(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     }
     AttendanceComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (!sessionStorage.getItem('id')) {
+            this.router.navigate(['homepage']);
+        }
+        else {
+            this.Http.getUser(sessionStorage.getItem('id')).subscribe(function (res) {
+                _this.user = res;
+            });
+        }
         this.getdetails();
     };
     AttendanceComponent.prototype.getdetails = function () {
@@ -125,6 +135,10 @@ var AttendanceComponent = /** @class */ (function () {
             _this.students = res;
         });
     };
+    AttendanceComponent.prototype.logout = function () {
+        sessionStorage.removeItem('id');
+        this.router.navigate(['homepage']);
+    };
     AttendanceComponent.prototype.getSAttendence = function () {
         var _this = this;
         this.Http.getAttendance(this.stu.user_id_student).subscribe(function (res) {
@@ -143,6 +157,21 @@ var AttendanceComponent = /** @class */ (function () {
                 }
             }
         });
+    };
+    AttendanceComponent.prototype.home = function () {
+        this.router.navigate(['userHome']);
+    };
+    AttendanceComponent.prototype.vProfile = function () {
+        this.router.navigate(['viewProfile']);
+    };
+    AttendanceComponent.prototype.attendance = function () {
+        this.router.navigate(['attendance']);
+    };
+    AttendanceComponent.prototype.result = function () {
+        this.router.navigate(['result']);
+    };
+    AttendanceComponent.prototype.notices = function () {
+        this.router.navigate(['noticeUpdate']);
     };
     AttendanceComponent = __decorate([
         core_1.Component({

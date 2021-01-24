@@ -123,7 +123,7 @@
             transition: all 0.5s;
             transition: all 0.5s;
             padding: 10px 0;
-            background: #587187;
+            background:  #103453;;
             z-index: 997;
         }
 
@@ -1379,14 +1379,14 @@
         }
 
         #footer {
-            background: #587187;
+            background:  #103453;
             padding: 0 0 30px 0;
             color: #fff;
             font-size: 14px;
         }
 
         #footer .footer-top {
-            background: #5c768d;
+            background:  #103453;
             border-top: 1px solid #768fa6;
             border-bottom: 1px solid #67839c;
             padding: 60px 0 30px 0;
@@ -1415,7 +1415,7 @@
         #footer .footer-top .social-links a {
             font-size: 18px;
             display: inline-block;
-            background: #768fa6;
+            background:  #103453;;
             color: #fff;
             line-height: 1;
             padding: 8px 0;
@@ -1428,7 +1428,7 @@
         }
 
         #footer .footer-top .social-links a:hover {
-            background: #428bca;
+            background: #103453;
             color: #fff;
             text-decoration: none;
         }
@@ -1502,14 +1502,14 @@
             background: none;
             font-size: 16px;
             padding: 0 20px;
-            background: #428bca;
+            background:  #103453;
             color: #fff;
             transition: 0.3s;
             border-radius: 4;
         }
 
         #footer .footer-top .footer-newsletter form input[type="submit"]:hover {
-            background: #5295ce;
+            background:  #103453;
         }
 
         #footer .copyright {
@@ -1537,13 +1537,14 @@
 </head>
 
 <body>
-
+<div class="sticky-top">
+  
     <!-- ======= Top Bar ======= -->
     <section id="topbar" class="d-none d-lg-block">
         <div class="container clearfix ">
             <div class="contact-info float-left">
-                <i class="fa fa-envelope"></i><a href="mailto:contact@example.com">contact@example.com</a>
-                <i class="icofont-phone"></i> +1 1111 11111 11
+                <i class="fa fa-envelope"></i><a href="mailto:contact@example.com">schoolediaryproject@gmail.com</a>
+                <i class="fa fa-phone"></i> +91 8989234653
             </div>
 
             <div class="social-links float-right">
@@ -1579,6 +1580,7 @@
 
         </div>
     </header><!-- End Header -->
+</div>
     <div class="d-flex justify-content-center align-items-center m-5">
         <h3 style="color: #103453;"><b>User  Registeration  Form</b></h3>
     </div>
@@ -1632,7 +1634,7 @@
             <div class="col-3">
                 <label id="CustomID"
                 class="text-black" for="dob">Date Of Birth</label>
-                <input type="text" id="dob" class="form-control" [(ngModel)]="user.dob" name="dob" #dob="ngModel" placeholder="dd/mm/yyyy" required>
+                <input type="date" id="dob" class="form-control" [(ngModel)]="user.dob" name="dob" #dob="ngModel" placeholder="dd/mm/yyyy" required>
                 <span class="text-danger" *ngIf="(dob.touched || registerForm.submitted) && dob.errors?.required">
                   <div *ngIf="dob.errors.required">
                       *Required
@@ -1650,19 +1652,18 @@
                         <div class="col-sm-10">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                    value="option1" [(ngModel)]="user.gender">
+                                    value="Male" [(ngModel)]="user.gender">
                                 <label class="form-check-label" for="gridRadios1">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
-                                    value="option2" [(ngModel)]="user.gender">
+                                    value="Female" [(ngModel)]="user.gender">
                                 <label class="form-check-label" for="gridRadios2">
                                     Female
                                 </label>
                             </div>
-
                         </div>
                     </div>
                 </fieldset>
@@ -1737,7 +1738,7 @@
               </span>
               </div>
         </div>
-        <div class="row m-3 justify-content-start">
+        <!-- <div class="row m-3 justify-content-start">
             <div class="col-4">
                 <label id="CustomID"
                 class="text-black" for="inputAddress">Password</label>
@@ -1777,7 +1778,46 @@
               </div>
 
 
+        </div> -->
+
+        <div class="row m-3 justify-content-start">
+            <div class="col-4">
+                <label id="CustomID"
+                class="text-black" for="inputAddress">Password</label>
+                <input type="password" id="password" class="form-control" [(ngModel)]="user.password" minlength="8" maxlength="15" pattern="^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$" name="pass" #pass="ngModel" placeholder="Enter password.." required>
+                <span class="text-danger" *ngIf="(pass.touched || registerForm.submitted) && pass.errors">
+                  <div *ngIf="pass.errors.required">
+                     Password is required
+                  </div>
+                  <div *ngIf="(pass.errors.pattern) && (pass.errors.minlength)">
+                      Password should have minimum 8 characters, at least 1 uppercase letter, 1
+                      lowercase
+                      letter and 1 number.Password must be 8 character
+                  </div>
+              </span>
+              </div>
+            <div class="col-4">
+                <label id="CustomID"
+                class="text-black" for="inputAddress">Confirm Password</label>
+                <input type="password" id="password" [(ngModel)]="rePassword" minlength="8" maxlength="15" pattern="{{user.password}}" name="cpass" #cpass="ngModel" class="form-control" required placeholder="Enter Confirm Password..">
+                <span class="text-danger" *ngIf="(cpass.touched || registerForm.submitted) && cpass.errors">
+                  <div *ngIf="cpass.errors.required">
+                     Password is required
+                  </div>
+                  <div *ngIf="(cpass.errors.pattern)">
+                      Password and Confirm Password Does Not Match
+                  </div>
+
+                  <div *ngIf="cpass.errors.minlength">
+                      Password must be 8 character
+                  </div>
+
+              </span>
+              </div>
+
+
         </div>
+
         <div class="row  m-3">
             <div class="col-4">
                 <label id="CustomID"
@@ -1795,7 +1835,7 @@
                 </select>
             </div>
             <div class="col-4">
-               <!--- <label id="CustomID"
+               <label id="CustomID"
                 class="text-black" for="secQuestAnswer">Type your security answer here</label>
                 <input type="text" class="form-control" id="security_question_s" [(ngModel)]="user.sQanswer_S" name="security_question_s"  #security_question_s="ngModel" placeholder="Answer here" required>
                 <span class="text-danger" *ngIf="(security_question_s.touched || registerForm.submitted) && security_question_s?.required">
@@ -1803,13 +1843,8 @@
                    *Required
                  </div>
 
-              </span>-->
-              <label id="CustomID"
-                class="text-black" for="secQuestAnswer">Type your security answer here</label>
-                <input type="text" class="form-control" [(ngModel)]="user.sQanswer_F" id="security_question_F" name="security_question_F" #security_question_F="ngModel" placeholder="Answer here" required>
-                <span class="text-danger" *ngIf="(security_question_F.touched || registerForm.submitted) && security_question_F.errors?.required">
-                  *Required
               </span>
+            
               </div>
             <div class="col-3">
                 <label id="CustomID"
@@ -1824,23 +1859,31 @@
 
             </div>
             <div class="row  m-3">
-            <div *ngIf=isDisplay class="col-4"> <label id="CustomID"
-              class="text-black" for="class">Class</label>
-                <input type="text" class="form-control" id="class" [(ngModel)]="user.student_class" name="class" #class="ngModel" maxlength="2" minlength="1" required >
-                <span class="text-danger" *ngIf="(class.touched || registerForm.submitted) && class.errors">
-                  <div *ngIf="class.errors.required">
-                      Class is required
-                  </div>
-
-                  <div *ngIf="class.errors.minlength">
-                      Fill appropriate class
-                  </div>
-
-              </span>
-              </div>
+           
+                
+                    <div *ngIf=isDisplay class="col-4"> 
+                        <label id="CustomID">Class</label>	             
+	                <select class="form-control" id="class" #myclass (change)="onClassSelected(myclass.value)">
+                            <option value = 1 >1</option>
+                            <option value = 2 >2</option>
+                            <option value = 3 >3</option>
+                            <option value = 4 >4</option>
+                            <option value = 5 >5</option>
+                            <option value = 6 >6</option>
+                            <option value = 7 >7</option>
+                            <option value = 8 >8</option>
+                            <option value = 9 >9</option>
+                            <option value = 10 >10</option>
+                            <option value = 11 >11</option>
+                            <option value = 12 >12</option>
+                        </select>
+                    </div>	          
+                  
+              
+             
             <div *ngIf=isDisplay class="col"><label id="CustomID"
               class="text-black" for="inputEmail4">Father's Mobile No:</label>
-                <input type="text" class="form-control" id="mobile_no" pattern="^[6789]\d{9}$" name="mobile_no" #mobile_no="ngModel" [(ngModel)]="user.mobile_no_f " placeholder="Contact number.." required>
+                <input type="text" class="form-control" id="mobile_no" pattern="^[6789]\d{9}$" name="mobile_no" #mobile_no="ngModel" [(ngModel)]="user.mobile_no_f" placeholder="Contact number.." required>
                 <span class="text-danger" *ngIf="(mobile_no.touched || registerForm.submitted) && mobile_no.errors">
                   <div *ngIf="mobile_no.errors.required">
                       Mobile Number is required
@@ -1857,18 +1900,29 @@
               </div>
             </div>
             <div class="row  m-3">
-               <div *ngIf=isFaculty class="col-2">
-                <label id="CustomID"
-                class="text-black" for="Tclass">Teaching Class</label>
-                <input type="text" id="Tclass" class="form-control" name="Tclass" #Tclass="ngModel" [(ngModel)]="user.faculty_class" required>
-                <span class="text-danger" *ngIf="(Tclass.touched || registerForm.submitted) && Tclass.errors?.required">
-                  *Required
-              </span>
-              </div>
+               
+                <div *ngIf=isFaculty class="col-3">
+                    <label id="CustomID">Teaching Class</label>
+                    <select class="form-control" id="class" #myFacultyclass (change)="onClassSelectedFaculty(myFacultyclass.value)">
+                    <option value = 1 >1</option>
+                    <option value = 2 >2</option>
+                    <option value = 3 >3</option>
+                    <option value = 4 >4</option>
+                    <option value = 5 >5</option>
+                    <option value = 6 >6</option>
+                    <option value = 7 >7</option>
+                    <option value = 8 >8</option>
+                    <option value = 9 >9</option>
+                    <option value = 10 >10</option>
+                    <option value = 11 >11</option>
+                    <option value = 12 >12</option>
+                </select>
+            </div>
+
             <div *ngIf=isFaculty class="col-3">
                 <label id="CustomID"
                 class="text-black" for="joining">Joining Date</label>
-                <input type="text" id="join" [(ngModel)]="user.joining_date" name="join" #join="ngModel" class="form-control" placeholder="dd/mm/yyyy" required>
+                <input type="date" id="join" [(ngModel)]="user.joining_date" name="join" #join="ngModel" class="form-control" placeholder="dd/mm/yyyy" required>
                 <span class="text-danger" *ngIf="(join.touched || registerForm.submitted) && join.errors?.required">
                   *Required
               </span>
@@ -1876,7 +1930,7 @@
             </div>
 
 
-        <div *ngIf=isDisplay class="row m-3">
+            <div *ngIf=isDisplay class="row m-3">
             <div class="col-4"> <label id="CustomID"
               class="text-black" for="fathername">Father's First Name</label>
                 <input type="text" id="firstFname"class="form-control" [(ngModel)]="user.fName_f" pattern="[A-Za-z]+" name="firstFname" #firstFname="ngModel"
@@ -1962,12 +2016,12 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>School Diary</h3>
+                        <h3>School E-Diary</h3>
                         <p>
                             A100 ABC Street <br>
                             Mumbai 535022, India<br><br>
-                            <strong>Phone:</strong> +1 1111 11111 11<br>
-                            <strong>Email:</strong> xyz@example.com<br>
+                            <strong>Phone:</strong>  +91 8989234653<br>
+                            <strong>Email:</strong>schoolediaryproject@gmail.com<br>
                         </p>
                         <div class="social-links mt-3">
                             <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -1992,17 +2046,21 @@
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li> <a href="#">Lorem Ipsum</a></li>
-                            <li><a href="#">Lorem Ipsum</a></li>
-                            <li><a href="#">Lorem Ipsum</a></li>
-                            <li> <a href="#">Lorem Ipsum</a></li>
-                            <li> <a href="#">Lorem Ipsum</a></li>
+                            <li> <a href="#">Notice Board</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Attendance</a></li>
+                            <li> <a href="#">Result</a></li>
+                            <li> <a href="#">Feedback</a></li>
+                            <li> <a href="#">Contact Us</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <p>School will re-open soon in mid-february.</p>
+                         <p>Communicate with us any time.
+                         We will be there 24/7</p>
+
                         <form action="" method="post">
                             <input type="email" name="email"><input type="submit" value="Subscribe">
                         </form>

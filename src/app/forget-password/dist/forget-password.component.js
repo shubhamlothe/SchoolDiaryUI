@@ -25,6 +25,9 @@ var ForgetPasswordComponent = /** @class */ (function () {
         }
     };
     ForgetPasswordComponent.prototype.ngOnInit = function () {
+        if (sessionStorage.getItem('id')) {
+            this.router.navigate(['userHome']);
+        }
     };
     ForgetPasswordComponent.prototype.onOptionsSelected_Forget = function (value) {
         if (value == "1") {
