@@ -17,8 +17,6 @@ export class ApproveUserComponent implements OnInit {
   ngOnInit(): void {
     if (!sessionStorage.getItem('id')) {
       this.router.navigate(['homepage']);
-    } else {
-      this.router.navigate(['userHome']);
     }
     this.GetPending();
   }
