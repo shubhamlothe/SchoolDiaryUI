@@ -1,0 +1,8 @@
+#main {
+  padding-top: 70px;
+}
+
+#main,
+.row.row-offcanvas {
+  height: 100%;
+}

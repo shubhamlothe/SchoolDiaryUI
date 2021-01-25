@@ -20,6 +20,9 @@ import { ResultComponent } from './result/result.component';
 import { ApproveUserComponent } from './approve-user/approve-user.component';
 import { RaiseRequestComponent } from './raise-request/raise-request.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+import { HeaderComponent } from './header/header.component';
+import { NoticeComponent } from './notice/notice.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ResultComponent,
     ApproveUserComponent,
     RaiseRequestComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SideBarComponent,
+    HeaderComponent,
+    NoticeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from './user.service';
 
 
 @Component({
@@ -9,5 +10,10 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   title = 'WEBApp';
- faCoffee =  faCoffee;
+  faCoffee = faCoffee;
+  get isLoggedIn(): boolean {
+    return !sessionStorage.getItem('id') ? false : true;
+  };
+  constructor(private userService: UserService) {
+  }
 }

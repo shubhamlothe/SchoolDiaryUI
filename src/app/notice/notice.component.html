@@ -1,0 +1,39 @@
+<table class="table table-striped ">
+
+<thead>
+
+    <tr >
+
+        <th>Valid from</th>
+        <th>Notice</th>
+        <th>Valid to</th>
+        
+
+    </tr>
+
+</thead>
+
+<tbody>
+<tr *ngFor="let item of alNotice">
+
+    <td>
+
+        {{item.date_from}}
+
+    </td>
+    <td>
+
+        {{item.msg}}
+
+    </td>
+
+    <td>
+
+       {{ item.date_to}}
+
+    </td>
+</tr>
+
+</tbody>
+
+</table>

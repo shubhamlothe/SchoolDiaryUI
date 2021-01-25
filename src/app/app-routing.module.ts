@@ -14,6 +14,7 @@ import { ResultComponent } from './result/result.component';
 import { ApproveUserComponent } from './approve-user/approve-user.component';
 import { RaiseRequestComponent } from './raise-request/raise-request.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NoticeComponent } from './notice/notice.component';
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'homepage', component: HomepageComponent },
@@ -27,7 +28,9 @@ const routes: Routes = [
   { path: 'result', component: ResultComponent },
   { path: 'approveUser', component: ApproveUserComponent },
   { path: 'raiseRequest', component: RaiseRequestComponent },
+  { path: 'allNotice', component: NoticeComponent },
   { path: '**', component: PageNotFoundComponent }
+
 
 
 

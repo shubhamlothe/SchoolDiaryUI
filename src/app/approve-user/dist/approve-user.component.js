@@ -18,6 +18,9 @@ var ApproveUserComponent = /** @class */ (function () {
         if (!sessionStorage.getItem('id')) {
             this.router.navigate(['homepage']);
         }
+        else {
+            this.router.navigate(['userHome']);
+        }
         this.GetPending();
     };
     ApproveUserComponent.prototype.GetPending = function () {

@@ -280,4 +280,9 @@ export class HttpClientServiceService {
 
   }
 
+  getAllNotic() {
+
+    return this.httpClient.get<notice[]>("http://localhost:8080/getAllNotice");
+  }
+
 }

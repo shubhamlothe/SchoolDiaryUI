@@ -9,6 +9,7 @@ import { HttpClientServiceService, User } from '../http-client-service.service';
 })
 export class LoginComponent implements OnInit {
 
+  display: boolean = false;
   constructor(private HttpClientService: HttpClientServiceService, private router: Router) { }
   user: User = new User(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit {
 
 
       } else {
-        alert("Wrong Credentials");
+        this.display = true;
         this.user.email_id = null;
         this.user.password = null;
       }

@@ -28,9 +28,13 @@ var NoticeUpdateComponent = /** @class */ (function () {
         else {
             this.HttpClientService.getUser(sessionStorage.getItem('id')).subscribe(function (res) {
                 _this.user = res;
+                if (!_this.canAddNotices()) {
+                    _this.router.navigate(['userHome']);
+                    return;
+                }
+                _this.getdetails();
             });
         }
-        this.getdetails();
     };
     NoticeUpdateComponent.prototype.back = function () {
         this.router.navigate(['userHome']);
@@ -74,8 +78,9 @@ var NoticeUpdateComponent = /** @class */ (function () {
     NoticeUpdateComponent.prototype.result = function () {
         this.router.navigate(['result']);
     };
-    NoticeUpdateComponent.prototype.notices = function () {
-        this.router.navigate(['notices']);
+    NoticeUpdateComponent.prototype.canAddNotices = function () {
+        var role_id = this.user ? this.user.role_id : null;
+        return role_id === 0 || role_id === 1;
     };
     NoticeUpdateComponent = __decorate([
         core_1.Component({

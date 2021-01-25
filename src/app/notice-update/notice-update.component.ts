@@ -24,11 +24,14 @@ export class NoticeUpdateComponent implements OnInit {
     } else {
       this.HttpClientService.getUser(sessionStorage.getItem('id')).subscribe(res => {
         this.user = res;
+        if (!this.canAddNotices()) {
+          this.router.navigate(['userHome']);
+          return;
+        }
+        this.getdetails();
       })
     }
 
-
-    this.getdetails();
   }
 
 
@@ -87,8 +90,10 @@ export class NoticeUpdateComponent implements OnInit {
     this.router.navigate(['result']);
   }
 
-  notices() {
-    this.router.navigate(['notices']);
+  canAddNotices() {
+    const role_id = this.user ? this.user.role_id : null;
+    return role_id === 0 || role_id === 1;
   }
+
 
 }

@@ -20,7 +20,7 @@ export class AttendanceComponent implements OnInit {
   att: attendance[];
   students: student[];
   stu: student = new student;
-  user: User = new User(null, null, null, null, null, null, null, null, null, null, null, null, null, null,);
+  user: User = new User(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
   constructor(private Http: HttpClientServiceService, private router: Router, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
@@ -169,7 +169,8 @@ export class AttendanceComponent implements OnInit {
   GetChildByUid() {
     this.Http.GetChildByUid(sessionStorage.getItem('id')).subscribe(res => {
       this.students = res;
-
+      this.stu.user_id_student = this.students && this.students.length > 0 ? this.students[0].user_id_student : null;
+      this.getSAttendence();
     })
   }
   logout() {
@@ -178,6 +179,9 @@ export class AttendanceComponent implements OnInit {
   }
 
   getSAttendence() {
+    if (!this.stu.user_id_student) {
+      return;
+    }
     this.Http.getAttendance(this.stu.user_id_student).subscribe(res => {
       this.att = res;
       for (var i = 0; i < res.length; i++) {
@@ -202,25 +206,6 @@ export class AttendanceComponent implements OnInit {
 
 
 
-
-  home() {
-    this.router.navigate(['userHome']);
-  }
-
-  vProfile() {
-    this.router.navigate(['viewProfile']);
-  }
-
-  attendance() {
-    this.router.navigate(['attendance']);
-  }
-  result() {
-    this.router.navigate(['result']);
-  }
-
-  notices() {
-    this.router.navigate(['noticeUpdate']);
-  }
 
 
 }

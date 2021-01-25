@@ -1,3 +1,14 @@
+<app-header *ngIf="isLoggedIn"></app-header>
 
-
-<router-outlet></router-outlet>
+<div class="container-fluid" id="main" [ngClass]="{'no-padding': !isLoggedIn}" >
+    <div 
+    [ngClass]="{'row row-offcanvas row-offcanvas-left': isLoggedIn}"
+     style="color: white;">
+        <div [ngClass]="{'col-md-2 col-lg-2 no-padding': isLoggedIn}">
+            <app-side-bar *ngIf="isLoggedIn"></app-side-bar>
+        </div>
+        <div [ngClass]="{'col-md-2 col-lg-10 pl-0': isLoggedIn}">
+    <router-outlet></router-outlet>
+    </div>
+    </div>
+</div>

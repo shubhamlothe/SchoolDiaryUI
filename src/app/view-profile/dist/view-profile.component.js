@@ -25,9 +25,9 @@ var ViewProfileComponent = /** @class */ (function () {
         var id = sessionStorage.getItem('id');
         this.HttpClientService.getUser(id).subscribe(function (res) {
             _this.user = res;
-            _this.user.dob = _this.user.dob.slice(0, 2) + "-" + _this.user.dob.slice(2, 4) + "-" + _this.user.dob.slice(4, 8);
+            _this.user.dob = _this.user && _this.user.dob ? _this.user.dob.slice(0, 2) + "-" + _this.user.dob.slice(2, 4) + "-" + _this.user.dob.slice(4, 8) : null;
+            _this.getCountries();
         });
-        this.getCountries();
     };
     //   if(this.user.role_id == 1)
     //   {
@@ -55,21 +55,20 @@ var ViewProfileComponent = /** @class */ (function () {
         var _this = this;
         this.HttpClientService.getCountries().subscribe(function (res) {
             _this.countries = res;
-            console.log(res);
+            _this.getState();
         });
     };
     ViewProfileComponent.prototype.getState = function () {
         var _this = this;
         this.HttpClientService.getState(this.user.country).subscribe(function (res) {
             _this.state = res;
-            console.log(res);
+            _this.getCity();
         });
     };
     ViewProfileComponent.prototype.getCity = function () {
         var _this = this;
         this.HttpClientService.getCity(this.user.country, this.user.state).subscribe(function (res) {
             _this.city = res;
-            console.log(res);
         });
     };
     ViewProfileComponent.prototype.save = function () {

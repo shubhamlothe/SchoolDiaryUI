@@ -133,6 +133,8 @@ var AttendanceComponent = /** @class */ (function () {
         var _this = this;
         this.Http.GetChildByUid(sessionStorage.getItem('id')).subscribe(function (res) {
             _this.students = res;
+            _this.stu.user_id_student = _this.students && _this.students.length > 0 ? _this.students[0].user_id_student : null;
+            _this.getSAttendence();
         });
     };
     AttendanceComponent.prototype.logout = function () {
@@ -141,6 +143,9 @@ var AttendanceComponent = /** @class */ (function () {
     };
     AttendanceComponent.prototype.getSAttendence = function () {
         var _this = this;
+        if (!this.stu.user_id_student) {
+            return;
+        }
         this.Http.getAttendance(this.stu.user_id_student).subscribe(function (res) {
             _this.att = res;
             for (var i = 0; i < res.length; i++) {
@@ -157,21 +162,6 @@ var AttendanceComponent = /** @class */ (function () {
                 }
             }
         });
-    };
-    AttendanceComponent.prototype.home = function () {
-        this.router.navigate(['userHome']);
-    };
-    AttendanceComponent.prototype.vProfile = function () {
-        this.router.navigate(['viewProfile']);
-    };
-    AttendanceComponent.prototype.attendance = function () {
-        this.router.navigate(['attendance']);
-    };
-    AttendanceComponent.prototype.result = function () {
-        this.router.navigate(['result']);
-    };
-    AttendanceComponent.prototype.notices = function () {
-        this.router.navigate(['noticeUpdate']);
     };
     AttendanceComponent = __decorate([
         core_1.Component({

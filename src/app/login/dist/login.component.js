@@ -13,6 +13,7 @@ var LoginComponent = /** @class */ (function () {
     function LoginComponent(HttpClientService, router) {
         this.HttpClientService = HttpClientService;
         this.router = router;
+        this.display = false;
         this.user = new http_client_service_service_1.User(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -58,7 +59,7 @@ var LoginComponent = /** @class */ (function () {
                 }
             }
             else {
-                alert("Wrong Credentials");
+                _this.display = true;
                 _this.user.email_id = null;
                 _this.user.password = null;
             }

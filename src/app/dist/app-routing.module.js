@@ -21,6 +21,7 @@ var result_component_1 = require("./result/result.component");
 var approve_user_component_1 = require("./approve-user/approve-user.component");
 var raise_request_component_1 = require("./raise-request/raise-request.component");
 var page_not_found_component_1 = require("./page-not-found/page-not-found.component");
+var notice_component_1 = require("./notice/notice.component");
 var routes = [
     { path: '', component: homepage_component_1.HomepageComponent },
     { path: 'homepage', component: homepage_component_1.HomepageComponent },
@@ -34,6 +35,7 @@ var routes = [
     { path: 'result', component: result_component_1.ResultComponent },
     { path: 'approveUser', component: approve_user_component_1.ApproveUserComponent },
     { path: 'raiseRequest', component: raise_request_component_1.RaiseRequestComponent },
+    { path: 'allNotice', component: notice_component_1.NoticeComponent },
     { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
 ];
 var AppRoutingModule = /** @class */ (function () {

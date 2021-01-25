@@ -248,6 +248,9 @@ var HttpClientServiceService = /** @class */ (function () {
     HttpClientServiceService.prototype.getAlreadyAppliedExams = function (cls) {
         return this.httpClient.get("http://localhost:8080/getAlreadyAppliedExams/" + cls);
     };
+    HttpClientServiceService.prototype.getAllNotic = function () {
+        return this.httpClient.get("http://localhost:8080/getAllNotice");
+    };
     HttpClientServiceService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

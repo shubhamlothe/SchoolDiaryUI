@@ -19,19 +19,16 @@ export class ViewProfileComponent implements OnInit {
   constructor(private HttpClientService: HttpClientServiceService, private router: Router) { }
 
   ngOnInit(): void {
-
     if (!sessionStorage.getItem('id')) {
       this.router.navigate(['homepage']);
     }
-
     const id = sessionStorage.getItem('id');
-
     this.HttpClientService.getUser(id).subscribe(res => {
       this.user = res;
-      this.user.dob = this.user.dob.slice(0, 2) + "-" + this.user.dob.slice(2, 4) + "-" + this.user.dob.slice(4, 8);
 
+      this.user.dob = this.user && this.user.dob ? this.user.dob.slice(0, 2) + "-" + this.user.dob.slice(2, 4) + "-" + this.user.dob.slice(4, 8) : null;
+      this.getCountries();
     })
-    this.getCountries();
   }
 
   //   if(this.user.role_id == 1)
@@ -62,31 +59,25 @@ export class ViewProfileComponent implements OnInit {
   getCountries() {
     this.HttpClientService.getCountries().subscribe(res => {
       this.countries = <Countries[]><unknown>res;
-      console.log(res);
+      this.getState();
     });
   }
 
   getState() {
     this.HttpClientService.getState(this.user.country).subscribe(res => {
       this.state = <Countries[]><unknown>res;
-      console.log(res);
+      this.getCity();
     });
   }
 
   getCity() {
     this.HttpClientService.getCity(this.user.country, this.user.state).subscribe(res => {
-
-
       this.city = <Countries[]><unknown>res;
-
-      console.log(res);
-
     });
 
   }
 
   save() {
-
     this.HttpClientService.updateUserProfile(this.user).subscribe(res => {
       alert("done");
     })
