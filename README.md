@@ -34,7 +34,7 @@ SchoolDiaryUI is an intuitive front-end application designed to facilitate commu
 - **CSS**
 - **TypeScript**
 - **JavaScript**
-- Framework/Library: (Add if you are using React, Angular, Vue, etc.)
+- Framework/Library: Angular
 
 ## Getting Started
 
